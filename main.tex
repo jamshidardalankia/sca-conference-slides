@@ -262,32 +262,69 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 
 \renewcommand{\sectiontag}{Empirical design}
 % Slide 05 - Data, rolling windows and benchmarks
+\begingroup
+\renewcommand{\scaFooterTextFont}{\fontsize{4.75}{5.5}\selectfont}
+\renewcommand{\scaFooterPageFont}{\fontsize{5.5}{6.45}\selectfont}
 \begin{frame}{Data, rolling windows and benchmarks}
-\smath
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.50\textwidth}
-\headrow{Investment universe}
-At each formation date, select 100 liquid companies from historical S\&P 500 membership, ranked by trailing median Trading Value. All strategies use the same eligible stocks.
-\vspace{2.2mm}
-\headrow{Estimation and investment}
-Estimate from 504 trading days of CRSP data through $t$. Choose weights at $t$ and evaluate simple returns over the following 63 trading days. Weights drift between rebalances.
-\vspace{2.2mm}
-\headrow{Out-of-sample period}
-95 formations and 5,985 investment days, 8 January 2002 to 20 October 2025. GFC and COVID are evaluation periods.
-\end{column}
-\begin{column}{.456\textwidth}
-\headrow{Conventional allocation}
-Equal Weight and three minimum-variance portfolios: sample, Ledoit--Wolf (LW) and analytical nonlinear shrinkage (NLS).
-\vspace{2.2mm}
-\headrow{Network portfolios}
-HRP allocates recursively through a hierarchy. PZ Lowest-Centrality and PZ Rho-Dependent each select 20 stocks.
-\vspace{2.2mm}
-\headrow{Contribution budgeting}
-Covariance ERC gives each stock an equal contribution to covariance risk. It is the matched budgeting benchmark for Risk-Parity SCA.
-\end{column}
-\end{columns}
-\src{Article, Section 4 and Tables 1--2. The estimation inputs are log returns and log changes in Trading Value. CAGR and volatility are annualized; drawdown is the peak-to-trough loss within the evaluation window.}
+\vspace*{-2.5mm}
+\noindent{\lab{\fontsize{10.1}{11.7}\selectfont Point-in-time S\&P 500 universe}}\hfill
+{\color{subtle}\fontsize{7.35}{9.1}\selectfont CRSP daily returns and trading value}\par
+\vspace{.5mm}
+{\fontsize{7.75}{9.5}\selectfont
+At each formation date \(t\), select the \textbf{100} eligible members with the highest trailing 504-day median trading value.\\
+To avoid \textbf{look-ahead bias}, selection and estimation use only information available through \(t\).\par}
+\vspace{.7mm}
+{\color{subtle}\fontsize{7.35}{9.0}\selectfont
+Out of sample, 8 Jan 2002 -- 20 Oct 2025\quad\textperiodcentered\quad
+95 rolling windows\quad\textperiodcentered\quad 5,985 trading days\par}
+\vspace{1.6mm}{\color{hairline}\hrule height .38pt}
+\vspace{1.25mm}
+
+% Unbroken trading-day scale: 64 mm for 504 observations, 8 mm for 63.
+\noindent\begin{pgfpicture}
+  \pgfpathrectangle{\pgfpoint{0mm}{-4.5mm}}{\pgfpoint{145.5mm}{13.9mm}}
+  \pgfusepath{use as bounding box}
+  {\color{ink}\fontsize{7.65}{9.4}\selectfont
+   \pgftext[at={\pgfpoint{32.8mm}{5.2mm}},base]{504-day estimation window}
+   \pgftext[at={\pgfpoint{68.8mm}{5.2mm}},base]{63-day hold}}
+  \pgfsetlinewidth{1.3pt}
+  \pgfsetstrokecolor{blueink!65!white}
+  \pgfpathmoveto{\pgfpoint{.8mm}{2mm}}\pgfpathlineto{\pgfpoint{64.8mm}{2mm}}\pgfusepath{stroke}
+  \pgfsetstrokecolor{blueink}
+  \pgfpathmoveto{\pgfpoint{64.8mm}{2mm}}\pgfpathlineto{\pgfpoint{72.8mm}{2mm}}\pgfusepath{stroke}
+  \pgfsetlinewidth{.6pt}
+  \pgfpathmoveto{\pgfpoint{.8mm}{.8mm}}\pgfpathlineto{\pgfpoint{.8mm}{3.2mm}}\pgfusepath{stroke}
+  \pgfpathmoveto{\pgfpoint{72.8mm}{.8mm}}\pgfpathlineto{\pgfpoint{72.8mm}{3.2mm}}\pgfusepath{stroke}
+  \pgfsetfillcolor{blueink}\pgfpathcircle{\pgfpoint{64.8mm}{2mm}}{.78mm}\pgfusepath{fill}
+  {\color{subtle}\fontsize{7.6}{9}\selectfont
+   \pgftext[at={\pgfpoint{0mm}{-2.1mm}},left,base]{\(t-503\)}
+   \pgftext[at={\pgfpoint{64.8mm}{-2.1mm}},base]{\(t\)}
+   \pgftext[at={\pgfpoint{73.45mm}{-2.1mm}},base]{\(t+63\)}}
+  {\lab{\fontsize{9.45}{11.0}\selectfont
+   \pgftext[at={\pgfpoint{83.2mm}{6.0mm}},left,base]{Formation window at \(t\)}}}
+  {\fontsize{7.5}{9.2}\selectfont
+   \pgftext[at={\pgfpoint{83.2mm}{1.85mm}},left,base]{Estimate \(\Sigma_t\) and \(S_t\) on \([t-503,t]\) and set \(w_t\).}
+   \pgftext[at={\pgfpoint{83.2mm}{-2.1mm}},left,base]{Test on \([t+1,t+63]\). Roll forward 63 days.}}
+\end{pgfpicture}\par
+\vspace{.75mm}{\color{hairline}\hrule height .38pt}
+\vspace{1.45mm}
+
+{\fontsize{7.6}{9.6}\selectfont\renewcommand{\arraystretch}{1.04}
+\setlength{\tabcolsep}{0pt}
+\noindent\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
+\lab{Benchmark family} & \lab{Portfolio rule} & \lab{Reference}\\[.38mm]
+Conventional & Equal Weight (\(1/N\)), out-of-sample benchmark & \href{https://doi.org/10.1093/rfs/hhm075}{DeMiguel, Garlappi \& Uppal (2009)}\\
+ & Sample MinVar & \href{https://doi.org/10.1111/j.1540-6261.1952.tb01525.x}{Markowitz (1952)}\\
+ & MinVar with linear shrinkage (LW) & \href{https://doi.org/10.1016/S0047-259X(03)00096-4}{Ledoit \& Wolf (2004)}\\
+ & MinVar with analytical nonlinear shrinkage (NLS) & \href{https://doi.org/10.1214/19-AOS1921}{Ledoit \& Wolf (2020)}\\[.55mm]
+Structure-aware & Hierarchical Risk Parity (HRP) & \href{https://doi.org/10.3905/jpm.2016.42.4.059}{L\'opez de Prado (2016)}\\
+ & PZ Lowest-Centrality and Rho-Dependent (\(k=20\)) & \href{https://doi.org/10.1016/j.jempfin.2016.06.003}{Peralta \& Zareei (2016)}\\[.55mm]
+Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.org/10.3905/jpm.2010.36.4.060}{Maillard, Roncalli \& Te\"iletche (2010)}\\[-.12mm]
+ & {\color{subtle}\fontsize{7.05}{8.5}\selectfont Direct benchmark for Risk-Parity SCA} &
+\end{tabular*}\par}
+\note{All three allocation rules start from the same 100-stock universe. CRSP CIZ daily data and historical S\&P 500 membership determine which companies are eligible at formation. Keep one security per company. Estimate covariance and profile similarity from the trailing window through \(t\) before observing the first holding return. Evaluate simple returns and let weights drift over the next 63 trading days. The two PZ rules each select 20 stocks. Covariance ERC means equal risk contribution under the Ledoit--Wolf covariance matrix. It provides the direct comparison for Risk-Parity SCA. See manuscript Section 4, Table 2 and Online Appendix S7.}
 \end{frame}
+\endgroup
 
 \renewcommand{\sectiontag}{Empirical evidence}
 % Seven results frames for the main conference talk.
