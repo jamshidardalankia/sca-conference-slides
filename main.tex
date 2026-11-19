@@ -20,7 +20,9 @@
  {\color{blueink}\sffamily\bfseries\fontsize{6.0}{7.1}\selectfont\MakeUppercase{\sectiontag}\par}%
  \vspace{1.15mm}{\usebeamerfont{frametitle}\color{ink}\insertframetitle\par}\vspace{1.25mm}%
  {\color{hairline}\hrule height .38pt}\vspace{1.25mm}}
-\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\fontsize{5.5}{6.3}\selectfont\insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil{\color{blueink}\fontsize{6.4}{7}\selectfont\insertframenumber}\hskip7.0mm}\vskip2.1mm}
+\newcommand{\scaFooterTextFont}{\fontsize{5.5}{6.3}\selectfont}
+\newcommand{\scaFooterPageFont}{\fontsize{6.4}{7}\selectfont}
+\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\scaFooterTextFont \insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil{\color{blueink}\scaFooterPageFont \insertframenumber}\hskip7.0mm}\vskip2.1mm}
 \newcommand{\src}[1]{\par\vfill\vspace{.7mm}{\raggedright\color{subtle}\fontsize{5.7}{7.0}\selectfont #1\par}}
 \newcommand{\lab}[1]{{\color{blueink}\sffamily\bfseries #1}}
 \newcommand{\headrow}[1]{\par\noindent\lab{#1}\par\vspace{.6mm}}
@@ -50,13 +52,17 @@
 \vspace{2.5mm}
 {\rmfamily\color{subtle}\fontsize{12.3}{15.1}\selectfont Price and Trading Value Correlation-Profile Diversification\\under Systemic Stress\par}
 \vspace{5mm}{\color{blueink}\rule{12mm}{.8pt}}\par\vspace{4mm}
-{\bfseries\fontsize{9.1}{11}\selectfont Jamshid Ardalankia}\par\vspace{.8mm}
-{\color{subtle}\fontsize{7.5}{9.1}\selectfont Department of Economics, Virginia Tech, USA}
+{\bfseries\fontsize{7.85}{10.25}\selectfont Jamshid Ardalankia}\par\vspace{.8mm}
+{\color{subtle}\fontsize{6.45}{8.45}\selectfont Department of Economics, Virginia Tech, USA}
 
 \par\vspace{.8mm}
-{\color{subtle}\fontsize{7.5}{9.1}\selectfont Southern Economic Association Annual Meeting, Houston TX, 2026}
+{\color{subtle}\fontsize{6.45}{8.45}\selectfont Southern Economic Association Annual Meeting, Houston TX, 2026}
 \end{frame}
 
+% Opening frames share a smaller footer.
+\begingroup
+\renewcommand{\scaFooterTextFont}{\fontsize{4.75}{5.5}\selectfont}
+\renewcommand{\scaFooterPageFont}{\fontsize{5.5}{6.45}\selectfont}
 % Slide 02 - Same direct correlation, different neighbors
 \begin{frame}{Same direct correlation, different neighbors}
 \setlength{\unitlength}{1mm}
@@ -74,7 +80,7 @@
   \put(106,2.5){\makebox(0,0)[b]{\fontsize{8.0}{9.0}\selectfont\bfseries
     \href{https://doi.org/10.1016/j.jempfin.2016.06.003}{Peralta \& Zareei (2016)}}}
   \put(140,0){\makebox(0,0){\rmfamily\bfseries\fontsize{16}{16}\selectfont ?}}
-  \color{subtle}\fontsize{6.8}{8.3}\selectfont
+  \color{subtle}\fontsize{5.85}{7.7}\selectfont
   \put(18,-2.3){\makebox(0,0)[t]{Stock-return correlation trees}}
   \put(61,-2.3){\makebox(0,0)[t]{Markowitz portfolios on the tree}}
   \put(106,-2.3){\makebox(0,0)[t]{Portfolio selection by centrality}}
@@ -85,20 +91,20 @@
   \centering\includegraphics[width=\linewidth,height=35.5mm,keepaspectratio]{network.pdf}
 \end{column}
 \begin{column}{.55\textwidth}
-  {\fontsize{8.6}{10.7}\selectfont
+  {\fontsize{7.4}{9.95}\selectfont
     Both pairs have the same direct correlation, $\rho^P_{ij}=\rho^P_{ab}$.
     The upper pair shares more neighbors.\par}
   \vspace{2.6mm}
   {\color{blueink}\bfseries\fontsize{9.4}{11.1}\selectfont Structural Crowding Allocation (SCA)\par}
   \vspace{1.0mm}
-  {\fontsize{8.6}{10.7}\selectfont
+  {\fontsize{7.4}{9.95}\selectfont
     A portfolio is structurally crowded when much of its weight is in stocks with similar correlation profiles.
     SCA accounts for this overlap alongside covariance risk when setting weights.\par}
 \end{column}
 \end{columns}
 \vfill
 {\color{hairline}\hrule height .45pt}\vspace{1.4mm}
-{\color{blueink}\rmfamily\bfseries\fontsize{10.2}{12.1}\selectfont
+{\color{blueink}\rmfamily\bfseries\fontsize{8.75}{11.25}\selectfont
 Can using correlation-profile similarity as an additional diversification criterion reduce portfolio drawdowns during systemic stress?\par}
 \note{Pause at the question mark, then point to the two highlighted pairs.
 These two pairs have the same direct correlation. What if one pair shares many more neighbors?}
@@ -108,10 +114,10 @@ These two pairs have the same direct correlation. What if one pair shares many m
 % Slide 03 - An additional diversification criterion
 \begin{frame}{An additional diversification criterion}
 \vspace*{-2.0mm}
-{\fontsize{8.8}{10.3}\selectfont I use overlap in stocks' correlation profiles alongside covariance risk when setting portfolio weights.\par}
+{\fontsize{7.55}{9.6}\selectfont I use overlap in stocks' correlation profiles alongside covariance risk when setting portfolio weights.\par}
 \vspace{1.1mm}
 \begingroup
-\fontsize{10.1}{11}\selectfont
+\fontsize{8.7}{10.25}\selectfont
 \setlength{\tabcolsep}{0pt}
 \renewcommand{\arraystretch}{.94}
 \begin{tabular}{@{}l@{\hspace{1.8mm}}r@{\hspace{.55mm}}c@{\hspace{.55mm}}c@{\hspace{.75mm}}c@{\hspace{.75mm}}r@{\hspace{1mm}}l@{}}
@@ -121,13 +127,13 @@ These two pairs have the same direct correlation. What if one pair shares many m
 \(2\sum\nolimits_{i<j} w_i w_j\,{\color{blueink}\Sigma_{ij}}\)&\\[.5mm]
 {\lab{\fontsize{8.25}{9.2}\selectfont Structural crowding}}&
 \(C(w)=w^\top S w\)&\(=\)&
-\(\underbrace{\displaystyle\sum_{i=1}^{N} w_i^{2}S_{ii}}_{\text{\sffamily\color{subtle}\fontsize{6.85}{7.6}\selectfont individual profile terms}}\)&\(+\)&
-\(\underbrace{\displaystyle 2\sum_{1\le i<j\le N} w_iw_j\,{\color{blueink}S_{ij}}}_{\text{\sffamily\color{subtle}\fontsize{6.85}{7.6}\selectfont joint profile interactions}}\)&
+\(\underbrace{\displaystyle\sum_{i=1}^{N} w_i^{2}S_{ii}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont individual profile terms}}\)&\(+\)&
+\(\underbrace{\displaystyle 2\sum_{1\le i<j\le N} w_iw_j\,{\color{blueink}S_{ij}}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont joint profile interactions}}\)&
 \(=\displaystyle\left\lVert\sum_i w_i\boldsymbol{\phi}_i\right\rVert_2^{\,2}\)
 \end{tabular}\par
 \endgroup
 \vspace{.65mm}
-{\color{subtle}\fontsize{7.9}{9.1}\selectfont
+{\color{subtle}\fontsize{6.8}{8.45}\selectfont
 For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\phi}_i,\boldsymbol{\phi}_j\rangle\) and \(\sum_i w_i\boldsymbol{\phi}_i\) is the portfolio profile.\par}
 \vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{2.55mm}
 
@@ -135,88 +141,126 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 \begin{column}{.455\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Single-Layer (SL)}\par}
 \vspace{.55mm}
-{\fontsize{8.3}{9.7}\selectfont
+{\fontsize{7.15}{9}\selectfont
 Keep the positive part of stock \(i\)'s return correlation with each of the \(N\) stocks.\par}
 \vspace{.8mm}
-{\fontsize{9.1}{10.6}\selectfont
+{\fontsize{7.85}{9.85}\selectfont
 \(z_i^P=\bigl([\rho^P_{ik}]_+\bigr)_{k=1}^{N},\qquad
 [x]_+=\max(x,0)\).\par}
 \vspace{1.0mm}
-{\fontsize{9.5}{11}\selectfont
+{\fontsize{8.15}{10.25}\selectfont
 \(S_{ij}^{\SL,\raw}=\dfrac{\langle z_i^P,z_j^P\rangle}{N}
 =\dfrac{1}{N}\displaystyle\sum_{k=1}^{N}[\rho_{ik}^P]_+[\rho_{jk}^P]_+\).\par}
 \end{column}
 \begin{column}{.507\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Multilayer (ML)}\hfill
-{\color{subtle}\fontsize{7.2}{8.3}\selectfont \href{https://doi.org/10.1371/journal.pone.0330372}{Building on Ardalankia et al.\ (2025)}}\par}
+{\color{subtle}\fontsize{6.2}{7.7}\selectfont \href{https://doi.org/10.1371/journal.pone.0330372}{Building on Ardalankia et al.\ (2025)}}\par}
 \vspace{.55mm}
-{\fontsize{8.3}{9.7}\selectfont Form \(z_i^{\tv}\) from daily log changes in trading value (TV).\par}
+{\fontsize{7.15}{9}\selectfont Form \(z_i^{\tv}\) from daily log changes in trading value (TV).\par}
 \vspace{.55mm}
-{\fontsize{9.1}{10.4}\selectfont
+{\fontsize{7.85}{9.65}\selectfont
 \begin{tabular}{@{}l@{\hspace{2mm}}l@{}}
 \(K_{ij}^{\tv}=\tfrac{1}{N}\langle z_i^{\tv},z_j^{\tv}\rangle\)
- & {\fontsize{7.8}{9.1}\selectfont TV overlap of \(i\) and \(j\)}\\[.75mm]
+ & {\fontsize{6.7}{8.45}\selectfont TV overlap of \(i\) and \(j\)}\\[.75mm]
 \(\varphi_i^{P,\tv}=\tfrac{1}{N}\langle z_i^P,z_i^{\tv}\rangle\)
- & {\fontsize{7.8}{9.1}\selectfont Stock \(i\) across layers}\\[.75mm]
+ & {\fontsize{6.7}{8.45}\selectfont Stock \(i\) across layers}\\[.75mm]
 \(\displaystyle S_{ij}^{\ML,\raw}=\varphi_i^{P,\tv}K_{ij}^{\tv}\varphi_j^{P,\tv}\)
- & {\fontsize{7.8}{9.1}\selectfont ML similarity of \(i\) and \(j\)}
+ & {\fontsize{6.7}{8.45}\selectfont ML similarity of \(i\) and \(j\)}
 \end{tabular}\par}
 \end{column}
 \end{columns}
 \vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{.75mm}
 \noindent
 {\lab{\fontsize{9.6}{10.8}\selectfont Hybrid (HY)}}\hspace{2.8mm}
-{\fontsize{10.1}{11.5}\selectfont
+{\fontsize{8.7}{10.7}\selectfont
 \(\widetilde S^{\HY}=\tfrac12\widetilde S^{\SL}+\tfrac12\widetilde S^{\ML}\)}\hspace{2.8mm}
-{\fontsize{8.2}{9.7}\selectfont The baseline averages the two trace-normalized matrices.}
+{\fontsize{7.05}{9}\selectfont The baseline averages the two trace-normalized matrices.}
 \note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
 \end{frame}
 
 \renewcommand{\sectiontag}{Allocation rules}
 % Slide 04 - Three ways to allocate using the same structural matrix
 \begin{frame}{Three ways to allocate using the same structural matrix}
-\smath
-Choose $S\in\{\widetilde S^{\SL},\widetilde S^{\ML},S^{\HY}\}$. On $\W=\{w\ge0:\one^\top w=1\}$, write $V(w)=w^\top\widetilde\Sigma w$ and $C(w)=w^\top S w$.
-\halfline
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.47\textwidth}
-\headrow{Composite SCA \enspace\textnormal{Weight variance and crowding}}
-\[
- \begin{aligned}
- B_\alpha&=(1-\alpha)\widetilde\Sigma+\alpha S,\qquad Q_\alpha=P_\epsilon(B_\alpha)+\epsilon I_N,\\
- w^{\rm comp}&=\argmin_{w\in\W}w^\top Q_\alpha w .
- \end{aligned}
-\]
-$w^\top B_\alpha w=(1-\alpha)V(w)+\alpha C(w)$. Baseline $\alpha=0.50$.
-\halfline
-\headrow{Constrained SCA \enspace\textnormal{Set a volatility allowance}}
-\[
- \begin{aligned}
- D&=\diag(S_{11},\ldots,S_{NN}),\\
- S_\eta&=(1-\eta)D+\eta S,\qquad v_{\MV}=\min_{u\in\W} V(u),\\
- w^C&\in\argmin_{w\in\W} w^\top S_\eta w\quad
- \text{s.t. } V(w)\le(1+\kappa)^2 v_{\MV}.
- \end{aligned}
-\]
-$\eta$ scales pair terms. $\kappa$ is the relative allowance on estimated volatility.
-\end{column}
-\begin{column}{.495\textwidth}
-\headrow{Risk-Parity SCA \enspace\textnormal{Budget the same criterion}}
-For $R_Q(w)=\sqrt{w^\top Q_\alpha w}$, the Euler contributions are
-\[
- \mathrm{RC}_i^Q=w_i\frac{\partial R_Q}{\partial w_i}
- =\frac{w_i(Q_\alpha w)_i}{R_Q(w)},\qquad
- r_i^Q=\frac{w_i(Q_\alpha w)_i}{w^\top Q_\alpha w}.
-\]
-Set $r_i^Q=b_i=1/N$ for each stock and solve
-\[
- x^\star=\argmin_{x>0}\!\left\{\tfrac12 x^\top Q_\alpha x-\sum_{i=1}^N b_i\log x_i\right\}.
-\]
-Then $x_i^\star(Q_\alpha x^\star)_i=b_i$ and $w^{\rm RP}=x^\star/(\one^\top x^\star)$. Setting $\alpha=0$ gives covariance ERC.
-\end{column}
-\end{columns}
-\src{Equations (3.9)--(3.20) and Online Appendix S6, S9, S26. The Constrained reference is matching LW MinVar. Composite and Risk-Parity use the same conditioned matrix $Q_\alpha$ ($\epsilon=10^{-8}$).}
+\vspace*{-5.15mm}
+
+% Shared notation, aligned across the slide.
+\noindent
+\begin{minipage}[t]{.345\textwidth}\raggedright
+  {\color{subtle}\fontsize{8.1}{9.5}\selectfont Risk with trace-normalized covariance\par}
+  \vspace{1.05mm}
+  {\fontsize{7.6}{9.8}\selectfont \(V(w)=w^\top\widetilde\Sigma w\)\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{.295\textwidth}\raggedright
+  {\color{subtle}\fontsize{8.1}{9.5}\selectfont Profile crowding (SL, ML or HY)\par}
+  \vspace{1.05mm}
+  {\fontsize{7.6}{9.8}\selectfont \(C(w)=w^\top S w\)\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{.31\textwidth}\raggedright
+  {\color{subtle}\fontsize{8.1}{9.5}\selectfont Long-only, fully invested\par}
+  \vspace{1.05mm}
+  {\fontsize{7.6}{9.8}\selectfont
+   \(w\in\mathcal W=\{w\geq0,\ \mathbf1^\top w=1\}\)\par}
+\end{minipage}\par
+\vspace{3.14mm}{\color{hairline}\hrule height .42pt}
+
+% Method descriptions and equations occupy separate, vertically centered columns.
+\nointerlineskip\begin{minipage}[t][17.7mm][c]{\textwidth}
+\noindent\begin{minipage}[c]{.29\textwidth}\raggedright
+  {\lab{\fontsize{10.6}{12.2}\selectfont Composite SCA}\par}
+  \vspace{.8mm}
+  {\fontsize{7.3}{9.45}\selectfont Minimize the weighted sum of variance and crowding.\par}
+\end{minipage}\hfill
+\begin{minipage}[c]{.63\textwidth}\raggedright
+  {\fontsize{7.8}{10.0}\selectfont
+   \(Q_\alpha=(1-\alpha)\widetilde\Sigma+\alpha S,\qquad
+     {\color{blueink}\alpha=0.50}\ \text{(baseline)}.\)\par}
+  \vspace{2.7mm}
+  {\fontsize{7.8}{10.0}\selectfont
+   \(w^{\rm comp}=\displaystyle\argmin_{w\in\mathcal W} w^\top Q_\alpha w.\)\par}
+\end{minipage}
+\end{minipage}\par
+\nointerlineskip{\color{hairline}\hrule height .36pt}
+
+\nointerlineskip\begin{minipage}[t][15.8mm][c]{\textwidth}
+\noindent\begin{minipage}[c]{.29\textwidth}\raggedright
+  {\lab{\fontsize{10.6}{12.2}\selectfont Risk-Parity SCA}\par}
+  \vspace{.8mm}
+  {\fontsize{7.3}{9.45}\selectfont Equalize each stock's share of composite risk.\par}
+\end{minipage}\hfill
+\begin{minipage}[c]{.63\textwidth}\raggedright
+  {\fontsize{8.05}{10.4}\selectfont
+   \(\displaystyle r_i^Q(w)=\frac{w_i(Q_\alpha w)_i}{w^\top Q_\alpha w}
+      ={\color{blueink}\frac1N},\qquad w_i>0,\quad i=1,\ldots,N.\)\par}
+\end{minipage}
+\end{minipage}\par
+\nointerlineskip{\color{hairline}\hrule height .36pt}
+
+\nointerlineskip\begin{minipage}[t][22.6mm][c]{\textwidth}
+\noindent\begin{minipage}[c]{.29\textwidth}\raggedright
+  {\lab{\fontsize{10.6}{12.2}\selectfont Constrained SCA}\par}
+  \vspace{.8mm}
+  {\fontsize{7.3}{9.45}\selectfont Minimize crowding within a cap on estimated volatility.\par}
+  \vspace{1.65mm}
+  {\color{subtle}\fontsize{6.65}{8.65}\selectfont
+   10\% min. \(\xrightarrow{\kappa=2\%}\) {\bfseries\color{blueink}10.2\%} cap.\par}
+\end{minipage}\hfill
+\begin{minipage}[c]{.63\textwidth}\raggedright
+  {\fontsize{7.8}{10.0}\selectfont
+   \(C_\eta(w)=w^\top S_\eta w
+       =\sum\nolimits_i w_i^2 S_{ii}
+        +2{\color{blueink}\eta}\sum\nolimits_{i<j}w_iw_j S_{ij}.\)\par}
+  \vspace{2.8mm}
+  {\fontsize{7.8}{10.0}\selectfont
+   \(w^{\rm C}\in\displaystyle\argmin_{w\in\mathcal W} C_\eta(w)
+       \quad\text{subject to}\quad V(w)\leq(1+{\color{blueink}\kappa})^2v_{\MV}.\)\par}
+  \vspace{1.7mm}
+  {\color{subtle}\fontsize{7.2}{9.25}\selectfont
+   \(v_{\MV}=\min_{u\in\mathcal W} V(u)\).\par}
+\end{minipage}
+\end{minipage}\par
+\note{Hold the structural matrix fixed. Composite SCA minimizes a weighted sum of covariance risk and structural crowding. Risk-Parity SCA uses the same composite matrix and equalizes every stock's relative contribution. Constrained SCA puts an explicit limit on estimated volatility and then minimizes structural crowding within that limit. The 10 percent illustration concerns an estimate at portfolio formation.}
 \end{frame}
+\endgroup
 
 \renewcommand{\sectiontag}{Empirical design}
 % Slide 05 - Data, rolling windows and benchmarks
