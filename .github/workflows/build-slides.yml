@@ -1,0 +1,48 @@
+name: Update conference slides
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'slides.pdf'
+      - 'preview/title-slide.png'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: conference-slides-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Install TeX Live and the PDF renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
+
+      - name: Compile the presentation and render its cover
+        run: |
+          mkdir -p build preview
+          export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
+          for pass in 1 2; do
+            pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=build main.tex > build/compile.log || { tail -60 build/compile.log; exit 1; }
+          done
+          cp build/main.pdf slides.pdf
+          pdftoppm -f 1 -l 1 -singlefile -scale-to 900 -png slides.pdf preview/title-slide
+
+      - name: Update the preview on GitHub
+        run: |
+          git add -- slides.pdf preview/title-slide.png
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh the conference slide preview"
+          git push origin HEAD:main
