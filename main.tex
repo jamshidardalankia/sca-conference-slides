@@ -172,60 +172,8 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 \note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
 \end{frame}
 
-\renewcommand{\sectiontag}{Information architecture}
-% Slide 04 - How Single-Layer, Multilayer and Hybrid construct S
-\begin{frame}{How Single-Layer, Multilayer and Hybrid construct $S$}
-\smath
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.475\textwidth}
-\headrow{Single-Layer (SL) \enspace\textnormal{Return profiles}}
-Use the correlations from the Ledoit--Wolf (LW) return covariance: $Z^P_{ik}=[\rho^P_{ik}]_+$.
-\[
- S^{\SL,\raw}=Z^P(Z^P)^\top/N .
-\]
-\vspace{.7mm}
-\headrow{Multilayer (ML) \enspace\textnormal{Return and Trading Value profiles}}
-Trading Value is price times shares traded. $z_i^{\tv}$ collects positive-part correlations of daily $\Delta\log\tv$.
-\par\vspace{.7mm}
-\textbf{Within stock $i$.} Compare its return and TV profiles.
-\[
- \algn{i}=\frac{\langle z_i^P,z_i^{\tv}\rangle}{N},\qquad
- z_i^{\ML}=\algn{i}\,z_i^{\tv}.
-\]
-\textbf{Between stocks $i$ and $j$.} Compare their TV profiles.
-\[
- S_{ij}^{\ML,\raw}=\algn{i}\,
- \underbrace{\frac{\langle z_i^{\tv},z_j^{\tv}\rangle}{N}}_{K_{ij}^{\tv}}\,
- \algn{j}.
-\]
-\end{column}
-\begin{column}{.495\textwidth}
-\headrow{Fit SL and ML separately}
-Stack the profile rows to form $Z=Z^P$ (SL) or $Z=Z^{\ML}$ (ML). Center each row across stocks.
-\[
- M=I_N-\one\one^\top/N,\qquad H_Z=\tfrac1N Z M Z^\top .
-\]
-Estimate the LW shrinkage intensity $\delta_Z$ for each $Z$.
-\[
- \widehat S_Z=(1-\delta_Z)H_Z+\delta_Z\,\frac{\tr H_Z}{N}I_N.
-\]
-\[
- \widetilde S_Z=T\!\left(P_\epsilon(P_\epsilon(\widehat S_Z))\right),\qquad
- T(B)=\frac{N B}{\tr B}.
-\]
-\vspace{1.0mm}
-\headrow{Hybrid (HY) \enspace\textnormal{Mix the fitted matrices}}
-\[
- S^{\HY}=(1-\gamma)\widetilde S^{\SL}+\gamma\widetilde S^{\ML}.
-\]
-Primary settings: $\gamma=0.50$ and one-day Trading Value changes ($h=1$).
-\end{column}
-\end{columns}
-\src{Equations (3.6)--(3.8) and Online Appendix S2--S3, S6. $P_\epsilon$ symmetrizes and floors eigenvalues at $\epsilon=10^{-8}$. The covariance input uses $\widetilde\Sigma=T(P_\epsilon(\widehat\Sigma^{\rm LW}))$.}
-\end{frame}
-
 \renewcommand{\sectiontag}{Allocation rules}
-% Slide 05 - Three ways to allocate using the same structural matrix
+% Slide 04 - Three ways to allocate using the same structural matrix
 \begin{frame}{Three ways to allocate using the same structural matrix}
 \smath
 Choose $S\in\{\widetilde S^{\SL},\widetilde S^{\ML},S^{\HY}\}$. On $\W=\{w\ge0:\one^\top w=1\}$, write $V(w)=w^\top\widetilde\Sigma w$ and $C(w)=w^\top S w$.
@@ -271,7 +219,7 @@ Then $x_i^\star(Q_\alpha x^\star)_i=b_i$ and $w^{\rm RP}=x^\star/(\one^\top x^\s
 \end{frame}
 
 \renewcommand{\sectiontag}{Empirical design}
-% Slide 06 - Data, rolling windows and benchmarks
+% Slide 05 - Data, rolling windows and benchmarks
 \begin{frame}{Data, rolling windows and benchmarks}
 \smath
 \begin{columns}[T,onlytextwidth]
@@ -301,7 +249,7 @@ Covariance ERC gives each stock an equal contribution to covariance risk. It is 
 
 \renewcommand{\sectiontag}{Empirical evidence}
 % Seven results frames for the main conference talk.
-% Slide 07 - Profile overlap near minimum variance
+% Slide 06 - Profile overlap near minimum variance
 \begin{frame}{Profile overlap near minimum variance}
 At each formation, Constrained SCA may take up to \textbf{2\% more estimated volatility} than its matching minimum-variance portfolio.
 
@@ -330,7 +278,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 \src{Section 5.1, p. 13. Average across 95 formation dates.}
 \end{frame}
 
-% Slide 08 - Risk parity changes portfolio breadth and turnover
+% Slide 07 - Risk parity changes portfolio breadth and turnover
 \begin{frame}{Risk parity changes portfolio breadth and turnover}
 \small Full sample. Composite ML and Risk-Parity ML use the same matrix $Q_{0.50}$.
 
@@ -352,7 +300,7 @@ Covariance ERC    & 85.5 & 31.9\% \\
 \src{Table 10, p. 26. Effective holdings $=1/\sum_i w_i^2$ at target weights. Descriptive full-sample comparisons.}
 \end{frame}
 
-% Slide 09 - GFC performance across the three allocation rules
+% Slide 08 - GFC performance across the three allocation rules
 \begin{frame}{GFC performance across the three allocation rules}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.59\textwidth}
@@ -393,7 +341,7 @@ PZ Rho-Dependent   & $-25.88$ & 34.19 & 62.30 \\
 \src{Tables 3B and 6. All entries in percent. ML uses $h=1$. Composite/Risk-Parity: $\alpha=0.50$. Constrained: $\kappa=2\%$, $\eta=1$.}
 \end{frame}
 
-% Slide 10 - COVID crash losses and recovery participation
+% Slide 09 - COVID crash losses and recovery participation
 \begin{frame}{COVID crash losses and recovery participation}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.52\textwidth}
@@ -431,7 +379,7 @@ Risk-Parity ML and HY exceeded Covariance ERC in recovery. Equal Weight gained t
 \src{Figure 4 and Tables 7, 9A. Crash: 20 Feb--23 Mar 2020. Recovery: 24 Mar 2020--31 Mar 2021. Descriptive returns. Constrained: $\kappa=2\%$, $\eta=1$.}
 \end{frame}
 
-% Slide 11 - Sensitivity to the volatility allowance
+% Slide 10 - Sensitivity to the volatility allowance
 \begin{frame}{Sensitivity to the volatility allowance}
 \small Constrained ML with $h=1$ and $\eta=0.50$. Only $\kappa$ changes.
 
@@ -455,7 +403,7 @@ COVID and recovery CAGR & 4.91\% & 9.21\% \\
 \src{Section 5.5 and Figure 6, p. 22. Financial outcomes are descriptive.}
 \end{frame}
 
-% Slide 12 - What does trading value add?
+% Slide 11 - What does trading value add?
 \begin{frame}{What does trading value add?}
 \small Constrained SCA with the same universe, covariance estimate, $2\%$ allowance and full interaction weight ($\eta=1$). Only the structural architecture changes.
 
@@ -482,7 +430,7 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
 \src{Table 8A, p. 24. Holm adjustment across architecture pairs within each metric. $h=1$, hybrid weight $\gamma=0.50$.}
 \end{frame}
 
-% Slide 13 - Full-sample growth and loss control
+% Slide 12 - Full-sample growth and loss control
 \begin{frame}{Full-sample growth and loss control}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.59\textwidth}
@@ -525,7 +473,7 @@ Equal Weight     &  8.92 & 21.62 & 60.40 \\
 \end{frame}
 
 \renewcommand{\sectiontag}{Conclusion}
-% Slide 14 - What does structural crowding add?
+% Slide 13 - What does structural crowding add?
 \begin{frame}{What does structural crowding add?}
 \vspace{1.3mm}
 {\rmfamily\fontsize{10.7}{13.5}\selectfont A portfolio can spread capital across names while repeatedly holding the same dependence profile. $C(w)$ makes that overlap an explicit allocation choice.\par}
@@ -542,7 +490,7 @@ Risk-Parity ML held more effective assets and traded less than Composite ML. It 
 \end{frame}
 
 \renewcommand{\sectiontag}{Technical appendix}
-% Slide 15 - Structural marginal costs and risk contributions
+% Slide 14 - Structural marginal costs and risk contributions
 \begin{frame}{Structural marginal costs and risk contributions}
 \smath
 \begin{columns}[T,onlytextwidth]
