@@ -59,29 +59,46 @@
 
 % Slide 02 - Same direct correlation, different neighbors
 \begin{frame}{Same direct correlation, different neighbors}
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.405\textwidth}
-\centering
-\includegraphics[width=.98\linewidth,height=48.5mm,keepaspectratio]{network.pdf}
+\setlength{\unitlength}{1mm}
+\noindent\begin{picture}(145,13)(0,-7)
+  % The line enters from the page edge and ends at the open research question.
+  \color{blueink}\linethickness{1.25pt}
+  \put(-7.2,0){\line(1,0){142}}
+  \put(18,0){\circle*{1.8}}
+  \put(61,0){\circle*{1.8}}
+  \put(106,0){\circle*{1.8}}
+  \put(18,2.5){\makebox(0,0)[b]{\fontsize{8.0}{9.0}\selectfont\bfseries
+    \href{https://doi.org/10.1007/s100510050929}{Mantegna (1999)}}}
+  \put(61,2.5){\makebox(0,0)[b]{\fontsize{8.0}{9.0}\selectfont\bfseries
+    \href{https://doi.org/10.1140/epjb/e2002-00380-9}{Onnela et al.\ (2002)}}}
+  \put(106,2.5){\makebox(0,0)[b]{\fontsize{8.0}{9.0}\selectfont\bfseries
+    \href{https://doi.org/10.1016/j.jempfin.2016.06.003}{Peralta \& Zareei (2016)}}}
+  \put(140,0){\makebox(0,0){\rmfamily\bfseries\fontsize{16}{16}\selectfont ?}}
+  \color{subtle}\fontsize{6.8}{8.3}\selectfont
+  \put(18,-2.3){\makebox(0,0)[t]{Stock-return correlation trees}}
+  \put(61,-2.3){\makebox(0,0)[t]{Markowitz portfolios on the tree}}
+  \put(106,-2.3){\makebox(0,0)[t]{Portfolio selection by centrality}}
+\end{picture}\par
+\vspace{.5mm}
+\begin{columns}[c,onlytextwidth]
+\begin{column}{.43\textwidth}
+  \centering\includegraphics[width=\linewidth,height=35.5mm,keepaspectratio]{network.pdf}
 \end{column}
-\begin{column}{.565\textwidth}
-\smath
-\headrow{Compare the two highlighted pairs}
-The pairs have equal direct correlation, $\rho^P_{ij}=\rho^P_{ab}$. The upper pair shares many neighbors. The lower pair connects to different stocks.
-\vspace{2.1mm}
-\headrow{What is a correlation profile?}
-At a formation date, stock $i$ has one positive-part correlation with each of the $N$ candidates:
-\[
- z_i^P=\big([\rho^P_{i1}]_+,\ldots,[\rho^P_{iN}]_+\big)^\top,\qquad [x]_+=\max(x,0).
-\]
-The stock's own entry is one. Similar profiles give portfolio weight to the same pattern of dependence.
-\vspace{2.0mm}
-\textit{Shared exposures may matter when shocks hit many stocks at once. Does controlling this overlap help in the Global Financial Crisis (GFC)?}
+\begin{column}{.55\textwidth}
+  {\color{blueink}\bfseries\fontsize{9.4}{11.1}\selectfont Compare the two highlighted pairs\par}
+  \vspace{1.5mm}
+  {\fontsize{8.6}{11.0}\selectfont
+    Both have the same direct correlation, $\rho^P_{ij}=\rho^P_{ab}$.\par
+    \vspace{1.8mm}
+    The upper pair shares many neighbors. The lower pair connects to different stocks.\par}
 \end{column}
 \end{columns}
-\vspace{1.8mm}
-{\fontsize{7.0}{8.1}\selectfont \lab{From networks to allocation.} Mantegna (1999) extracted a market hierarchy. Peralta and Zareei (2016) rank individual stocks by centrality. HRP (López de Prado, 2016) allocates through a hierarchy. How much profile overlap remains in the portfolio?\par}
-\src{Article, Section 2 and Figure 1 (schematic).}
+\vfill
+{\color{hairline}\hrule height .45pt}\vspace{1.4mm}
+{\color{blueink}\rmfamily\bfseries\fontsize{10.2}{12.1}\selectfont
+Can using correlation-profile similarity as an additional diversification criterion reduce portfolio drawdowns during systemic stress?\par}
+\note{Pause at the question mark, then point to the two highlighted pairs.
+These two pairs have the same direct correlation. What if one pair shares many more neighbors?}
 \end{frame}
 
 \renewcommand{\sectiontag}{This paper}
