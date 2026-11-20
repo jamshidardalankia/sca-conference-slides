@@ -858,7 +858,24 @@ Constrained uses \(\kappa=2\%,\ \eta=1\). Composite and Risk-Parity use \(\alpha
 \end{frame}
 \endgroup
 
-% Slide 12 - Full-sample growth and loss control
+% Slide 12 - Full-sample growth and loss control, table alternative.
+% Both alternatives read these ten rows. Values are gross CAGR (%), volatility (%),
+% Sharpe (risk-free rate zero), and maximum drawdown (%), in that order.
+\begingroup
+\newcommand{\fullSampleRows}[2]{%
+  #1{1}{Composite SL}{7.72}{16.59}{0.531}{44.77}%
+  #1{2}{Constrained ML}{7.74}{14.59}{0.585}{35.58}%
+  #1{3}{Risk-Parity ML}{9.19}{19.83}{0.543}{58.03}%
+  #2% separator between SCA portfolios and benchmarks
+  #1{4}{LW MinVar}{7.09}{14.42}{0.548}{36.46}%
+  #1{5}{NLS MinVar}{7.15}{14.35}{0.553}{35.17}%
+  #1{6}{HRP}{9.04}{17.04}{0.593}{49.22}%
+  #1{7}{Covariance ERC}{9.07}{18.86}{0.555}{54.96}%
+  #1{8}{PZ Lowest}{10.37}{18.14}{0.635}{60.14}%
+  #1{9}{PZ \(\rho\)-dependent}{10.93}{19.66}{0.626}{62.30}%
+  #1{10}{Equal Weight}{8.92}{21.62}{0.504}{60.40}%
+}
+\newcommand{\fullSampleTableRow}[6]{#2 & #3 & #4 & #5 & #6\\}
 \begin{frame}{Full-sample growth and loss control}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.575\textwidth}
@@ -872,17 +889,7 @@ Constrained uses \(\kappa=2\%,\ \eta=1\). Composite and Risk-Parity use \(\alpha
 \toprule
 \textbf{Allocation} & \textbf{CAGR} & \textbf{Vol.} & \textbf{Sharpe} & \textbf{MaxDD} \\
 \midrule
-Composite SL & 7.72 & 16.59 & 0.531 & 44.77 \\
-Constrained ML & 7.74 & 14.59 & 0.585 & 35.58 \\
-Risk-Parity ML & 9.19 & 19.83 & 0.543 & 58.03 \\
-\midrule
-LW MinVar & 7.09 & 14.42 & 0.548 & 36.46 \\
-NLS MinVar & 7.15 & 14.35 & 0.553 & 35.17 \\
-HRP & 9.04 & 17.04 & 0.593 & 49.22 \\
-Covariance ERC & 9.07 & 18.86 & 0.555 & 54.96 \\
-PZ Lowest & 10.37 & 18.14 & 0.635 & 60.14 \\
-PZ \(\rho\)-dependent & 10.93 & 19.66 & 0.626 & 62.30 \\
-Equal Weight & 8.92 & 21.62 & 0.504 & 60.40 \\
+\fullSampleRows{\fullSampleTableRow}{\midrule}
 \bottomrule
 \end{tabular*}
 \end{column}
@@ -901,6 +908,64 @@ Equal Weight & 8.92 & 21.62 & 0.504 & 60.40 \\
 \hyperlink{qa-costs}{Full cost table (C5)}\quad \hyperlink{qa-sharpe}{Sharpe across periods (C6)}}
 \note{Constrained ML's gross Sharpe of 0.585 was higher than LW at 0.548 and NLS at 0.553, and lower than HRP and both PZ portfolios. The two paired Sharpe comparisons with shrinkage MinVar each have Holm-adjusted p equal to one. Risk-Parity ML had higher net annual growth than covariance ERC at 25 basis points per dollar traded, 8.99 versus 8.90 percent. At 100 basis points both round to 8.38 percent. These net growth figures are descriptive.}
 \end{frame}
+
+% Slide 12 - Full-sample growth and loss control, chart alternative.
+\renewcommand{\sectiontag}{Empirical evidence / Chart}
+% Panel start in mm, limits, tick labels, title, and the corresponding portfolio value.
+\newcommand{\fullSamplePanels}[5]{%
+  #1{30.4}{6}{12}{6,9,12}{CAGR (\%)}{#2}%
+  #1{60.3}{12}{24}{12,18,24}{Annualized vol. (\%)}{#3}%
+  #1{90.2}{0.50}{0.65}{0.50,0.55,0.60,0.65}{Sharpe}{#4}%
+  #1{120.1}{30}{70}{30,50,70}{Max. drawdown (\%)}{#5}}
+\newcommand{\fullSamplePlotWidth}{23.0}
+\newcommand{\fullSampleGuide}[6]{%
+  \begin{scope}[shift={(#1,0)}]
+    \node[font=\bfseries\fontsize{7.55}{8.9}\selectfont,text=titleink] at ({.5*\fullSamplePlotWidth},51.3){#5};
+    \foreach \tick in {#4}{
+      \pgfmathsetmacro{\tickX}{\fullSamplePlotWidth*((\tick)-(#2))/((#3)-(#2))}
+      \draw[hairline,line width=.34pt] (\tickX,4.8)--(\tickX,47.8);
+      \node[font=\fontsize{6.5}{7.5}\selectfont,text=subtle] at (\tickX,2.9){\(\tick\)};}
+    \draw[subtle!62,line width=.4pt] (0,4.8)--(\fullSamplePlotWidth,4.8);
+  \end{scope}}
+\newcommand{\fullSamplePoint}[6]{%
+  \pgfmathsetmacro{\pointFraction}{((#6)-(#2))/((#3)-(#2))}
+  \pgfmathsetmacro{\pointX}{#1+\fullSamplePlotWidth*\pointFraction}
+  \draw[\pointInk,fill=\pointFill,line width=.6pt] (\pointX,\rowY) circle[radius=.74mm];
+  % Keep direct labels inside their own metric panel.
+  \ifdim\pointFraction pt>.68pt
+    \node[anchor=east,fill=white,text=\pointInk] at ({\pointX-1.35},\rowY){\(#6\)};
+  \else
+    \node[anchor=west,fill=white,text=\pointInk] at ({\pointX+1.35},\rowY){\(#6\)};
+  \fi}
+\newcommand{\fullSampleChartRow}[6]{%
+  \pgfmathsetmacro{\rowY}{45.8-4.12*(#1-1)-ifthenelse(#1>3,1.6,0)}
+  \ifnum#1<4\relax
+    \def\pointInk{slideaccent}\def\pointFill{slideaccent}
+  \else
+    \def\pointInk{subtle}\def\pointFill{white}
+  \fi
+  \node[anchor=west,text=\pointInk,font=\fontsize{7.65}{9.0}\selectfont] at (0,\rowY){#2};
+  \fullSamplePanels{\fullSamplePoint}{#3}{#4}{#5}{#6}}
+\begin{frame}[noframenumbering]{Full-sample growth and loss control}
+\vspace*{-2.8mm}
+\noindent{\fontsize{8.2}{10}\selectfont Gross returns, January 2002--October 2025\hfill
+ \tikz[baseline=-.32ex]{\fill[slideaccent] (0,0) circle[radius=.75mm];}\, SCA\hspace{3.4mm}
+ \tikz[baseline=-.32ex]{\draw[subtle,fill=white,line width=.6pt] (0,0) circle[radius=.75mm];}\, Benchmarks\par}
+\vspace{.6mm}
+\noindent\begin{tikzpicture}[x=1mm,y=1mm,every node/.style={inner sep=.2pt,font=\fontsize{7.15}{8.0}\selectfont,text=ink}]
+  \path[use as bounding box] (0,.4) rectangle (145.4,53.3);
+  \node[anchor=west,font=\bfseries\fontsize{7.55}{8.9}\selectfont,text=titleink] at (0,51.3){Portfolio};
+  \fullSamplePanels{\fullSampleGuide}{}{}{}{}
+  \draw[hairline,line width=.4pt] (0,34.7)--(144,34.7);
+  \fullSampleRows{\fullSampleChartRow}{}
+\end{tikzpicture}\par
+\vspace{.5mm}
+\noindent{\fontsize{8.15}{9.9}\selectfont At 25 bp, net CAGR was \textbf{8.99\%} for Risk-Parity ML and \textbf{8.90\%} for covariance ERC.\par}
+\src{Both gross Sharpe comparisons of Constrained ML with LW and NLS MinVar have Holm \(p=1.000\) (\(r_f=0\)).\\
+Tables 3A and 10, Online Appendix S23.\quad \hyperlink{qa-costs}{Full cost table (C5)}\quad \hyperlink{qa-sharpe}{Sharpe across periods (C6)}}
+\note{Read each column on its own labeled axis. The two PZ strategies achieved higher compound growth than the three SCA portfolios shown and sustained deeper drawdowns. Constrained ML had volatility and drawdown close to LW and NLS MinVar. Its gross Sharpe was 0.585 versus 0.548 for LW and 0.553 for NLS. Both adjusted p-values equal one. Covariance ERC had lower full-sample volatility and drawdown than Risk-Parity ML. The net growth comparison below uses the same full sample and a charge of 25 basis points per dollar traded.}
+\end{frame}
+\endgroup
 
 \renewcommand{\sectiontag}{Conclusion}
 % Slide 13 - What does structural crowding add?
@@ -1060,16 +1125,22 @@ At $\alpha=0$ the budgets apply to covariance alone; at $\kappa=0$ the constrain
 \newcommand{\reviewFinding}[1]{\noindent{\fontsize{8.4}{10.2}\selectfont #1\par}}
 \newcommand{\reviewBold}[1]{{\color{titleink}\(\mathbf{#1}\)}}
 \newcommand{\reviewKey}[3]{\tikz[baseline=-.35ex,x=1mm,y=1mm]{\draw[#1,line width=.7pt] (0,0)--(4,0);\draw[#1] plot[only marks,mark=#2,mark size=1.4pt] coordinates {(2,0)};}\,#3}
-\newcommand{\reviewGridCurve}[3]{\draw[#1,line width=.60pt] plot[mark=#2,mark size=.66pt] coordinates {#3};}
-% A panel receives its location, vertical limits, then the eight (allowance, outcome) pairs for each architecture.
+\newcommand{\reviewGridCurve}[3]{\draw[#1,line width=.55pt] plot[mark=#2,mark size=.68pt] coordinates {#3};}
+% In Figure 6 every axes box is 124.338 x 53.100 pt. Derive height from width to preserve that shape.
+\newcommand{\reviewPanelWidth}{26}
+\pgfmathsetmacro{\reviewPanelHeight}{\reviewPanelWidth/2.341573}
+\pgfmathsetmacro{\reviewKappaUnit}{\reviewPanelWidth/30}
+% Panel origin, vertical limits, then the eight (allowance, outcome) coordinates for SL, ML and HY.
 \newcommand{\reviewGridPanel}[7]{%
   \begin{scope}[shift={(#1,#2)}]
-    \draw[hairline,line width=.48pt] (0,0)--(34.5,0) (0,8.1)--(34.5,8.1);
-    \draw[subtle!68,dash pattern=on 1.25pt off 1.25pt,line width=.39pt] (2.3,0)--(2.3,8.1);
-    \node[anchor=east] at (-.8,0){\(#3\)};
-    \node[anchor=east] at (-.8,8.1){\(#4\)};
-    \pgfmathsetmacro{\reviewGridUnit}{8.1/((#4)-(#3))}
-    \begin{scope}[x=1.15mm,y=\reviewGridUnit mm]
+    \draw[hairline,line width=.40pt] (0,0)--(\reviewPanelWidth,0)
+      (0,\reviewPanelHeight)--(\reviewPanelWidth,\reviewPanelHeight);
+    \draw[subtle!72,dash pattern=on 1.15pt off 1.1pt,line width=.37pt]
+      ({2*\reviewKappaUnit},0)--({2*\reviewKappaUnit},\reviewPanelHeight);
+    \node[anchor=east] at (-.72,0){\(#3\)};
+    \node[anchor=east] at (-.72,\reviewPanelHeight){\(#4\)};
+    \pgfmathsetmacro{\reviewValueUnit}{\reviewPanelHeight/((#4)-(#3))}
+    \begin{scope}[x=\reviewKappaUnit mm,y=\reviewValueUnit mm]
       \begin{scope}[shift={(0,{0-(#3)})}]
         \reviewGridCurve{reviewRose}{*}{#5}
         \reviewGridCurve{reviewTeal}{triangle*}{#6}
@@ -1081,72 +1152,87 @@ At $\alpha=0$ the budgets apply to covariance alone; at $\kappa=0$ the constrain
 % Candidate C1 - Manuscript Figure 6, all eight allowances and all three architectures.
 \renewcommand{\insertframenumber}{C1}
 \begin{frame}{How sensitive is Constrained SCA to the risk allowance?}
-\noindent{\fontsize{7.65}{9.25}\selectfont
- \reviewKey{reviewRose}{*}{SL}\hspace{4mm}\reviewKey{reviewTeal}{triangle*}{ML}\hspace{4mm}\reviewKey{reviewOchre}{square*}{HY}
- \hfill Horizontal axis is the estimated-volatility allowance \(\kappa\) (\%). Dashed at 2\%.\par}
-\vspace{.5mm}
-\noindent\begin{tikzpicture}[x=1mm,y=1mm,yscale=.94,every node/.style={inner sep=0pt,font=\fontsize{6.3}{7.1}\selectfont,text=ink}]
-  \path[use as bounding box] (0,-1.8) rectangle (145,51.5);
-  \foreach \x/\name in {37.25/Full sample,81.25/GFC,125.25/COVID and recovery}{
-    \node[font=\bfseries\fontsize{8}{9}\selectfont,text=titleink] at (\x,49.3){\name};}
-  \node[anchor=west,align=left] at (0,41.75){CAGR\\(\%)};
-  \node[anchor=west,align=left] at (0,30.15){Annualized\\volatility (\%)};
-  \node[anchor=west,align=left] at (0,18.55){Maximum\\drawdown (\%)};
-  \node[anchor=west] at (0,6.95){Sharpe};
-  \reviewGridPanel{20}{37.7}{7}{9.2}
+\vspace*{-2.8mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.780\textwidth}
+\noindent\begin{tikzpicture}[x=1mm,y=1mm,every node/.style={inner sep=0pt,font=\fontsize{6.25}{7.1}\selectfont,text=ink}]
+  \path[use as bounding box] (0,-.55) rectangle (113.1,63.3);
+  \foreach \x/\name in {20.8/Full sample,53.7/GFC,86.6/COVID and recovery}{
+    \node[font=\bfseries\fontsize{7.65}{8.9}\selectfont,text=titleink] at ({\x+.5*\reviewPanelWidth},61.45){\name};}
+  \node[anchor=west,align=left] at (0,52.6){CAGR\\(\%)};
+  \node[anchor=west,align=left] at (0,39.1){Annualized\\volatility (\%)};
+  \node[anchor=west,align=left] at (0,25.6){Maximum\\drawdown (\%)};
+  \node[anchor=west] at (0,12.1){Sharpe};
+  \reviewGridPanel{20.8}{47.05}{7}{9.2}
     {(0,7.094017) (0.5,7.313616) (1,7.404414) (2,7.533694) (5,7.757241) (10,8.021078) (20,8.522979) (30,9.036650)}
     {(0,7.094017) (0.5,7.483003) (1,7.663691) (2,7.917249) (5,8.220449) (10,8.205658) (20,8.237747) (30,8.419455)}
     {(0,7.094017) (0.5,7.415338) (1,7.547505) (2,7.743342) (5,7.864614) (10,7.997450) (20,8.250658) (30,8.764475)}
-  \reviewGridPanel{64}{37.7}{-18}{-8}
+  \reviewGridPanel{53.7}{47.05}{-18}{-8}
     {(0,-8.409490) (0.5,-8.172601) (1,-8.199545) (2,-8.452169) (5,-9.458629) (10,-10.761843) (20,-12.809616) (30,-15.246365)}
     {(0,-8.409490) (0.5,-8.527526) (1,-8.786114) (2,-9.228147) (5,-10.158304) (10,-11.787295) (20,-14.892504) (30,-17.700701)}
     {(0,-8.409490) (0.5,-8.426724) (1,-8.583420) (2,-8.876431) (5,-9.904059) (10,-11.269719) (20,-13.908573) (30,-16.664911)}
-  \reviewGridPanel{108}{37.7}{-5}{25}
+  \reviewGridPanel{86.6}{47.05}{-5}{25}
     {(0,-2.026348) (0.5,0.245866) (1,1.513225) (2,3.795910) (5,8.082457) (10,11.689329) (20,16.505566) (30,20.197137)}
     {(0,-2.026348) (0.5,0.649073) (1,2.377414) (2,4.906206) (5,9.210861) (10,13.099002) (20,19.117231) (30,22.644283)}
     {(0,-2.026348) (0.5,0.432669) (1,2.031759) (2,4.519314) (5,9.001764) (10,13.385005) (20,17.542655) (30,21.329522)}
-  \reviewGridPanel{20}{26.1}{14}{18}
+  \reviewGridPanel{20.8}{33.55}{14}{18}
     {(0,14.421629) (0.5,14.524480) (1,14.605582) (2,14.745330) (5,15.110632) (10,15.662578) (20,16.718050) (30,17.683167)}
     {(0,14.421629) (0.5,14.448047) (1,14.477986) (2,14.552105) (5,14.822846) (10,15.329618) (20,16.450635) (30,17.612051)}
     {(0,14.421629) (0.5,14.486489) (1,14.541722) (2,14.652231) (5,14.970545) (10,15.500307) (20,16.582017) (30,17.656751)}
-  \reviewGridPanel{64}{26.1}{23}{31}
+  \reviewGridPanel{53.7}{33.55}{23}{31}
     {(0,23.488384) (0.5,23.801276) (1,24.025511) (2,24.387293) (5,25.246116) (10,26.425493) (20,28.529127) (30,30.358681)}
     {(0,23.488384) (0.5,23.659381) (1,23.772362) (2,23.986812) (5,24.484444) (10,25.271354) (20,27.377090) (30,29.757944)}
     {(0,23.488384) (0.5,23.706893) (1,23.850477) (2,24.133652) (5,24.817121) (10,25.870221) (20,28.053408) (30,30.184847)}
-  \reviewGridPanel{108}{26.1}{28.5}{31.5}
+  \reviewGridPanel{86.6}{33.55}{28.5}{31.5}
     {(0,29.904616) (0.5,29.636963) (1,29.531182) (2,29.360729) (5,29.083784) (10,28.929506) (20,29.481616) (30,29.994488)}
     {(0,29.904616) (0.5,29.544936) (1,29.388497) (2,29.241793) (5,29.219357) (10,29.411141) (20,30.091368) (30,31.000083)}
     {(0,29.904616) (0.5,29.514585) (1,29.347387) (2,29.139578) (5,28.839410) (10,28.782817) (20,29.383022) (30,30.442981)}
-  \reviewGridPanel{20}{14.5}{33}{55}
+  \reviewGridPanel{20.8}{20.05}{33}{55}
     {(0,36.462198) (0.5,36.243562) (1,36.095181) (2,35.843596) (5,36.631628) (10,40.517655) (20,47.218024) (30,51.822182)}
     {(0,36.462198) (0.5,35.880790) (1,35.567000) (2,35.135403) (5,35.649664) (10,39.257406) (20,47.738457) (30,54.301433)}
     {(0,36.462198) (0.5,36.045332) (1,35.780298) (2,35.415932) (5,35.975691) (10,40.402812) (20,48.367814) (30,53.841604)}
-  \reviewGridPanel{64}{14.5}{33}{55}
+  \reviewGridPanel{53.7}{20.05}{33}{55}
     {(0,34.439682) (0.5,34.058599) (1,34.246522) (2,34.749834) (5,36.631628) (10,40.517655) (20,47.218024) (30,51.822182)}
     {(0,34.439682) (0.5,33.791769) (1,33.897127) (2,34.335256) (5,35.649664) (10,39.257406) (20,47.738457) (30,54.301433)}
     {(0,34.439682) (0.5,33.905420) (1,34.042535) (2,34.467027) (5,35.975691) (10,40.402812) (20,48.367814) (30,53.841604)}
-  \reviewGridPanel{108}{14.5}{30}{37}
+  \reviewGridPanel{86.6}{20.05}{30}{37}
     {(0,36.462198) (0.5,36.243562) (1,36.095181) (2,35.843596) (5,35.042590) (10,33.737606) (20,31.879714) (30,30.889407)}
     {(0,36.462198) (0.5,35.880790) (1,35.567000) (2,35.135403) (5,34.648689) (10,34.264603) (20,33.769968) (30,33.582276)}
     {(0,36.462198) (0.5,36.045332) (1,35.780298) (2,35.415932) (5,34.627440) (10,33.713938) (20,32.628768) (30,31.610265)}
-  \reviewGridPanel{20}{2.9}{0.54}{0.62}
+  \reviewGridPanel{20.8}{6.55}{0.54}{0.62}
     {(0,0.547509) (0.5,0.558762) (1,0.562261) (2,0.566486) (5,0.570159) (10,0.571123) (20,0.573065) (30,0.577917)}
     {(0,0.547509) (0.5,0.571875) (1,0.582597) (2,0.596541) (5,0.607277) (10,0.591323) (20,0.563723) (30,0.547367)}
     {(0,0.547509) (0.5,0.566394) (1,0.573254) (2,0.582456) (5,0.580751) (10,0.574075) (20,0.561271) (30,0.564400)}
-  \reviewGridPanel{64}{2.9}{-0.52}{-0.22}
+  \reviewGridPanel{53.7}{6.55}{-0.52}{-0.22}
     {(0,-0.257302) (0.5,-0.239972) (1,-0.236721) (2,-0.240905) (5,-0.267979) (10,-0.299276) (20,-0.338139) (30,-0.393244)}
     {(0,-0.257302) (0.5,-0.259154) (1,-0.268682) (2,-0.284363) (5,-0.315639) (10,-0.370348) (20,-0.452255) (30,-0.505719)}
     {(0,-0.257302) (0.5,-0.253530) (1,-0.257740) (2,-0.265181) (5,-0.296755) (10,-0.333285) (20,-0.393750) (30,-0.452953)}
-  \reviewGridPanel{108}{2.9}{0}{0.85}
+  \reviewGridPanel{86.6}{6.55}{0}{0.85}
     {(0,0.081813) (0.5,0.157280) (1,0.199349) (2,0.274573) (5,0.413611) (10,0.527764) (20,0.666647) (30,0.764397)}
     {(0,0.081813) (0.5,0.170376) (1,0.227652) (2,0.310781) (5,0.448518) (10,0.566619) (20,0.733140) (30,0.815002)}
     {(0,0.081813) (0.5,0.163010) (1,0.216107) (2,0.298261) (5,0.444024) (10,0.581390) (20,0.698215) (30,0.788595)}
-  \foreach \x in {20,64,108}{
-    \foreach \k in {0,10,20,30}{
-      \node at ({\x+1.15*\k},.8){\k};}}
+  \foreach \x in {20.8,53.7,86.6}{
+    \foreach \k in {0,10,20,30}{\node at ({\x+\reviewKappaUnit*\k},4.05){\k};}}
+  \node[font=\fontsize{7.15}{8.3}\selectfont] at (66.7,.75){Estimated-volatility allowance \(\kappa\) (\%)};
 \end{tikzpicture}\par
-\vspace{.65mm}
-\noindent{\fontsize{8.1}{9.4}\selectfont\lab{ML at \(\kappa=2\%\to5\%\)}\hfill Full-sample Sharpe \(0.597\to0.607\)\hfill GFC drawdown \(34.34\%\to35.65\%\)\par}
+\end{column}
+\begin{column}{.193\textwidth}
+\vspace{.7mm}
+{\fontsize{7.65}{9.2}\selectfont
+ \lab{Architecture}\par\vspace{1.5mm}
+ \reviewKey{reviewRose}{*}{Single-layer (SL)}\par\vspace{.9mm}
+ \reviewKey{reviewTeal}{triangle*}{Multilayer (ML)}\par\vspace{.9mm}
+ \reviewKey{reviewOchre}{square*}{Hybrid (HY)}\par\vspace{1.4mm}
+ \tikz[baseline=-.35ex]{\draw[subtle,dash pattern=on 1.15pt off 1.1pt,line width=.55pt] (0,0)--(4mm,0);}\, \(\kappa=2\%\)\par}
+\vspace{4.6mm}
+{\fontsize{8.2}{9.8}\selectfont\lab{ML at 2\% and 5\%}\par}
+\vspace{1.4mm}
+{\fontsize{7.55}{9.3}\selectfont Full-sample Sharpe\par
+ \(0.597\) to \(0.607\)\par\vspace{2.1mm}
+ GFC drawdown\par
+ \(34.34\%\) to \(35.65\%\)\par}
+\end{column}
+\end{columns}
 \src{Figure 6 and Appendix Table S7. Gross outcomes, \(\eta=0.50\), \(h=1\), \(\gamma_{\rm ML}=0.50\), \(r_f=0\). Vertical ranges vary by panel.}
 \note{The allowance is relative to estimated LW MinVar volatility at formation. All curves use the same eight ex-ante allowances, including zero. At zero they meet at the matching minimum-variance allocation. Read changes within each panel using its own vertical labels. The same change from 2 to 5 percent reduced the observed ML COVID-and-recovery drawdown from 35.14 to 34.65 percent. These are sensitivity results, with no ex post selection of an allowance.}
 \end{frame}
