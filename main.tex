@@ -415,7 +415,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \src{Gross returns. Composite and Risk-Parity use \(\alpha=0.50\). Constrained uses \(\kappa=2\%\) and \(\eta=1\).
  ML and HY use \(h=1\). Both PZ rules select 20 stocks.\\
  Manuscript Table 3B and Online Appendix Table S128. The table shows observed drawdowns.}
-\note{All numbers on this slide are positive peak-to-trough loss depths. Within Constrained SCA the three architectures range from 34.28 to 34.63 percent, close to the three minimum-variance benchmarks. All nine SCA portfolios experienced shallower drawdowns than both PZ portfolios. The three Risk-Parity SCA portfolios had deeper drawdowns than covariance ERC. The next slide examines the statistical evidence for Composite SL and Constrained ML relative to each PZ rule.}
+\note{All numbers on this slide are positive peak-to-trough loss depths. Within Constrained SCA the three architectures range from 34.28 to 34.63 percent, close to the three minimum-variance benchmarks. All nine SCA portfolios experienced shallower drawdowns than both PZ portfolios. The three Risk-Parity SCA portfolios had deeper drawdowns than covariance ERC. Next, compare Constrained ML with the network benchmarks in the calm and crisis periods, before turning to the paired GFC tests.}
 \end{frame}
 
 % Slide 06 - GFC drawdowns, chart alternative
@@ -474,10 +474,54 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \end{column}
 \end{columns}
 \src{Manuscript Table 3B and Online Appendix Table S128. Gross returns. Smaller values indicate shallower peak-to-trough losses.}
-\note{The bars are ordered by maximum drawdown, from smallest to largest. Read the three Constrained results beside the minimum-variance benchmarks. All nine SCA portfolios had smaller observed drawdowns than either PZ portfolio. The GFC significance slide focuses on Composite SL and Constrained ML.}
+\note{The bars are ordered by maximum drawdown, from smallest to largest. Read the three Constrained results beside the minimum-variance benchmarks. All nine SCA portfolios had smaller observed drawdowns than either PZ portfolio. Next, use calm-period levels to put the GFC risk gaps in context.}
 \end{frame}
 
-% Slide 07 - Which GFC differences hold up against both PZ rules?
+% Slide 07 - Calm and GFC risk levels (manuscript Figure 2).
+\begingroup
+\renewcommand{\sectiontag}{Global Financial Crisis / Risk levels}
+\newcommand{\gfcRiskPair}[5]{%
+  \begin{scope}[shift={(#1,#2)}]
+    \draw[#5!76,line width=.92pt] ({.70*(#3)},0)--({.70*(#4)},0);
+    \draw[#5,line width=.75pt,fill=white] ({.70*(#3)},0) circle[radius=.85mm];
+    \fill[#5] ({.70*(#4)},0) circle[radius=.9mm];
+    \node[anchor=south,text=#5] at ({.70*(#3)},1.10){\(#3\)};
+    \node[anchor=south,text=#5] at ({.70*(#4)},1.10){\(#4\)};
+  \end{scope}}
+\begin{frame}[label=gfc-risk-levels]{How much higher was risk during the GFC?}
+\noindent{\fontsize{8.1}{9.8}\selectfont
+ \tikz[baseline=-.35ex]{\draw[subtle,fill=white,line width=.70pt] (0,0) circle[radius=.9mm];}\; Calm period, 2017--2019\hspace{6mm}
+ \tikz[baseline=-.35ex]{\fill[subtle] (0,0) circle[radius=.9mm];}\; GFC, July 2007--June 2009\par}
+\vspace{1.6mm}
+\noindent\begin{tikzpicture}[x=1mm,y=1mm,yscale=.92,every node/.style={inner sep=0pt,font=\fontsize{7.65}{8.5}\selectfont,text=ink}]
+  \path[use as bounding box] (0,-.8) rectangle (145,47.7);
+  \foreach \x/\name in {33/Annualized volatility,93/Maximum drawdown}{
+    \node[font=\bfseries\fontsize{9.0}{10.2}\selectfont,text=titleink] at ({\x+22},45.5){\name\ (\%)};
+    \foreach \v in {0,20,40,60}{
+      \draw[hairline,line width=.32pt] ({\x+.70*\v},4)--({\x+.70*\v},41.5);
+      \node[text=subtle,font=\fontsize{6.9}{8.0}\selectfont] at ({\x+.70*\v},1.8){\v};}
+    \draw[subtle!70,line width=.4pt] (\x,4)--({\x+45.5},4);}
+  \node[anchor=west,text=slideaccent] at (0,38){\textbf{Constrained ML}};
+  \gfcRiskPair{33}{38}{10.55}{23.98}{slideaccent}
+  \gfcRiskPair{93}{38}{13.26}{34.63}{slideaccent}
+  \node[anchor=west,text=subtle] at (0,28.6){HRP};
+  \gfcRiskPair{33}{28.6}{11.76}{30.87}{subtle}
+  \gfcRiskPair{93}{28.6}{17.20}{49.22}{subtle}
+  \node[anchor=west,text=subtle] at (0,19.2){PZ Lowest-Centrality};
+  \gfcRiskPair{33}{19.2}{12.43}{31.92}{subtle}
+  \gfcRiskPair{93}{19.2}{16.65}{60.14}{subtle}
+  \node[anchor=west,text=subtle] at (0,9.8){PZ \(\rho\)-dependent};
+  \gfcRiskPair{33}{9.8}{16.00}{34.19}{subtle}
+  \gfcRiskPair{93}{9.8}{22.54}{62.30}{subtle}
+\end{tikzpicture}\par
+\vspace{1mm}
+\noindent{\fontsize{8.4}{10.2}\selectfont Constrained ML had a 34.63\% GFC drawdown, compared with 49.22\% for HRP. LW and NLS MinVar had drawdowns of 34.44\% and 34.81\%.\par}
+\src{Figure 2 and Table 3B. Gross returns. Drawdown resets at each period's start. \(\kappa=2\%\), \(\eta=1\), \(h=1\). PZ selects 20 stocks. \hyperlink{qa-risk-gaps}{Paired tests (C3).}}
+\note{Each line joins the levels for one portfolio in two evaluation periods. The left and right panels share a zero-to-65 percent horizontal axis. The calm window follows the GFC chronologically. Compare the drawdown of Constrained ML with HRP, then with the two MinVar benchmarks stated below the chart. The next slide tests within-GFC differences against PZ. For the change in the risk gap between periods, see Q\&A slide C3.}
+\end{frame}
+\endgroup
+
+% Slide 08 - Which GFC differences hold up against both PZ rules?
 \begingroup
 \definecolor{titleink}{HTML}{66253D}
 \definecolor{slideaccent}{HTML}{9E2E4C}
@@ -523,7 +567,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \end{frame}
 \endgroup
 
-% Slide 08 - COVID phase returns, table alternative
+% Slide 09 - COVID phase returns, table alternative
 
 \renewcommand{\sectiontag}{COVID-19 / Table}
 
@@ -601,7 +645,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \note{The crash and recovery are disjoint investment periods. In the crash, both PZ rules lost 28.35 percent. Composite ML lost 35.15 percent and gained 68.31 percent in the recovery. Compared with LW MinVar, Constrained ML lost 0.94 percentage points less in the crash and gained 7.89 points more in the recovery. Risk-Parity ML and HY gained more in recovery than covariance ERC. Equal Weight had the highest recovery return among the displayed portfolios. These are descriptive gross cumulative returns.}
 \end{frame}
 
-% Slide 08 - COVID phase returns, chart alternative
+% Slide 09 - COVID phase returns, chart alternative
 \renewcommand{\sectiontag}{COVID-19 / Chart}
 % Rows are sorted by recovery plus signed crash return using the two displayed values.
 % Both bars use the same scale. The last column is their arithmetic sum in percentage points.
@@ -669,7 +713,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 
 \endgroup
 
-% Slide 09 - Estimated-volatility allowance, with the primary specification for comparison
+% Slide 10 - Estimated-volatility allowance, with the primary specification for comparison
 \begingroup
 \renewcommand{\sectiontag}{Constrained SCA / Sensitivity}
 \begin{frame}{What changes when the volatility allowance rises?}
@@ -695,17 +739,19 @@ COVID and recovery, full window & \(35.58\) & \(35.14\) & \(34.65\)\\
 \end{tabular*}\par}
 \vspace{1.0mm}
 {\fontsize{8.6}{10.5}\selectfont At \(\eta=0.50\), a wider allowance reduced crowding at formation. Realized drawdown deepened in the GFC and eased in the COVID window.\par}
-\src{The COVID window runs from 3 Feb 2020 to 31 Mar 2021. Slide 8 reports cumulative returns in two separate phases.\\
+\src{The COVID window runs from 3 Feb 2020 to 31 Mar 2021. The COVID phase comparison reports cumulative returns separately for the crash and recovery.\\
 Manuscript Tables 3 and 8, Figure 6, and Appendix Tables S5--S7. Financial outcomes are descriptive.}
 \note{Start in the first column. This is the Constrained ML portfolio from the GFC and COVID slides. The 34.63 percent GFC drawdown matches slide 6. Moving to the middle column halves the weight on off-diagonal profile interactions while keeping the 2 percent volatility allowance. Compare the middle and right columns to isolate the allowance change from 2 to 5 percent. The cap is relative to estimated volatility of the matching LW minimum-variance portfolio at formation. Crowding is evaluated on the full ML matrix at each date relative to the same reference. For the primary portfolio, the COVID crash-phase return was minus 35.06 percent and the recovery-phase return was plus 56.71 percent. Here 35.58 percent is peak-to-trough maximum drawdown over the complete COVID window, which includes 12 pre-crash trading dates. For the two sensitivity columns, whole-window COVID CAGR was 4.91 and 9.21 percent, respectively. Figure 6 and Appendix Table S7 report the other architectures and allowances.}
 \end{frame}
 \endgroup
 
-% Slide 10 - Trading-value information, table alternative
+% Slide 11 - Trading-value information, table alternative
 \begingroup
+% GFC Composite net CAGR (%), in SL, ML and HY order, shared by both alternatives.
+\newcommand{\gfcCompositeNetReturns}{\(-11.45\) & \(-16.54\) & \(-13.34\)}
 \renewcommand{\sectiontag}{Information architectures / Table}
 \begin{frame}{What does trading value add?}
-\small Constrained SCA with the same universe, covariance estimate, $2\%$ allowance and full interaction weight ($\eta=1$). Only the structural architecture changes.
+\noindent{\fontsize{8.5}{10.2}\selectfont The three Constrained portfolios use the same covariance estimate, with \(\kappa=2\%\) and \(\eta=1\).\par}
 
 \begin{center}
 \small
@@ -726,11 +772,21 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
 \end{tabular}
 \end{center}
 
-\small ML and HY lower volatility, downside deviation and expected shortfall relative to SL. The drawdown, CAGR and Sharpe differences fall short of adjusted 5\%.
-\src{Table 8A, p. 24. Holm adjustment across architecture pairs within each metric. $h=1$, hybrid weight $\gamma=0.50$.}
+{\fontsize{8.2}{9.9}\selectfont ML and HY had lower volatility, downside deviation and ES95 than SL. The drawdown, CAGR and Sharpe differences fell short of the adjusted 5\% threshold.\par}
+\vspace{1.8mm}
+{\fontsize{8.15}{9.8}\selectfont\setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.06}
+\begin{tabular*}{.94\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
+\lab{Composite SCA in the GFC} & \textbf{SL} & \textbf{ML} & \textbf{HY}\\
+\midrule
+Annual one-way turnover (\%) & 138.73 & 107.97 & 119.25 \\
+Net CAGR at 25 bp (\%) & \gfcCompositeNetReturns \\
+\end{tabular*}\par}
+\src{Tables 8A and 9A, Online Appendix S23.2. The GFC comparison is descriptive. The 25 bp charge applies per dollar bought or sold.\\
+\(h=1\), \(\gamma_{\rm ML}=0.50\), Composite \(\alpha=0.50\). \hyperlink{qa-costs}{Full-sample cost scenarios (C5).}}
+\note{Hold the price covariance estimate and the allocation rule fixed within each comparison. The upper table reports Holm-adjusted comparisons between architectures for full-sample Constrained SCA. The lower table shows descriptive GFC implementation and net growth for Composite SCA. ML trades less, yet SL retains the higher compound return at 25 basis points per dollar traded. Costs apply to gross purchases plus sales at each rebalance.}
 \end{frame}
 
-% Slide 10 - Trading-value information, chart alternative
+% Slide 11 - Trading-value information, chart alternative
 \renewcommand{\sectiontag}{Information architectures / Chart}
 % One unit of horizontal distance represents the same percentage-point change in all panels.
 \newcommand{\tvAxisPosition}[1]{6.5+25*((#1)+35)/45}
@@ -777,7 +833,13 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
  \vspace{1.05mm}
  \tvArchitecturePlot{138.73}{107.97}{119.25}\par
  \vspace{1.45mm}
- {\fontsize{8.05}{9.85}\selectfont ML traded less. Its GFC drawdown was 48.91\%, versus 44.77\% for SL.\par}
+ {\fontsize{7.9}{9.4}\selectfont\textbf{Net CAGR at 25 bp (\%)}\par}
+ \vspace{.55mm}
+ {\fontsize{7.8}{9.2}\selectfont\setlength{\tabcolsep}{0pt}
+ \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rrr@{}}
+ SL & ML & HY\\
+ \gfcCompositeNetReturns \\
+ \end{tabular*}\par}
 \end{column}
 \begin{column}{.308\textwidth}
  {\fontsize{10.3}{12}\selectfont\lab{Risk-Parity SCA}\par}
@@ -790,56 +852,58 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
  {\fontsize{8.05}{9.85}\selectfont ML gained more in recovery. In the crash it lost 33.17\%, versus 32.51\% for SL.\par}
 \end{column}
 \end{columns}
-\src{Tables 8A and 9A. Turnover and phase returns are descriptive. All panels use \(h=1\) for ML and HY, with \(\gamma_{\rm ML}=0.50\) for HY.\\
-Constrained uses \(\kappa=2\%\), \(\eta=1\). Composite and Risk-Parity use \(\alpha=0.50\).}
-\note{All three panels use one percentage-point scale, with the single-layer portfolio at zero. The labels at right are the original metric levels. Equal horizontal distances mean equal percentage-point differences, while the three outcomes have distinct economic meanings. Among constrained portfolios, full-sample annualized volatility falls by 0.300 percentage points for ML and 0.134 for HY versus SL, with Holm-adjusted p-values 0.0003 and 0.0029. The same three risk measures pass their adjusted comparisons at the alternative interaction setting of 0.50. Full-sample drawdown, CAGR and Sharpe differences between these architectures do not reach the adjusted five percent threshold. For Composite SCA, annualized one-way turnover during the GFC falls by 30.76 percentage points for ML and 19.48 for HY relative to SL, while SL has the shallower drawdown. For Risk-Parity SCA, ML and HY gained 5.48 and 2.52 percentage points more than SL in the recovery, with slightly deeper crash losses. These comparisons use the same universe and price-covariance estimator within a rule. Trading value changes the profile information used for allocation.}
+\src{Tables 8A and 9A, Online Appendix S23.2. Turnover and returns are descriptive. The 25 bp cost applies per dollar bought or sold. \hyperlink{qa-costs}{All cost scenarios (C5).}\\
+Constrained uses \(\kappa=2\%,\ \eta=1\). Composite and Risk-Parity use \(\alpha=0.50\). ML and HY use \(h=1\), with \(\gamma_{\rm ML}=0.50\) for HY.}
+\note{All three panels use one percentage-point scale, with the single-layer portfolio at zero. The labels at right are the original metric levels. Equal horizontal distances mean equal percentage-point differences, while the three outcomes have distinct economic meanings. Among constrained portfolios, full-sample annualized volatility falls by 0.300 percentage points for ML and 0.134 for HY versus SL, with Holm-adjusted p-values 0.0003 and 0.0029. The same three risk measures pass their adjusted comparisons at the alternative interaction setting of 0.50. Full-sample drawdown, CAGR and Sharpe differences between these architectures do not reach the adjusted five percent threshold. For Composite SCA, annualized one-way turnover during the GFC falls by 30.76 percentage points for ML and 19.48 for HY relative to SL, while SL has the shallower drawdown (44.77 versus 48.91 percent for ML). At 25 basis points, GFC net CAGR was minus 11.45 percent for SL, minus 16.54 for ML and minus 13.34 for HY. ML traded less and still earned the lowest net CAGR of the three. For Risk-Parity SCA, ML and HY gained 5.48 and 2.52 percentage points more than SL in the recovery, with slightly deeper crash losses. These comparisons use the same universe and price-covariance estimator within a rule. Trading value changes the profile information used for allocation.}
 \end{frame}
 \endgroup
 
-% Slide 11 - Full-sample growth and loss control
+% Slide 12 - Full-sample growth and loss control
 \begin{frame}{Full-sample growth and loss control}
 \begin{columns}[T,onlytextwidth]
-\begin{column}{.59\textwidth}
-\small Gross returns, January 2002--October 2025
+\begin{column}{.575\textwidth}
+{\fontsize{8.6}{10.4}\selectfont Gross returns, January 2002--October 2025\par}
 \vspace{0.24em}
 
-\footnotesize
-\setlength{\tabcolsep}{4.1pt}
+\fontsize{8.1}{9.6}\selectfont
+\setlength{\tabcolsep}{0pt}
 \renewcommand{\arraystretch}{1.03}
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
-Allocation & CAGR & Vol. & MaxDD \\
+\textbf{Allocation} & \textbf{CAGR} & \textbf{Vol.} & \textbf{Sharpe} & \textbf{MaxDD} \\
 \midrule
-Composite SL     &  7.72 & 16.59 & 44.77 \\
-Constrained ML   &  7.74 & 14.59 & 35.58 \\
-Risk-Parity ML   &  9.19 & 19.83 & 58.03 \\
+Composite SL & 7.72 & 16.59 & 0.531 & 44.77 \\
+Constrained ML & 7.74 & 14.59 & 0.585 & 35.58 \\
+Risk-Parity ML & 9.19 & 19.83 & 0.543 & 58.03 \\
 \midrule
-LW MinVar        &  7.09 & 14.42 & 36.46 \\
-NLS MinVar       &  7.15 & 14.35 & 35.17 \\
-HRP              &  9.04 & 17.04 & 49.22 \\
-Covariance ERC   &  9.07 & 18.86 & 54.96 \\
-PZ Lowest        & 10.37 & 18.14 & 60.14 \\
-PZ \(\rho\)-dependent & 10.93 & 19.66 & 62.30 \\
-Equal Weight     &  8.92 & 21.62 & 60.40 \\
+LW MinVar & 7.09 & 14.42 & 0.548 & 36.46 \\
+NLS MinVar & 7.15 & 14.35 & 0.553 & 35.17 \\
+HRP & 9.04 & 17.04 & 0.593 & 49.22 \\
+Covariance ERC & 9.07 & 18.86 & 0.555 & 54.96 \\
+PZ Lowest & 10.37 & 18.14 & 0.635 & 60.14 \\
+PZ \(\rho\)-dependent & 10.93 & 19.66 & 0.626 & 62.30 \\
+Equal Weight & 8.92 & 21.62 & 0.504 & 60.40 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{column}
-\begin{column}{.39\textwidth}
+\begin{column}{.395\textwidth}
 \small
-\textbf{Growth.} Both PZ rules have higher compound growth than the three SCA portfolios shown.
+\textbf{Growth.} Both PZ rules had higher CAGR than the three SCA portfolios shown.
 
 \medskip
-\textbf{Loss control.} Constrained ML remains close to shrinkage MinVar on volatility and drawdown.
+\textbf{Loss control.} Constrained ML had volatility and drawdown close to both shrinkage MinVar portfolios. Its two Sharpe comparisons had Holm \(p=1.000\).
 
 \medskip
-\textbf{Risk budgeting.} Covariance ERC has lower volatility and drawdown than Risk-Parity ML.
+\textbf{Risk budgeting.} Covariance ERC had lower volatility and drawdown than Risk-Parity ML. At 25 bp, net CAGR was 8.90\% for ERC and 8.99\% for Risk-Parity ML.
 \end{column}
 \end{columns}
-\src{Table 3A, p. 14. Descriptive percentages. The three SCA specifications match the GFC comparison.}
+\src{Tables 3A and 10, Online Appendix S23. CAGR, volatility and drawdown are percentages. Sharpe uses daily gross returns and \(r_f=0\).\\
+\hyperlink{qa-costs}{Full cost table (C5)}\quad \hyperlink{qa-sharpe}{Sharpe across periods (C6)}}
+\note{Constrained ML's gross Sharpe of 0.585 was higher than LW at 0.548 and NLS at 0.553, and lower than HRP and both PZ portfolios. The two paired Sharpe comparisons with shrinkage MinVar each have Holm-adjusted p equal to one. Risk-Parity ML had higher net annual growth than covariance ERC at 25 basis points per dollar traded, 8.99 versus 8.90 percent. At 100 basis points both round to 8.38 percent. These net growth figures are descriptive.}
 \end{frame}
 
 \renewcommand{\sectiontag}{Conclusion}
-% Slide 12 - What does structural crowding add?
+% Slide 13 - What does structural crowding add?
 \begin{frame}{What does structural crowding add?}
 \vspace{1.3mm}
 {\rmfamily\fontsize{10.7}{13.5}\selectfont A portfolio can spread capital across names while repeatedly holding the same dependence profile. $C(w)$ makes that overlap an explicit allocation choice.\par}
@@ -986,11 +1050,9 @@ At $\alpha=0$ the budgets apply to covariance alone; at $\kappa=0$ the constrain
 \src{Equations (3.3)--(3.5), (3.10)--(3.12), (3.19)--(3.21); Online Appendix S5, S9 and S26.}
 \end{frame}
 
-% Candidate evidence slides. Footer labels C1--C6 are independent of talk and appendix numbering.
+% Additional evidence and Q&A. The author can move these frames while keeping their backup IDs.
 \begingroup
-\edef\reviewStartFrame{\arabic{framenumber}}
-\renewcommand{\insertframenumber}{C\the\numexpr\value{framenumber}-\reviewStartFrame\relax}
-\section{Candidate evidence slides}
+\section{Additional evidence and Q\&A}
 \definecolor{reviewTeal}{HTML}{196A70}
 \definecolor{reviewOchre}{HTML}{AA6224}
 \definecolor{reviewRose}{HTML}{A43B59}
@@ -1017,6 +1079,7 @@ At $\alpha=0$ the budgets apply to covariance alone; at $\kappa=0$ the constrain
   \end{scope}}
 \renewcommand{\sectiontag}{Constrained SCA / Sensitivity}
 % Candidate C1 - Manuscript Figure 6, all eight allowances and all three architectures.
+\renewcommand{\insertframenumber}{C1}
 \begin{frame}{How sensitive is Constrained SCA to the risk allowance?}
 \noindent{\fontsize{7.65}{9.25}\selectfont
  \reviewKey{reviewRose}{*}{SL}\hspace{4mm}\reviewKey{reviewTeal}{triangle*}{ML}\hspace{4mm}\reviewKey{reviewOchre}{square*}{HY}
@@ -1088,51 +1151,10 @@ At $\alpha=0$ the budgets apply to covariance alone; at $\kappa=0$ the constrain
 \note{The allowance is relative to estimated LW MinVar volatility at formation. All curves use the same eight ex-ante allowances, including zero. At zero they meet at the matching minimum-variance allocation. Read changes within each panel using its own vertical labels. The same change from 2 to 5 percent reduced the observed ML COVID-and-recovery drawdown from 35.14 to 34.65 percent. These are sensitivity results, with no ex post selection of an allowance.}
 \end{frame}
 
-% Candidate C2 - Manuscript Figure 2, levels of the two risk measures on a common scale.
-\renewcommand{\sectiontag}{Global Financial Crisis / Risk levels}
-\newcommand{\reviewRiskPair}[5]{%
-  \begin{scope}[shift={(#1,#2)}]
-    \draw[#5!76,line width=.92pt] ({.70*(#3)},0)--({.70*(#4)},0);
-    \draw[#5,line width=.75pt,fill=white] ({.70*(#3)},0) circle[radius=.85mm];
-    \fill[#5] ({.70*(#4)},0) circle[radius=.9mm];
-    \node[anchor=south,text=#5] at ({.70*(#3)},1.10){\(#3\)};
-    \node[anchor=south,text=#5] at ({.70*(#4)},1.10){\(#4\)};
-  \end{scope}}
-\begin{frame}{How much higher was risk during the GFC?}
-\noindent{\fontsize{8.1}{9.8}\selectfont
- \tikz[baseline=-.35ex]{\draw[subtle,fill=white,line width=.70pt] (0,0) circle[radius=.9mm];}\; Calm period, 2017--2019\hspace{6mm}
- \tikz[baseline=-.35ex]{\fill[subtle] (0,0) circle[radius=.9mm];}\; GFC, July 2007--June 2009\par}
-\vspace{1.6mm}
-\noindent\begin{tikzpicture}[x=1mm,y=1mm,yscale=.92,every node/.style={inner sep=0pt,font=\fontsize{7.65}{8.5}\selectfont,text=ink}]
-  \path[use as bounding box] (0,-.8) rectangle (145,47.7);
-  \foreach \x/\name in {33/Annualized volatility,93/Maximum drawdown}{
-    \node[font=\bfseries\fontsize{9.0}{10.2}\selectfont,text=titleink] at ({\x+22},45.5){\name\ (\%)};
-    \foreach \v in {0,20,40,60}{
-      \draw[hairline,line width=.32pt] ({\x+.70*\v},4)--({\x+.70*\v},41.5);
-      \node[text=subtle,font=\fontsize{6.9}{8.0}\selectfont] at ({\x+.70*\v},1.8){\v};}
-    \draw[subtle!70,line width=.4pt] (\x,4)--({\x+45.5},4);}
-  \node[anchor=west,text=slideaccent] at (0,38){\textbf{Constrained ML}};
-  \reviewRiskPair{33}{38}{10.55}{23.98}{slideaccent}
-  \reviewRiskPair{93}{38}{13.26}{34.63}{slideaccent}
-  \node[anchor=west,text=subtle] at (0,28.6){HRP};
-  \reviewRiskPair{33}{28.6}{11.76}{30.87}{subtle}
-  \reviewRiskPair{93}{28.6}{17.20}{49.22}{subtle}
-  \node[anchor=west,text=subtle] at (0,19.2){PZ Lowest-Centrality};
-  \reviewRiskPair{33}{19.2}{12.43}{31.92}{subtle}
-  \reviewRiskPair{93}{19.2}{16.65}{60.14}{subtle}
-  \node[anchor=west,text=subtle] at (0,9.8){PZ \(\rho\)-dependent};
-  \reviewRiskPair{33}{9.8}{16.00}{34.19}{subtle}
-  \reviewRiskPair{93}{9.8}{22.54}{62.30}{subtle}
-\end{tikzpicture}\par
-\vspace{1mm}
-\reviewFinding{Constrained ML had a 34.63\% GFC drawdown, compared with 49.22\% for HRP. LW and NLS MinVar had drawdowns of 34.44\% and 34.81\%.}
-\src{Figure 2 and Table 3B. Gross returns. Drawdown resets at each period's start. \(\kappa=2\%\), \(\eta=1\), \(h=1\). PZ selects 20 stocks.}
-\note{Each line joins the levels for one portfolio in two evaluation periods. The left and right panels share a zero-to-65 percent horizontal axis. The calm window follows the GFC chronologically. These points describe period levels. Candidate C3 tests changes in the differences between portfolios.}
-\end{frame}
-
-% Candidate C3 - Manuscript Table 5 with all three benchmark contrasts.
-\renewcommand{\sectiontag}{Global Financial Crisis / Paired tests}
-\begin{frame}{Did the risk gap widen in the GFC?}
+% Appendix C3 - Manuscript Table 5 with all three benchmark contrasts.
+\renewcommand{\insertframenumber}{C3}
+\renewcommand{\sectiontag}{Q\&A / Global Financial Crisis}
+\begin{frame}[label=qa-risk-gaps]{Did the risk gap widen in the GFC?}
 \reviewLead{Each gap is Constrained ML minus the benchmark, in percentage points. \(\Delta\) is the GFC gap minus the calm-period gap.}
 \vspace{3.6mm}
 {\fontsize{7.05}{8.8}\selectfont\setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.35}
@@ -1154,6 +1176,7 @@ Max. drawdown & \(-3.94\) & \(-14.58\) & \(-10.65\) & \(0.0855\) & \(-3.39\) & \
 \end{frame}
 
 % Candidate C4 - Manuscript Table 10, matched allocation rules and covariance ERC.
+\renewcommand{\insertframenumber}{C4}
 \renewcommand{\sectiontag}{Risk budgeting / Full sample}
 \begin{frame}{How does risk budgeting change the portfolio?}
 \reviewLead{Composite and Risk-Parity SCA use the same matrix within each architecture. Covariance ERC budgets covariance risk alone.}
@@ -1179,9 +1202,10 @@ Covariance ERC & \(9.07\) & \(18.86\) & \(0.555\) & \(54.96\) & \reviewBold{85.5
 \note{Start with the two multilayer rows. Holding their combined risk matrix fixed isolates the change in allocation rule. Equivalent breadth comes with a different risk profile. Risk-Parity ML has higher volatility and deeper drawdown than both Composite ML and the direct covariance ERC benchmark. Its gross full-sample Sharpe rounds to the same 0.543 as Composite ML. SL, ML and HY use alpha 0.50, the ML source horizon is one, and hybrid assigns half weight to the ML matrix.}
 \end{frame}
 
-% Candidate C5 - All five proportional cost assumptions, with allocations fixed.
-\renewcommand{\sectiontag}{Implementation / Transaction costs}
-\begin{frame}{How much growth survives trading costs?}
+% Appendix C5 - All five proportional cost assumptions, with allocations fixed.
+\renewcommand{\insertframenumber}{C5}
+\renewcommand{\sectiontag}{Q\&A / Transaction costs}
+\begin{frame}[label=qa-costs]{How much growth survives trading costs?}
 \reviewLead{Full-sample CAGR (\%) under five charges in basis points per dollar traded. The \(0\) bp column gives gross growth.}
 \vspace{1.8mm}
 \begin{columns}[T,onlytextwidth]
@@ -1231,8 +1255,9 @@ Covariance ERC & \(9.07\) & \(9.00\) & \(8.90\) & \(8.73\) & \reviewBold{8.38} \
 \note{The costs are scenarios, rather than measured or individually estimated execution costs. The same asset weights are used across charges. Each charge is applied once at the actual rebalance on the sum of absolute security-level changes from drifted weights to targets. Read the 25 bp column for comparable net annual growth. In the full sample, Composite ML earns 7.28 percent, fixed Constrained ML 7.28 percent after rounding, Risk-Parity ML 8.99 percent and covariance ERC 8.90 percent. At 100 bp the difference between RP ML and ERC is about 0.21 basis points per year before rounding, with no paired evidence of a net-CAGR advantage at that charge. In the GFC, MinVar remains a strong comparator, with net CAGR of minus 8.87 percent for LW at 25 bp. Composite and Risk-Parity use alpha 0.50. Fixed Constrained uses kappa 2 percent and eta one. ML uses h one and HY gives the ML matrix half weight.}
 \end{frame}
 
-% Candidate C6 - A common, zero-centered color scale applied to all 51 gross Sharpe ratios.
-\renewcommand{\sectiontag}{Risk-adjusted performance / Gross returns}
+% Appendix C6 - A common, zero-centered color scale applied to all 51 gross Sharpe ratios.
+\renewcommand{\insertframenumber}{C6}
+\renewcommand{\sectiontag}{Q\&A / Gross Sharpe ratios}
 \newcommand{\reviewSharpe}[1]{%
  \begingroup
  \pgfmathtruncatemacro{\reviewShade}{round(54*min(1,abs(#1)/1.05))}%
@@ -1240,7 +1265,7 @@ Covariance ERC & \(9.07\) & \(9.00\) & \(8.90\) & \(8.73\) & \reviewBold{8.38} \
  \setlength{\fboxsep}{.55pt}%
  \colorbox{\reviewHue!\reviewShade!white}{\makebox[10.4mm]{\strut\(#1\)}}%
  \endgroup}
-\begin{frame}{How do Sharpe ratios compare across market windows?}
+\begin{frame}[label=qa-sharpe]{How do Sharpe ratios compare across market windows?}
 \reviewLead{\(\mathrm{Sharpe}=\sqrt{252}\,\bar{r}_d/s(r_d)\) for daily gross returns, \(r_f=0\). Teal is positive and burgundy is negative.}
 \vspace{1.8mm}
 \begin{columns}[T,onlytextwidth]
