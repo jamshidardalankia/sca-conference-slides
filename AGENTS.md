@@ -1,6 +1,6 @@
 # Structural Crowding Allocation conference slides
 
-Work with the author in Persian. Write slide text in English. This is a 15-minute conference talk with 13 main slides and one technical backup.
+Work with the author in Persian. Write slide text in English. This is a 15-minute conference talk. The main results start with the Global Financial Crisis immediately after the empirical design. The formation-date profile-crowding comparison belongs in the appendix. Table and chart alternatives for the same result share a slide number.
 
 Edit `main.tex` directly. Each frame starts with a numbered slide comment. Respect the author's most recent edits and work on the requested slide. The author previews the slides in Overleaf, which compiles `main.tex` with pdfLaTeX. The figures used at compilation are `network.pdf` and `covid.pdf`.
 

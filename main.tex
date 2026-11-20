@@ -3,12 +3,11 @@
 \usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,array,graphicx}
 \usefonttheme{professionalfonts}
 \hypersetup{pdftitle={Structural Crowding Allocation},pdfauthor={Jamshid Ardalankia},pdfsubject={Correlation-profile diversification under systemic stress}}
-\definecolor{blueink}{HTML}{184F86}
-\colorlet{slideaccent}{blueink}
-\definecolor{ink}{HTML}{202B34}
-\colorlet{titleink}{ink}
-\definecolor{subtle}{HTML}{4B5C68}
-\definecolor{hairline}{HTML}{CBD6DD}
+\definecolor{slideaccent}{HTML}{9E2E4C}
+\definecolor{ink}{HTML}{2C2729}
+\definecolor{titleink}{HTML}{66253D}
+\definecolor{subtle}{HTML}{564E50}
+\definecolor{hairline}{HTML}{DDD5D7}
 \setbeamercolor{normal text}{fg=ink,bg=white}
 \setbeamercolor{structure}{fg=slideaccent}
 \setbeamersize{text margin left=7.2mm,text margin right=7.0mm}
@@ -351,37 +350,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \endgroup
 
 \renewcommand{\sectiontag}{Empirical evidence}
-% Seven results frames for the main conference talk.
-% Slide 06 - Profile overlap near minimum variance
-\begin{frame}{Profile overlap near minimum variance}
-At each formation, Constrained SCA may take up to \textbf{2\% more estimated volatility} than its matching minimum-variance portfolio.
-
-\vspace{0.65em}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.32}
-\begin{tabular}{@{}lrl@{}}
-\toprule
-Profile architecture & Mean reduction in full-matrix exposure & \\
-\midrule
-Single-Layer & 34.68\% & \textcolor{blueink}{\rule{2.50cm}{.72ex}} \\
-Multilayer   & 38.63\% & \textcolor{blueink}{\rule{2.79cm}{.72ex}} \\
-Hybrid       & 33.03\% & \textcolor{blueink}{\rule{2.38cm}{.72ex}} \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.35em}
-\small At formation $t$, both portfolios use the same architecture-specific $S_t$ for evaluation:
-\[
-  \text{reduction}_{t}=100\!\left[1-
-  \frac{(w_{t}^{C})^{\mathsf T}S_t w_{t}^{C}}
-       {(w_{t}^{\mathrm{MV}})^{\mathsf T}S_t w_{t}^{\mathrm{MV}}}\right].
-\]
-The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0.50$.
-\src{Section 5.1, p. 13. Average across 95 formation dates.}
-\end{frame}
-
-% Slide 07 - GFC drawdowns, table alternative
+% Slide 06 - GFC drawdowns, table alternative
 
 % The next two results slides each have a table and a chart for review.
 \begingroup
@@ -447,7 +416,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 \note{All numbers on this slide are positive peak-to-trough loss depths. Within Constrained SCA the three architectures range from 34.28 to 34.63 percent, close to the three minimum-variance benchmarks. All nine SCA portfolios experienced shallower drawdowns than both PZ portfolios. The three Risk-Parity SCA portfolios had deeper drawdowns than covariance ERC. The next slide examines the statistical evidence for Composite SL and Constrained ML relative to each PZ rule.}
 \end{frame}
 
-% Slide 07 - GFC drawdowns, chart alternative
+% Slide 06 - GFC drawdowns, chart alternative
 \renewcommand{\sectiontag}{Global Financial Crisis / Chart}
 % Each bar takes its vertical position, label, drawdown, colour and number style.
 \newcommand{\gfcBar}[5]{%
@@ -506,7 +475,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 \note{The bars are ordered by maximum drawdown, from smallest to largest. Read the three Constrained results beside the minimum-variance benchmarks. All nine SCA portfolios had smaller observed drawdowns than either PZ portfolio. The GFC significance slide focuses on Composite SL and Constrained ML.}
 \end{frame}
 
-% Slide 08 - Which GFC differences hold up against both PZ rules?
+% Slide 07 - Which GFC differences hold up against both PZ rules?
 \begingroup
 \definecolor{titleink}{HTML}{66253D}
 \definecolor{slideaccent}{HTML}{9E2E4C}
@@ -552,7 +521,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 \end{frame}
 \endgroup
 
-% Slide 09 - COVID phase returns, table alternative
+% Slide 08 - COVID phase returns, table alternative
 
 \renewcommand{\sectiontag}{COVID-19 / Table}
 
@@ -630,7 +599,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 \note{The crash and recovery are disjoint investment periods. In the crash, both PZ rules lost 28.35 percent. Composite ML lost 35.15 percent and gained 68.31 percent in the recovery. Compared with LW MinVar, Constrained ML lost 0.94 percentage points less in the crash and gained 7.89 points more in the recovery. Risk-Parity ML and HY gained more in recovery than covariance ERC. Equal Weight had the highest recovery return among the displayed portfolios. These are descriptive gross cumulative returns.}
 \end{frame}
 
-% Slide 09 - COVID phase returns, chart alternative
+% Slide 08 - COVID phase returns, chart alternative
 \renewcommand{\sectiontag}{COVID-19 / Chart}
 % Crash and recovery use the same scale. Returns and bar lengths come from the same inputs.
 \newcommand{\covidBars}[7]{%
@@ -692,7 +661,7 @@ The table averages these reductions. Optimization uses $S_{\eta,t}$ with $\eta=0
 
 \endgroup
 
-% Slide 10 - Sensitivity to the volatility allowance
+% Slide 09 - Sensitivity to the volatility allowance
 \begin{frame}{Sensitivity to the volatility allowance}
 \small Constrained ML with $h=1$ and $\eta=0.50$. Only $\kappa$ changes.
 
@@ -716,7 +685,7 @@ COVID and recovery CAGR & 4.91\% & 9.21\% \\
 \src{Section 5.5 and Figure 6, p. 22. Financial outcomes are descriptive.}
 \end{frame}
 
-% Slide 11 - What does trading value add?
+% Slide 10 - What does trading value add?
 \begin{frame}{What does trading value add?}
 \small Constrained SCA with the same universe, covariance estimate, $2\%$ allowance and full interaction weight ($\eta=1$). Only the structural architecture changes.
 
@@ -743,7 +712,7 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
 \src{Table 8A, p. 24. Holm adjustment across architecture pairs within each metric. $h=1$, hybrid weight $\gamma=0.50$.}
 \end{frame}
 
-% Slide 12 - Full-sample growth and loss control
+% Slide 11 - Full-sample growth and loss control
 \begin{frame}{Full-sample growth and loss control}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.59\textwidth}
@@ -786,7 +755,7 @@ Equal Weight     &  8.92 & 21.62 & 60.40 \\
 \end{frame}
 
 \renewcommand{\sectiontag}{Conclusion}
-% Slide 13 - What does structural crowding add?
+% Slide 12 - What does structural crowding add?
 \begin{frame}{What does structural crowding add?}
 \vspace{1.3mm}
 {\rmfamily\fontsize{10.7}{13.5}\selectfont A portfolio can spread capital across names while repeatedly holding the same dependence profile. $C(w)$ makes that overlap an explicit allocation choice.\par}
@@ -802,8 +771,95 @@ Risk-Parity ML held more effective assets and traded less than Composite ML. It 
 \src{Sections 5.1--5.8; Tables 3, 6, 7 and 10.\hfill\texttt{ardalankia@vt.edu}}
 \end{frame}
 
+\renewcommand{\appendixname}{Appendix}
+\appendix
+\edef\scaLastMainFrame{\arabic{framenumber}}
+\renewcommand{\insertframenumber}{A\the\numexpr\value{framenumber}-\scaLastMainFrame\relax}
+\section{Profile crowding at formation}
+% Appendix A1 - Profile crowding at portfolio formation
+% Re-evaluation of archived formation allocations only. No allocations or risk forecasts are re-estimated.
+% Sources: historical_comparison_inputs.npz (target_weights), recovered_arrays.npz (MV_MATCHED and fixed controls),
+% risk_parity_arrays.npz and dynamic_arrays.npz. The 95 archived operators use the same ordered PERMNOs as the weights.
+% Use the full normalized SL and ML (h=1) matrices. HY is their equal-weighted blend. Take the mean of date-wise ratios.
+\renewcommand{\sectiontag}{Appendix / Formation diagnostics}
+\definecolor{appendixTint}{HTML}{F1D1DB}
+\newcommand{\scaTopExposureReduction}[1]{\begingroup\setlength{\fboxsep}{0pt}\leavevmode
+  \colorbox{appendixTint}{\makebox[\linewidth][c]{\color{titleink}\strut\(\mathbf{#1}\)}}\endgroup}
+\begin{frame}[label=appendix-crowding]{Profile crowding at portfolio formation}
+\vspace*{-1.2mm}
+{\fontsize{8.55}{10.2}\selectfont Mean reduction from matching LW MinVar over 95 formation dates (\%)\par}
+\vspace{1.1mm}
+\noindent
+\begin{minipage}[c]{.51\textwidth}
+ {\fontsize{8.2}{10}\selectfont
+  \(\displaystyle R_{a,t}(w)=100\left[1-\frac{w_t^{\mathsf T} S_{a,t}w_t}
+  {(w_t^{\mathrm{MV}})^{\mathsf T} S_{a,t}w_t^{\mathrm{MV}}}\right]\)}
+\end{minipage}\hfill
+\begin{minipage}[c]{.46\textwidth}
+ {\color{subtle}\fontsize{7.5}{9.1}\selectfont Positive values mean less crowding. Shaded cells show the largest reduction on each full profile matrix.\par}
+\end{minipage}\par
+\vspace{2.0mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.491\textwidth}
+ {\fontsize{8.4}{10}\selectfont\lab{SCA portfolios}\par}
+ \vspace{.55mm}
+ {\fontsize{7.75}{9.15}\selectfont
+  \setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.09}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.49\linewidth}*{3}{>{\centering\arraybackslash}p{.17\linewidth}}@{}}
+   \textbf{Allocation rule} & \textbf{SL} & \textbf{ML} & \textbf{HY}\\
+   \midrule
+   Composite & \scaTopExposureReduction{72.41} & \scaTopExposureReduction{75.52} & \scaTopExposureReduction{71.34}\\
+   Constrained, \(\eta=0.50\) & \(34.68\) & \(38.63\) & \(33.03\)\\
+   Constrained, \(\eta=1\) & \(36.73\) & \(39.48\) & \(34.32\)\\
+   Risk-Parity & \(37.00\) & \(32.13\) & \(31.40\)\\
+   \addlinespace[.5mm]
+   Adaptive, \(\eta=0.50\) & \(16.99\) & \(18.89\) & \(16.07\)\\
+   Adaptive, \(\eta=1\) & \(18.37\) & \(19.74\) & \(17.16\)\\
+   \bottomrule
+  \end{tabular}\par}
+ \vspace{1.3mm}
+ {\fontsize{8.15}{9.7}\selectfont\lab{Matched concentration controls}\par}
+ \vspace{.35mm}
+ {\fontsize{7.75}{9.15}\selectfont
+  \setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.04}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.49\linewidth}*{3}{>{\centering\arraybackslash}p{.17\linewidth}}@{}}
+   Minimum HHI & \(14.81\) & \(7.67\) & \(10.71\)\\
+   Diagonal & \(15.33\) & \(22.25\) & \(16.68\)\\
+   HHI-constrained MinVar & \(5.57\) & \(3.69\) & \(4.41\)\\
+  \end{tabular}\par}
+\end{column}
+\begin{column}{.471\textwidth}
+ {\fontsize{8.4}{10}\selectfont\lab{Benchmarks}\par}
+ \vspace{.55mm}
+ {\fontsize{7.75}{9.15}\selectfont
+  \setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.09}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.49\linewidth}*{3}{>{\centering\arraybackslash}p{.17\linewidth}}@{}}
+   \textbf{Portfolio} & \textbf{SL} & \textbf{ML} & \textbf{HY}\\
+   \midrule
+   Equal Weight & \(-17.21\) & \(-5.60\) & \(-8.73\)\\
+   Sample MinVar & \(-6.47\) & \(-4.61\) & \(-5.13\)\\
+   LW MinVar & \(0.00\) & \(0.00\) & \(0.00\)\\
+   NLS MinVar & \(-1.47\) & \(1.15\) & \(0.04\)\\
+   HRP & \(19.96\) & \(1.30\) & \(10.75\)\\
+   PZ Lowest-Centrality & \(35.57\) & \(61.23\) & \(49.88\)\\
+   PZ Rho-Dependent & \(-60.31\) & \(-24.86\) & \(-36.30\)\\
+   Covariance ERC & \(22.18\) & \(7.77\) & \(15.89\)\\
+   \bottomrule
+  \end{tabular}\par}
+ \vspace{1.10mm}
+ {\color{subtle}\fontsize{7.05}{8.4}\selectfont Benchmark weights are held fixed across columns.\par}
+ \vspace{1.0mm}
+ {\fontsize{7.05}{8.4}\selectfont\textbf{Estimated volatility allowance above MinVar}\par
+  Fixed Constrained \(2\%\)\qquad Adaptive at most \(2\%\)\par}
+\end{column}
+\end{columns}
+\src{Composite and Risk-Parity are uncapped (\(\alpha=0.50\)). Manuscript \S5.1, Appendix Tables S4--S6, S126. Other rows use archived weights and matrices.}
+\note{Compare the portfolios within a column on the same full matrix using matching LW minimum variance without the added optimizer ridge as the denominator at each formation. The LW benchmark includes the additional numerical ridge and rounds to zero in all columns. The darker figures in the Composite row are the largest descriptive reductions in each column. These comparisons use 95 formation dates. Composite and Risk-Parity use alpha 0.50 and have no explicit volatility cap. Fixed Constrained SCA has kappa 2 percent and the interaction weight shown. Adaptive Constrained SCA uses a date-specific allowance with upper bound 2 percent and rho 0.50. All ML matrices use a one-day source horizon and HY gives that ML matrix one-half weight. Minimum HHI and Diagonal use the same fixed 2 percent allowance. HHI-constrained MinVar uses the concentration ceiling set by the corresponding fixed Constrained allocation at eta 1. Both PZ rules select 20 stocks. The table reports descriptive exposure reductions at formation. The Holm tests in S126 concern the specific matched constrained comparisons. They do not supply inference for this entire table.}
+\end{frame}
+
+\section{Structural marginal costs and risk contributions}
 \renewcommand{\sectiontag}{Technical appendix}
-% Slide 14 - Structural marginal costs and risk contributions
+% Appendix A2 - Structural marginal costs and risk contributions
 \begin{frame}{Structural marginal costs and risk contributions}
 \smath
 \begin{columns}[T,onlytextwidth]
