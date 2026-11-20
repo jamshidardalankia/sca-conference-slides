@@ -153,7 +153,7 @@ These two pairs have the same direct correlation. What if one pair shares many m
  \(\rho_{ik}^{P}\)\hspace{1.7mm}{\fontsize{7.55}{9.0}\selectfont Price-return correlation}\\[.35mm]
  \lab{Trading value} & \(\Delta\log\tv_{i,s},\quad \Delta\log\tv_{k,s}\) & \(\longrightarrow\) &
  \(\rho_{ik}^{\tv}\)\hspace{1.7mm}{\fontsize{7.55}{9.0}\selectfont Trading-value correlation}\\[.8mm]
- \lab{Raw stock profile} & \multicolumn{3}{@{}l@{}}{\(z_i^{\ell}=\bigl(\max\{\rho_{ik}^{\ell},0\}\bigr)_{k=1}^{N},\quad \ell\in\{P,\tv\}.\)}\\[.4mm]
+ \lab{Raw stock profile} & \multicolumn{3}{@{}l@{}}{\(z_i^{\ell}=(z_{ik}^{\ell})_{k=1}^{N},\quad z_{ik}^{\ell}=\max\{\rho_{ik}^{\ell},0\}\ge 0,\quad \ell\in\{P,\tv\}.\)}\\[.4mm]
  \lab{Fitted stock profile} & \multicolumn{3}{@{}l@{}}{\(S_{ij}=\boldsymbol{\phi}_i^\top\boldsymbol{\phi}_j\)\hspace{3mm}
  {\color{subtle}\fontsize{7.05}{8.55}\selectfont \(\boldsymbol{\phi}_i\) represents stock \(i\) after centering, shrinkage and scaling.}}
  \end{tabular}\par}
@@ -730,63 +730,67 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
 
 % Slide 10 - Trading-value information, chart alternative
 \renewcommand{\sectiontag}{Information architectures / Chart}
-% Each dot is positioned on its panel's labeled numerical scale. Tables 8A and 9A.
+% One unit of horizontal distance represents the same percentage-point change in all panels.
+\newcommand{\tvAxisPosition}[1]{6.5+25*((#1)+35)/45}
 \newcommand{\tvPlotRow}[5]{%
-  \pgfmathsetmacro{\tvDotX}{6.5+25*((#3)-(\tvAxisMin))/((\tvAxisMax)-(\tvAxisMin))}%
+  \pgfmathsetmacro{\tvDotX}{\tvAxisPosition{(#3)-(\tvSLLevel)}}%
   \put(0,#1){\makebox(0,0)[l]{\fontsize{7.8}{9.4}\selectfont #2}}%
   \put(6.5,#1){\color{hairline}\linethickness{.40pt}\line(1,0){25}}%
   \put(\tvDotX,#1){\color{#4}\circle*{1.8}}%
   \put(44.1,#1){\makebox(0,0)[r]{\fontsize{8.6}{10.0}\selectfont \(#5{#3}\)}}}
-\newcommand{\tvArchitecturePlot}[5]{%
-  \begingroup\def\tvAxisMin{#1}\def\tvAxisMax{#2}\setlength{\unitlength}{1mm}%
+\newcommand{\tvAxisTick}[2]{%
+  \pgfmathsetmacro{\tvTickX}{\tvAxisPosition{#1}}%
+  \put(\tvTickX,3.55){\color{subtle}\linethickness{.36pt}\line(0,1){1.55}}%
+  \put(\tvTickX,.8){\makebox(0,0){\color{subtle}\fontsize{6.4}{7.7}\selectfont \(#2\)}}}
+\newcommand{\tvArchitecturePlot}[3]{%
+  \begingroup\def\tvSLLevel{#1}\setlength{\unitlength}{1mm}%
+  \pgfmathsetmacro{\tvZeroX}{\tvAxisPosition{0}}%
   \begin{picture}(44.5,27.5)
-    \tvPlotRow{24.6}{SL}{#3}{subtle}{\mathrm}
-    \tvPlotRow{16.6}{ML}{#4}{slideaccent}{\mathbf}
-    \tvPlotRow{8.6}{HY}{#5}{titleink}{\mathrm}
+    \put(\tvZeroX,4.35){\color{subtle!48}\linethickness{.35pt}\line(0,1){21.4}}%
+    \tvPlotRow{24.6}{SL}{#1}{subtle}{\mathrm}
+    \tvPlotRow{16.6}{ML}{#2}{slideaccent}{\mathbf}
+    \tvPlotRow{8.6}{HY}{#3}{titleink}{\mathrm}
     \put(6.5,4.35){\color{subtle}\linethickness{.38pt}\line(1,0){25}}%
-    \put(6.5,3.55){\color{subtle}\linethickness{.38pt}\line(0,1){1.55}}%
-    \put(31.5,3.55){\color{subtle}\linethickness{.38pt}\line(0,1){1.55}}%
-    \put(6.5,.8){\makebox(0,0){\color{subtle}\fontsize{6.75}{8.0}\selectfont #1}}%
-    \put(31.5,.8){\makebox(0,0){\color{subtle}\fontsize{6.75}{8.0}\selectfont #2}}%
+    \tvAxisTick{-35}{-35}\tvAxisTick{-20}{-20}\tvAxisTick{0}{0}\tvAxisTick{10}{+10}%
   \end{picture}\endgroup}
 \begin{frame}[noframenumbering]{What does trading value add?}
-\noindent{\fontsize{8.9}{10.6}\selectfont Each panel compares SL, ML and HY under the same allocation rule and price covariance estimate.\par}
+\noindent{\fontsize{8.9}{10.6}\selectfont Dots show changes from SL in percentage points on a common scale. Numbers at right show levels.\par}
 \vspace{1.40mm}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.308\textwidth}
  {\fontsize{10.3}{12}\selectfont\lab{Constrained SCA}\par}
  \vspace{.55mm}
- {\fontsize{8.2}{10}\selectfont\textbf{Annualized volatility (\%)}\par}
- {\color{subtle}\fontsize{7.55}{9.0}\selectfont Full sample, 2002--2025\par}
+ {\fontsize{8.2}{10}\selectfont\strut\textbf{Annualized volatility (\%)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont\strut Full sample, 2002--2025\par}
  \vspace{1.05mm}
- \tvArchitecturePlot{14.5}{15.0}{14.886}{14.586}{14.752}\par
+ \tvArchitecturePlot{14.886}{14.586}{14.752}\par
  \vspace{1.45mm}
  {\fontsize{8.05}{9.85}\selectfont Volatility, downside deviation and daily ES95 were lower for ML and HY than for SL (Holm \(p<0.05\)).\par}
 \end{column}
 \begin{column}{.308\textwidth}
  {\fontsize{10.3}{12}\selectfont\lab{Composite SCA}\par}
  \vspace{.55mm}
- {\fontsize{8.2}{10}\selectfont\textbf{One-way turnover (\%/yr)}\par}
- {\color{subtle}\fontsize{7.55}{9.0}\selectfont Global Financial Crisis\par}
+ {\fontsize{8.2}{10}\selectfont\strut\textbf{One-way turnover (\%/yr)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont\strut Global Financial Crisis\par}
  \vspace{1.05mm}
- \tvArchitecturePlot{100}{150}{138.73}{107.97}{119.25}\par
+ \tvArchitecturePlot{138.73}{107.97}{119.25}\par
  \vspace{1.45mm}
  {\fontsize{8.05}{9.85}\selectfont ML traded less. Its GFC drawdown was 48.91\%, versus 44.77\% for SL.\par}
 \end{column}
 \begin{column}{.308\textwidth}
  {\fontsize{10.3}{12}\selectfont\lab{Risk-Parity SCA}\par}
  \vspace{.55mm}
- {\fontsize{8.2}{10}\selectfont\textbf{Cumulative return (\%)}\par}
- {\color{subtle}\fontsize{7.55}{9.0}\selectfont COVID recovery, Mar 2020--Mar 2021\par}
+ {\fontsize{8.2}{10}\selectfont\strut\textbf{Cumulative return (\%)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont\strut COVID recovery, Mar 2020--Mar 2021\par}
  \vspace{1.05mm}
- \tvArchitecturePlot{80}{90}{81.69}{87.17}{84.21}\par
+ \tvArchitecturePlot{81.69}{87.17}{84.21}\par
  \vspace{1.45mm}
  {\fontsize{8.05}{9.85}\selectfont ML gained more in recovery. In the crash it lost 33.17\%, versus 32.51\% for SL.\par}
 \end{column}
 \end{columns}
 \src{Tables 8A and 9A. Turnover and phase returns are descriptive. All panels use \(h=1\) for ML and HY, with \(\gamma_{\rm ML}=0.50\) for HY.\\
 Constrained uses \(\kappa=2\%\), \(\eta=1\). Composite and Risk-Parity use \(\alpha=0.50\).}
-\note{Read within one panel at a time. The three horizontal scales differ because each panel answers a different economic question. Among constrained portfolios, full-sample annualized volatility falls by 0.300 percentage points for ML and 0.134 for HY versus SL, with Holm-adjusted p-values 0.0003 and 0.0029. The same three risk measures pass their adjusted comparisons at the alternative interaction setting of 0.50. Full-sample drawdown, CAGR and Sharpe differences between these architectures do not reach the adjusted five percent threshold. For Composite SCA, annualized one-way turnover during the GFC falls by 30.76 percentage points for ML and 19.48 for HY relative to SL, while SL has the shallower drawdown. For Risk-Parity SCA, ML and HY gained 5.48 and 2.52 percentage points more than SL in the recovery, with slightly deeper crash losses. These comparisons use the same universe and price-covariance estimator within a rule. Trading value changes the profile information used for allocation.}
+\note{All three panels use one percentage-point scale, with the single-layer portfolio at zero. The labels at right are the original metric levels. Equal horizontal distances mean equal percentage-point differences, while the three outcomes have distinct economic meanings. Among constrained portfolios, full-sample annualized volatility falls by 0.300 percentage points for ML and 0.134 for HY versus SL, with Holm-adjusted p-values 0.0003 and 0.0029. The same three risk measures pass their adjusted comparisons at the alternative interaction setting of 0.50. Full-sample drawdown, CAGR and Sharpe differences between these architectures do not reach the adjusted five percent threshold. For Composite SCA, annualized one-way turnover during the GFC falls by 30.76 percentage points for ML and 19.48 for HY relative to SL, while SL has the shallower drawdown. For Risk-Parity SCA, ML and HY gained 5.48 and 2.52 percentage points more than SL in the recovery, with slightly deeper crash losses. These comparisons use the same universe and price-covariance estimator within a rule. Trading value changes the profile information used for allocation.}
 \end{frame}
 \endgroup
 
