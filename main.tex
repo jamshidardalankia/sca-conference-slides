@@ -340,7 +340,7 @@ Conventional & Equal Weight (\(1/N\)) & \href{https://doi.org/10.1093/rfs/hhm075
  & MinVar with linear shrinkage (LW) & \href{https://doi.org/10.1016/S0047-259X(03)00096-4}{Ledoit \& Wolf (2004)}\\
  & MinVar with analytical nonlinear shrinkage (NLS) & \href{https://doi.org/10.1214/19-AOS1921}{Ledoit \& Wolf (2020)}\\[.55mm]
 Structure-aware & Hierarchical Risk Parity (HRP) & \href{https://doi.org/10.3905/jpm.2016.42.4.059}{L\'opez de Prado (2016)}\\
- & PZ Lowest-Centrality and Rho-Dependent (\(k=20\)) & \href{https://doi.org/10.1016/j.jempfin.2016.06.003}{Peralta \& Zareei (2016)}\\[.55mm]
+ & PZ Lowest-Centrality and \(\rho\)-dependent (\(k=20\)) & \href{https://doi.org/10.1016/j.jempfin.2016.06.003}{Peralta \& Zareei (2016)}\\[.55mm]
 Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.org/10.3905/jpm.2010.36.4.060}{Maillard, Roncalli \& Te\"iletche (2010)}\\[-.12mm]
  & {\color{subtle}\fontsize{7.05}{8.5}\selectfont Direct benchmark for Risk-Parity SCA} &
 \end{tabular*}\par}
@@ -405,7 +405,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
    Equal Weight & \(60.40\) & HRP & \(49.22\)\\
    Sample MinVar & \(33.95\) & Covariance ERC & \(54.96\)\\
    LW MinVar & \(34.44\) & PZ Lowest-Centrality & \(60.14\)\\
-   NLS MinVar & \(34.81\) & PZ Rho-Dependent & \(62.30\)\\
+   NLS MinVar & \(34.81\) & PZ \(\rho\)-dependent & \(62.30\)\\
  \end{tabular}\par}
 \vspace{2.6mm}
 {\color{titleink}\bfseries\fontsize{8.4}{10.2}\selectfont
@@ -456,7 +456,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \gfcBar{13.89}{Risk-Parity ML}{58.03}{slideaccent}{\mathrm}
 \gfcBar{10.87}{PZ Lowest-Centrality}{60.14}{benchmarkBar}{\mathrm}
 \gfcBar{7.85}{Equal Weight}{60.40}{benchmarkBar}{\mathrm}
-\gfcBar{4.83}{PZ Rho-Dependent}{62.30}{benchmarkBar}{\mathrm}
+\gfcBar{4.83}{PZ \(\rho\)-dependent}{62.30}{benchmarkBar}{\mathrm}
 \end{picture}\par
 \end{column}
 \begin{column}{.33\textwidth}
@@ -496,7 +496,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
      *{2}{>{\centering\arraybackslash}p{.1675\linewidth}}@{\hspace{.04\linewidth}}
      *{2}{>{\centering\arraybackslash}p{.1675\linewidth}}@{}}
    & \multicolumn{2}{c}{\lab{PZ Lowest-Centrality}}
-   & \multicolumn{2}{c}{\lab{PZ Rho-Dependent}}\\
+   & \multicolumn{2}{c}{\lab{PZ \(\rho\)-dependent}}\\
    \cmidrule(l{.45em}r{.45em}){2-3}\cmidrule(l{.45em}r{.45em}){4-5}
    & Composite SL & Constrained ML & Composite SL & Constrained ML\\
    \midrule
@@ -517,7 +517,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
   All 16 risk reductions meet the Holm-adjusted 5\% threshold in their respective test families.\par}
 \src{Composite SL uses \(\alpha=0.50\). Constrained ML uses \(\kappa=2\%\), \(\eta=1\) and \(h=1\). Both PZ rules select 20 stocks.\\
      Manuscript Tables 5--6 and Online Appendix Sections S10, S13 and S25, with the accompanying gross-return tests.}
-\note{Read across the maximum drawdown row. Against Lowest-Centrality, Composite SL and Constrained ML reduced maximum drawdown by 15.37 and 25.50 percentage points. Against Rho-Dependent the reductions were 17.53 and 27.66 points. Both portfolios also had lower volatility, downside deviation and daily expected shortfall than each benchmark. Each of the sixteen risk differences meets five percent after Holm adjustment across the three architectures within its declared test family. Both portfolios had higher observed compound growth against both PZ rules. The adjusted growth tests meet five percent for Composite SL and give 0.1809 and 0.1482 for Constrained ML. These are comparisons of each portfolio with a benchmark. A comparison between the two SCA portfolios requires a separate paired test. If asked whether the volatility advantage increased from calm conditions, Table 5 reports separate Constrained ML GFC-minus-calm spreads of -6.06 points against Lowest-Centrality and -4.76 points against Rho-Dependent, with adjusted p-values of 0.0003 and 0.0099.}
+\note{Read across the maximum drawdown row. Against Lowest-Centrality, Composite SL and Constrained ML reduced maximum drawdown by 15.37 and 25.50 percentage points. Against \(\rho\)-dependent the reductions were 17.53 and 27.66 points. Both portfolios also had lower volatility, downside deviation and daily expected shortfall than each benchmark. Each of the sixteen risk differences meets five percent after Holm adjustment across the three architectures within its declared test family. Both portfolios had higher observed compound growth against both PZ rules. The adjusted growth tests meet five percent for Composite SL and give 0.1809 and 0.1482 for Constrained ML. These are comparisons of each portfolio with a benchmark. A comparison between the two SCA portfolios requires a separate paired test. If asked whether the volatility advantage increased from calm conditions, Table 5 reports separate Constrained ML GFC-minus-calm spreads of -6.06 points against Lowest-Centrality and -4.76 points against \(\rho\)-dependent, with adjusted p-values of 0.0003 and 0.0099.}
 \end{frame}
 \endgroup
 
@@ -556,7 +556,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
    Equal Weight & \(-33.58\) & HRP & \(-31.75\)\\
    Sample MinVar & \(-36.52\) & Covariance ERC & \(-32.88\)\\
    LW MinVar & \(-36.00\) & PZ Lowest-Centrality & \(-28.35\)\\
-   NLS MinVar & \(-34.71\) & PZ Rho-Dependent & \(-28.35\)\\
+   NLS MinVar & \(-34.71\) & PZ \(\rho\)-dependent & \(-28.35\)\\
   \end{tabular}\par}
  \vspace{2.0mm}
  {\color{titleink}\bfseries\fontsize{8.0}{9.6}\selectfont Both PZ portfolios lost 28.35\%, the smallest crash loss shown.\par}
@@ -587,7 +587,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
    Equal Weight & \(+92.32\) & HRP & \(+75.11\)\\
    Sample MinVar & \(+48.11\) & Covariance ERC & \(+82.91\)\\
    LW MinVar & \(+48.82\) & PZ Lowest-Centrality & \(+77.90\)\\
-   NLS MinVar & \(+47.58\) & PZ Rho-Dependent & \(+77.90\)\\
+   NLS MinVar & \(+47.58\) & PZ \(\rho\)-dependent & \(+77.90\)\\
   \end{tabular}\par}
  \vspace{2.0mm}
  {\color{titleink}\bfseries\fontsize{8.0}{9.6}\selectfont Risk-Parity ML gained 87.17\%, versus 82.91\% for covariance ERC and 92.32\% for Equal Weight.\par}
@@ -643,7 +643,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \covidBars{43.86}{Risk-Parity HY}{-32.71}{84.21}{slideaccent}{\mathrm}{\mathrm}
 \covidBars{41.04}{Covariance ERC}{-32.88}{82.91}{benchmarkBar}{\mathrm}{\mathrm}
 \covidBars{38.22}{PZ Lowest-Centrality}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{35.40}{PZ Rho-Dependent}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{35.40}{PZ \(\rho\)-dependent}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
 \covidBars{32.58}{Risk-Parity SL}{-32.51}{81.69}{slideaccent}{\mathbf}{\mathrm}
 \covidBars{29.76}{HRP}{-31.75}{75.11}{benchmarkBar}{\mathrm}{\mathrm}
 \covidBars{26.94}{Composite ML}{-35.15}{68.31}{slideaccent}{\mathbf}{\mathbf}
@@ -667,31 +667,41 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 
 \endgroup
 
-% Slide 09 - Sensitivity to the volatility allowance
-\begin{frame}{Sensitivity to the volatility allowance}
-\small Constrained ML with $h=1$ and $\eta=0.50$. Only $\kappa$ changes.
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.22}
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Measure & $\kappa=2\%$ & $\kappa=5\%$ \\
+% Slide 09 - Estimated-volatility allowance, with the primary specification for comparison
+\begingroup
+\renewcommand{\sectiontag}{Constrained SCA / Sensitivity}
+\begin{frame}{What changes when the volatility allowance rises?}
+\noindent{\fontsize{8.8}{10.5}\selectfont At formation, Constrained ML allows up to \(1+\kappa\) times the estimated volatility of LW MinVar.\par}
+\vspace{1.1mm}
+{\fontsize{8.4}{10.4}\selectfont
+\setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.16}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c c c @{}}
+ & \textbf{Earlier slides} & \multicolumn{2}{c}{\lab{Allowance comparison}}\\
+\cmidrule(lr){3-4}
+ & Primary & Reference & Wider allowance\\
+Interaction weight \(\eta\) & \(1\) & \(0.50\) & \(0.50\)\\
+Estimated-volatility allowance \(\kappa\) & \(2\%\) & \(2\%\) & \(5\%\)\\
 \midrule
-Mean reduction in full-matrix exposure & 38.63\% & 53.65\% \\
-Effective holdings at formation & 13.56 & 15.14 \\
-\midrule
-GFC maximum drawdown & 34.34\% & 35.65\% \\
-COVID and recovery CAGR & 4.91\% & 9.21\% \\
+\multicolumn{4}{@{}l}{\lab{At portfolio formation}\quad {\color{subtle}Mean over 95 dates}}\\
+Profile crowding reduction vs.\ MinVar (\%) & \(39.48\) & \(38.63\) & \(\mathbf{53.65}\)\\
+Effective number of holdings & \(12.13\) & \(13.56\) & \(15.14\)\\
+\addlinespace[.7mm]
+\multicolumn{4}{@{}l}{\lab{Realized maximum drawdown (\%)}}\\
+Global Financial Crisis & \(34.63\) & \(34.34\) & \(35.65\)\\
+COVID and recovery, full window & \(35.58\) & \(35.14\) & \(34.65\)\\
 \bottomrule
-\end{tabular}
-\end{center}
-
-\small The wider allowance buys more profile diversification. It coincides with a deeper GFC drawdown and higher compound growth over the COVID-and-recovery window.
-\src{Section 5.5 and Figure 6, p. 22. Financial outcomes are descriptive.}
+\end{tabular*}\par}
+\vspace{1.0mm}
+{\fontsize{8.6}{10.5}\selectfont At \(\eta=0.50\), a wider allowance reduced crowding at formation. Realized drawdown deepened in the GFC and eased in the COVID window.\par}
+\src{The COVID window runs from 3 Feb 2020 to 31 Mar 2021. Slide 8 reports cumulative returns in two separate phases.\\
+Manuscript Tables 3 and 8, Figure 6, and Appendix Tables S5--S7. Financial outcomes are descriptive.}
+\note{Start in the first column. This is the Constrained ML portfolio from the GFC and COVID slides. The 34.63 percent GFC drawdown matches slide 6. Moving to the middle column halves the weight on off-diagonal profile interactions while keeping the 2 percent volatility allowance. Compare the middle and right columns to isolate the allowance change from 2 to 5 percent. The cap is relative to estimated volatility of the matching LW minimum-variance portfolio at formation. Crowding is evaluated on the full ML matrix at each date relative to the same reference. For the primary portfolio, the COVID crash-phase return was minus 35.06 percent and the recovery-phase return was plus 56.71 percent. Here 35.58 percent is peak-to-trough maximum drawdown over the complete COVID window, which includes 12 pre-crash trading dates. For the two sensitivity columns, whole-window COVID CAGR was 4.91 and 9.21 percent, respectively. Figure 6 and Appendix Table S7 report the other architectures and allowances.}
 \end{frame}
+\endgroup
 
-% Slide 10 - What does trading value add?
+% Slide 10 - Trading-value information, table alternative
+\begingroup
+\renewcommand{\sectiontag}{Information architectures / Table}
 \begin{frame}{What does trading value add?}
 \small Constrained SCA with the same universe, covariance estimate, $2\%$ allowance and full interaction weight ($\eta=1$). Only the structural architecture changes.
 
@@ -718,6 +728,68 @@ Maximum drawdown                & 37.25 & 35.58 & 36.41 & 0.7863 & 0.7863 \\
 \src{Table 8A, p. 24. Holm adjustment across architecture pairs within each metric. $h=1$, hybrid weight $\gamma=0.50$.}
 \end{frame}
 
+% Slide 10 - Trading-value information, chart alternative
+\renewcommand{\sectiontag}{Information architectures / Chart}
+% Each dot is positioned on its panel's labeled numerical scale. Tables 8A and 9A.
+\newcommand{\tvPlotRow}[5]{%
+  \pgfmathsetmacro{\tvDotX}{6.5+25*((#3)-(\tvAxisMin))/((\tvAxisMax)-(\tvAxisMin))}%
+  \put(0,#1){\makebox(0,0)[l]{\fontsize{7.8}{9.4}\selectfont #2}}%
+  \put(6.5,#1){\color{hairline}\linethickness{.40pt}\line(1,0){25}}%
+  \put(\tvDotX,#1){\color{#4}\circle*{1.8}}%
+  \put(44.1,#1){\makebox(0,0)[r]{\fontsize{8.6}{10.0}\selectfont \(#5{#3}\)}}}
+\newcommand{\tvArchitecturePlot}[5]{%
+  \begingroup\def\tvAxisMin{#1}\def\tvAxisMax{#2}\setlength{\unitlength}{1mm}%
+  \begin{picture}(44.5,27.5)
+    \tvPlotRow{24.6}{SL}{#3}{subtle}{\mathrm}
+    \tvPlotRow{16.6}{ML}{#4}{slideaccent}{\mathbf}
+    \tvPlotRow{8.6}{HY}{#5}{titleink}{\mathrm}
+    \put(6.5,4.35){\color{subtle}\linethickness{.38pt}\line(1,0){25}}%
+    \put(6.5,3.55){\color{subtle}\linethickness{.38pt}\line(0,1){1.55}}%
+    \put(31.5,3.55){\color{subtle}\linethickness{.38pt}\line(0,1){1.55}}%
+    \put(6.5,.8){\makebox(0,0){\color{subtle}\fontsize{6.75}{8.0}\selectfont #1}}%
+    \put(31.5,.8){\makebox(0,0){\color{subtle}\fontsize{6.75}{8.0}\selectfont #2}}%
+  \end{picture}\endgroup}
+\begin{frame}[noframenumbering]{What does trading value add?}
+\noindent{\fontsize{8.9}{10.6}\selectfont Each panel compares SL, ML and HY under the same allocation rule and price covariance estimate.\par}
+\vspace{1.40mm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.308\textwidth}
+ {\fontsize{10.3}{12}\selectfont\lab{Constrained SCA}\par}
+ \vspace{.55mm}
+ {\fontsize{8.2}{10}\selectfont\textbf{Annualized volatility (\%)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont Full sample, 2002--2025\par}
+ \vspace{1.05mm}
+ \tvArchitecturePlot{14.5}{15.0}{14.886}{14.586}{14.752}\par
+ \vspace{1.45mm}
+ {\fontsize{8.05}{9.85}\selectfont Volatility, downside deviation and daily ES95 were lower for ML and HY than for SL (Holm \(p<0.05\)).\par}
+\end{column}
+\begin{column}{.308\textwidth}
+ {\fontsize{10.3}{12}\selectfont\lab{Composite SCA}\par}
+ \vspace{.55mm}
+ {\fontsize{8.2}{10}\selectfont\textbf{One-way turnover (\%/yr)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont Global Financial Crisis\par}
+ \vspace{1.05mm}
+ \tvArchitecturePlot{100}{150}{138.73}{107.97}{119.25}\par
+ \vspace{1.45mm}
+ {\fontsize{8.05}{9.85}\selectfont ML traded less. Its GFC drawdown was 48.91\%, versus 44.77\% for SL.\par}
+\end{column}
+\begin{column}{.308\textwidth}
+ {\fontsize{10.3}{12}\selectfont\lab{Risk-Parity SCA}\par}
+ \vspace{.55mm}
+ {\fontsize{8.2}{10}\selectfont\textbf{Cumulative return (\%)}\par}
+ {\color{subtle}\fontsize{7.55}{9.0}\selectfont COVID recovery, Mar 2020--Mar 2021\par}
+ \vspace{1.05mm}
+ \tvArchitecturePlot{80}{90}{81.69}{87.17}{84.21}\par
+ \vspace{1.45mm}
+ {\fontsize{8.05}{9.85}\selectfont ML gained more in recovery. In the crash it lost 33.17\%, versus 32.51\% for SL.\par}
+\end{column}
+\end{columns}
+\src{Tables 8A and 9A. Turnover and phase returns are descriptive. All panels use \(h=1\) for ML and HY, with \(\gamma_{\rm ML}=0.50\) for HY.\\
+Constrained uses \(\kappa=2\%\), \(\eta=1\). Composite and Risk-Parity use \(\alpha=0.50\).}
+\note{Read within one panel at a time. The three horizontal scales differ because each panel answers a different economic question. Among constrained portfolios, full-sample annualized volatility falls by 0.300 percentage points for ML and 0.134 for HY versus SL, with Holm-adjusted p-values 0.0003 and 0.0029. The same three risk measures pass their adjusted comparisons at the alternative interaction setting of 0.50. Full-sample drawdown, CAGR and Sharpe differences between these architectures do not reach the adjusted five percent threshold. For Composite SCA, annualized one-way turnover during the GFC falls by 30.76 percentage points for ML and 19.48 for HY relative to SL, while SL has the shallower drawdown. For Risk-Parity SCA, ML and HY gained 5.48 and 2.52 percentage points more than SL in the recovery, with slightly deeper crash losses. These comparisons use the same universe and price-covariance estimator within a rule. Trading value changes the profile information used for allocation.}
+\end{frame}
+\endgroup
+
 % Slide 11 - Full-sample growth and loss control
 \begin{frame}{Full-sample growth and loss control}
 \begin{columns}[T,onlytextwidth]
@@ -741,7 +813,7 @@ NLS MinVar       &  7.15 & 14.35 & 35.17 \\
 HRP              &  9.04 & 17.04 & 49.22 \\
 Covariance ERC   &  9.07 & 18.86 & 54.96 \\
 PZ Lowest        & 10.37 & 18.14 & 60.14 \\
-PZ Rho-Dependent & 10.93 & 19.66 & 62.30 \\
+PZ \(\rho\)-dependent & 10.93 & 19.66 & 62.30 \\
 Equal Weight     &  8.92 & 21.62 & 60.40 \\
 \bottomrule
 \end{tabular}
@@ -848,7 +920,7 @@ Risk-Parity ML held more effective assets and traded less than Composite ML. It 
    NLS MinVar & \(-1.47\) & \(1.15\) & \(0.04\)\\
    HRP & \(19.96\) & \(1.30\) & \(10.75\)\\
    PZ Lowest-Centrality & \(35.57\) & \(61.23\) & \(49.88\)\\
-   PZ Rho-Dependent & \(-60.31\) & \(-24.86\) & \(-36.30\)\\
+   PZ \(\rho\)-dependent & \(-60.31\) & \(-24.86\) & \(-36.30\)\\
    Covariance ERC & \(22.18\) & \(7.77\) & \(15.89\)\\
    \bottomrule
   \end{tabular}\par}
@@ -860,7 +932,7 @@ Risk-Parity ML held more effective assets and traded less than Composite ML. It 
 \end{column}
 \end{columns}
 \src{Composite and Risk-Parity are uncapped (\(\alpha=0.50\)). Manuscript \S5.1, Appendix Tables S4--S6, S126. Other rows use archived weights and matrices.}
-\note{Compare the portfolios within a column on the same full matrix using matching LW minimum variance without the added optimizer ridge as the denominator at each formation. The LW benchmark includes the additional numerical ridge and rounds to zero in all columns. The darker figures in the Composite row are the largest descriptive reductions in each column. These comparisons use 95 formation dates. Composite and Risk-Parity use alpha 0.50 and have no explicit volatility cap. Fixed Constrained SCA has kappa 2 percent and the interaction weight shown. Adaptive Constrained SCA uses a date-specific allowance with upper bound 2 percent and rho 0.50. All ML matrices use a one-day source horizon and HY gives that ML matrix one-half weight. Minimum HHI and Diagonal use the same fixed 2 percent allowance. HHI-constrained MinVar uses the concentration ceiling set by the corresponding fixed Constrained allocation at eta 1. Both PZ rules select 20 stocks. The table reports descriptive exposure reductions at formation. The Holm tests in S126 concern the specific matched constrained comparisons. They do not supply inference for this entire table.}
+\note{Compare the portfolios within a column on the same full matrix using matching LW minimum variance without the added optimizer ridge as the denominator at each formation. The LW benchmark includes the additional numerical ridge and rounds to zero in all columns. The darker figures in the Composite row are the largest descriptive reductions in each column. These comparisons use 95 formation dates. Composite and Risk-Parity use alpha 0.50 and have no explicit volatility cap. Fixed Constrained SCA has kappa 2 percent and the interaction weight shown. Adaptive Constrained SCA uses a date-specific allowance with upper bound 2 percent and \(\rho=0.50\). All ML matrices use a one-day source horizon and HY gives that ML matrix one-half weight. Minimum HHI and Diagonal use the same fixed 2 percent allowance. HHI-constrained MinVar uses the concentration ceiling set by the corresponding fixed Constrained allocation at eta 1. Both PZ rules select 20 stocks. The table reports descriptive exposure reductions at formation. The Holm tests in S126 concern the specific matched constrained comparisons. They do not supply inference for this entire table.}
 \end{frame}
 
 \section{Structural marginal costs and risk contributions}
