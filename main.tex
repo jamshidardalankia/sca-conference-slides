@@ -25,10 +25,7 @@
  {\color{hairline}\hrule height .38pt}\vspace{1.25mm}}
 \newcommand{\scaFooterTextFont}{\fontsize{5.5}{6.3}\selectfont}
 \newcommand{\scaFooterPageFont}{\fontsize{6.4}{7}\selectfont}
-\newcommand{\scaFooterLink}{}
-\newcommand{\scaPageLink}[2]{\renewcommand{\scaFooterLink}{%
-  {\color{slideaccent}\sffamily\bfseries\fontsize{6.65}{7.7}\selectfont\hyperlink{#1}{#2}}\hspace{4mm}}}
-\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\scaFooterTextFont \insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil\scaFooterLink{\color{slideaccent}\scaFooterPageFont \insertframenumber}\hskip7.0mm}\vskip2.1mm}
+\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\scaFooterTextFont \insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil{\color{slideaccent}\scaFooterPageFont \insertframenumber}\hskip7.0mm}\vskip2.1mm}
 \newcommand{\src}[1]{\par\vfill\vspace{.7mm}{\raggedright\color{subtle}\fontsize{5.7}{7.0}\selectfont #1\par}}
 \newcommand{\lab}[1]{{\color{slideaccent}\sffamily\bfseries #1}}
 \newcommand{\headrow}[1]{\par\noindent\lab{#1}\par\vspace{.6mm}}
@@ -328,6 +325,13 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \end{frame}
 \endgroup
 \endgroup
+
+% Show a navigation link next to the number only on the five chart/table pairs.
+\newcommand{\scaPageLink}[2]{%
+  \let\scaUnlinkedFrameNumber\insertframenumber
+  \renewcommand{\insertframenumber}{%
+    {\sffamily\bfseries\fontsize{6.65}{7.7}\selectfont\hyperlink{#1}{#2}}\hspace{4mm}%
+    \scaUnlinkedFrameNumber}}
 
 % Shared by the main charts and the corresponding appendix tables.
 \newcommand{\scaSwatch}[1]{{\color{#1}\rule{2.8mm}{1.55mm}}}
