@@ -141,7 +141,7 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 {\lab{\fontsize{9.6}{10.8}\selectfont Single-Layer (SL)}\par}
 \vspace{.55mm}
 {\fontsize{7.15}{9}\selectfont
-Keep the positive part of stock \(i\)'s return correlation with each of the \(N\) stocks.\par}
+$\rho^P_{ik} \ge 0$\par}
 \vspace{.8mm}
 {\fontsize{7.85}{9.85}\selectfont
 \(z_i^P=\bigl([\rho^P_{ik}]^+\bigr)_{k=1}^{N}\)\par}
@@ -171,7 +171,7 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 \noindent
 {\lab{\fontsize{9.6}{10.8}\selectfont Hybrid (HY)}}\hspace{2.8mm}
 {\fontsize{8.7}{10.7}\selectfont
-\(\widetilde S^{\HY}=\tfrac12\widetilde S^{\SL}+\tfrac12\widetilde S^{\ML}\)}\hspace{2.8mm}
+\( S^{\HY}=\tfrac12 S^{\SL}+\tfrac12 S^{\ML}\)}\hspace{2.8mm}
 {\fontsize{7.05}{9}\selectfont The baseline averages the two trace-normalized matrices.}
 \note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
 \end{frame}
