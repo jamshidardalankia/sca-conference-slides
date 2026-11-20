@@ -117,7 +117,7 @@
 {\color{hairline}\hrule height .45pt}\vspace{1.4mm}
 {\color{slideaccent}\rmfamily\bfseries\fontsize{8.75}{11.25}\selectfont
 Can using correlation-profile similarity as an additional diversification criterion reduce portfolio drawdowns during systemic stress?\par}
-\note{Pause at the question mark, then point to the two highlighted pairs.
+\note{Mantegna mapped correlations among stock returns into a tree. Onnela and coauthors located Markowitz portfolio holdings on that tree. Peralta and Zareei used stock centrality for portfolio selection. We ask how much capital a portfolio assigns to stocks with similar correlation profiles. Pause at the question mark, then point to the two highlighted pairs.
 These two pairs have the same direct correlation. What if one pair shares many more neighbors?}
 \end{frame}
 
@@ -146,10 +146,12 @@ These two pairs have the same direct correlation. What if one pair shares many m
 {\color{subtle}\fontsize{6.8}{8.45}\selectfont
 For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\phi}_i,\boldsymbol{\phi}_j\rangle\) and \(\sum_i w_i\boldsymbol{\phi}_i\) is the portfolio profile.\par}
 \vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{1.05mm}
-% Every input profile uses the same componentwise positive part.
-{\centering\fontsize{8.65}{10.7}\selectfont
-\(z_i^{\ell}=\bigl([\rho_{ik}^{\ell}]^{+}\bigr)_{k=1}^{N},\qquad
-  [x]^{+}=\max\{x,0\},\qquad \ell\in\{P,\tv\}.\)\par}
+% Layer inputs and the common profile definition at a formation date.
+{\centering\fontsize{8.15}{10.35}\selectfont
+\(x_i^P=\log(1+r_i),\quad x_i^{\tv}=\Delta\log(\tv_i),\qquad
+  \rho_{ik}^{\ell}=\widehat{\mathrm{Corr}}_{\ell}(x_i^{\ell},x_k^{\ell}),\quad
+  z_i^{\ell}=\bigl(\max\{\rho_{ik}^{\ell},0\}\bigr)_{k=1}^{N},\quad
+  \ell\in\{P,\tv\}.\)\par}
 \vspace{1.75mm}
 
 \begin{columns}[T,onlytextwidth]
@@ -163,9 +165,7 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 \begin{column}{.507\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Multilayer (ML)}\hfill
 {\color{subtle}\fontsize{6.2}{7.7}\selectfont \href{https://doi.org/10.1371/journal.pone.0330372}{Building on Ardalankia et al.\ (2025)}}\par}
-\vspace{.55mm}
-{\fontsize{7.15}{9}\selectfont Form \(z_i^{\tv}\) from daily log changes in trading value (TV).\par}
-\vspace{.55mm}
+\vspace{1.65mm}
 {\fontsize{7.85}{9.65}\selectfont
 \begin{tabular}{@{}l@{\hspace{2mm}}l@{}}
 \(K_{ij}^{\tv}=\tfrac{1}{N}\langle z_i^{\tv},z_j^{\tv}\rangle\)
@@ -181,9 +181,9 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 \noindent
 {\lab{\fontsize{9.6}{10.8}\selectfont Hybrid (HY)}}\hspace{2.8mm}
 {\fontsize{8.7}{10.7}\selectfont
-\(\widetilde S^{\HY}=\tfrac12\widetilde S^{\SL}+\tfrac12\widetilde S^{\ML}\)}\hspace{2.8mm}
-{\fontsize{7.05}{9}\selectfont The baseline averages the two trace-normalized matrices.}
-\note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. On both the price-return and trading-value layers, retain positive correlations and set negative ones to zero. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
+\(S^{\HY}=\tfrac12 S^{\SL}+\tfrac12 S^{\ML}\)}\hspace{2.8mm}
+{\fontsize{7.05}{9}\selectfont Here SL and ML are the fitted, trace-normalized matrices.}
+\note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Price-layer correlations come from the Ledoit--Wolf covariance of daily log returns. Trading value uses sample Pearson correlations of daily log changes in trading value. On both layers retain positive correlations and set the other entries to zero. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the Hybrid equation each input has already been fitted and separately scaled to trace N. Once I have the structural matrix, how should it affect portfolio weights?}
 \end{frame}
 
 \renewcommand{\sectiontag}{Allocation rules}
@@ -277,7 +277,7 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 \renewcommand{\scaFooterPageFont}{\fontsize{5.5}{6.45}\selectfont}
 \begin{frame}{Data, rolling windows and benchmarks}
 \vspace*{-2.5mm}
-\noindent{\lab{\fontsize{10.1}{11.7}\selectfont Point-in-time S\&P 500 universe}}\hfill
+\noindent{\lab{\fontsize{10.1}{11.7}\selectfont Point-in-time S\&P 500 membership}}\hfill
 {\color{subtle}\fontsize{7.35}{9.1}\selectfont CRSP daily returns and trading value}\par
 \vspace{.5mm}
 {\fontsize{7.75}{9.5}\selectfont
@@ -323,7 +323,7 @@ Out of sample, 8 Jan 2002 -- 20 Oct 2025\quad\textperiodcentered\quad
 \setlength{\tabcolsep}{0pt}
 \noindent\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
 \lab{Benchmark family} & \lab{Portfolio rule} & \lab{Reference}\\[.38mm]
-Conventional & Equal Weight (\(1/N\)), out-of-sample benchmark & \href{https://doi.org/10.1093/rfs/hhm075}{DeMiguel, Garlappi \& Uppal (2009)}\\
+Conventional & Equal Weight (\(1/N\)) & \href{https://doi.org/10.1093/rfs/hhm075}{DeMiguel, Garlappi \& Uppal (2009)}\\
  & Sample MinVar & \href{https://doi.org/10.1111/j.1540-6261.1952.tb01525.x}{Markowitz (1952)}\\
  & MinVar with linear shrinkage (LW) & \href{https://doi.org/10.1016/S0047-259X(03)00096-4}{Ledoit \& Wolf (2004)}\\
  & MinVar with analytical nonlinear shrinkage (NLS) & \href{https://doi.org/10.1214/19-AOS1921}{Ledoit \& Wolf (2020)}\\[.55mm]
