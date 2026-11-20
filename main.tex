@@ -521,7 +521,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \end{frame}
 \endgroup
 
-% Slide 08 - Which GFC differences hold up against both PZ rules?
+% Slide 08 - Within-GFC differences against the two PZ rules, table alternative
 \begingroup
 \definecolor{titleink}{HTML}{66253D}
 \definecolor{slideaccent}{HTML}{9E2E4C}
@@ -529,7 +529,19 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \definecolor{subtle}{HTML}{564E50}
 \definecolor{hairline}{HTML}{DDD5D7}
 \usebeamercolor[fg]{normal text}
-\renewcommand{\sectiontag}{Global Financial Crisis}
+\renewcommand{\sectiontag}{Global Financial Crisis / Table}
+% Both views use the same reported estimates. Within each PZ pair the
+% order is Composite SL, then Constrained ML.
+\newcommand{\pzDrawdown}[1]{#1{-15.37}{-25.50}{-17.53}{-27.66}}
+\newcommand{\pzVolatility}[1]{#1{-4.33}{-7.94}{-6.60}{-10.21}}
+\newcommand{\pzDownside}[1]{#1{-3.79}{-6.46}{-5.48}{-8.15}}
+\newcommand{\pzShortfall}[1]{#1{-0.70}{-1.29}{-0.87}{-1.46}}
+\newcommand{\pzGrowth}[1]{#1{+13.30}{+14.53}{+15.05}{+16.27}}
+\newcommand{\pzGrowthP}[1]{#1{0.0405}{0.1809}{0.0315}{0.1482}}
+\newcommand{\pzCells}[4]{\(#1\) & \(#2\) & \(#3\) & \(#4\)}
+\newcommand{\pzBoldCells}[4]{\(\mathbf{#1}\) & \(\mathbf{#2}\) & \(\mathbf{#3}\) & \(\mathbf{#4}\)}
+\newcommand{\pzGrowthPCells}[4]{{\color{titleink}\(\mathbf{#1}\)} & {\color{subtle}\(#2\)}
+                               & {\color{titleink}\(\mathbf{#3}\)} & {\color{subtle}\(#4\)}}
 \begin{frame}{Which GFC differences hold up against both PZ rules?}
 \vspace*{-1.0mm}
 {\fontsize{8.2}{10}\selectfont SCA minus the named PZ benchmark, in percentage points\hfill
@@ -546,16 +558,14 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
    \cmidrule(l{.45em}r{.45em}){2-3}\cmidrule(l{.45em}r{.45em}){4-5}
    & Composite SL & Constrained ML & Composite SL & Constrained ML\\
    \midrule
-   \textbf{Maximum drawdown} & \(\mathbf{-15.37}\) & \(\mathbf{-25.50}\)
-                              & \(\mathbf{-17.53}\) & \(\mathbf{-27.66}\)\\
-   Annualized volatility         & \(-4.33\) & \(-7.94\) & \(-6.60\) & \(-10.21\)\\
-   Annualized downside deviation & \(-3.79\) & \(-6.46\) & \(-5.48\) & \(-8.15\)\\
-   Daily expected shortfall (95\%) & \(-0.70\) & \(-1.29\) & \(-0.87\) & \(-1.46\)\\
+   \textbf{Maximum drawdown} & \pzDrawdown{\pzBoldCells}\\
+   Annualized volatility         & \pzVolatility{\pzCells}\\
+   Annualized downside deviation & \pzDownside{\pzCells}\\
+   Daily expected shortfall (95\%) & \pzShortfall{\pzCells}\\
    \midrule
-   Compound annual growth & \(+13.30\) & \(+14.53\) & \(+15.05\) & \(+16.27\)\\[-.2ex]
+   Compound annual growth & \pzGrowth{\pzCells}\\[-.2ex]
    {\color{subtle}\fontsize{7.2}{9.2}\selectfont\hspace{1.8mm}Holm-adjusted \(p\) for growth}
-      & {\color{titleink}\(\mathbf{0.0405}\)} & {\color{subtle}\(0.1809\)}
-      & {\color{titleink}\(\mathbf{0.0315}\)} & {\color{subtle}\(0.1482\)}\\
+      & \pzGrowthP{\pzGrowthPCells}\\
    \bottomrule
  \end{tabular}\par}
 \vspace{2.4mm}
@@ -564,6 +574,63 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \src{Composite SL uses \(\alpha=0.50\). Constrained ML uses \(\kappa=2\%\), \(\eta=1\) and \(h=1\). Both PZ rules select 20 stocks.\\
      Manuscript Tables 5--6 and Online Appendix Sections S10, S13 and S25, with the accompanying gross-return tests.}
 \note{Read across the maximum drawdown row. Against Lowest-Centrality, Composite SL and Constrained ML reduced maximum drawdown by 15.37 and 25.50 percentage points. Against \(\rho\)-dependent the reductions were 17.53 and 27.66 points. Both portfolios also had lower volatility, downside deviation and daily expected shortfall than each benchmark. Each of the sixteen risk differences meets five percent after Holm adjustment across the three architectures within its declared test family. Both portfolios had higher observed compound growth against both PZ rules. The adjusted growth tests meet five percent for Composite SL and give 0.1809 and 0.1482 for Constrained ML. These are comparisons of each portfolio with a benchmark. A comparison between the two SCA portfolios requires a separate paired test. If asked whether the volatility advantage increased from calm conditions, Table 5 reports separate Constrained ML GFC-minus-calm spreads of -6.06 points against Lowest-Centrality and -4.76 points against \(\rho\)-dependent, with adjusted p-values of 0.0003 and 0.0099.}
+\end{frame}
+
+% Slide 08 - Within-GFC differences against the two PZ rules, chart alternative
+\renewcommand{\sectiontag}{Global Financial Crisis / Chart}
+\definecolor{pzTeal}{HTML}{196A70}
+\newcommand{\pzCircle}{\tikz[baseline=-.45ex]\fill[slideaccent] (0,0) circle[radius=.77mm];}
+\newcommand{\pzSquare}{\tikz[baseline=-.45ex]\fill[pzTeal] (-.73mm,-.73mm) rectangle (.73mm,.73mm);}
+% Each panel has the same signed scale. Put labels beyond the endpoints
+% and offset the two series vertically so that the small ES95 gaps stay legible.
+\newcommand{\pzPlotRow}[6]{%
+  \node[anchor=west] at (0,#1) {#2};
+  \foreach \origin/\comp/\constr in {65/#3/#4,120/#5/#6}{
+    \begin{scope}[shift={(\origin,#1)}]
+      \draw[slideaccent!65,line width=.62pt] (0,1.15)--({.83*\comp},1.15);
+      \draw[pzTeal!65,line width=.62pt] (0,-1.15)--({.83*\constr},-1.15);
+      \fill[slideaccent] ({.83*\comp},1.15) circle[radius=.72mm];
+      \fill[pzTeal] ({.83*\constr-.68},-1.83) rectangle ({.83*\constr+.68},-.47);
+      \ifdim\comp pt<0pt
+        \node[value label,anchor=east,text=slideaccent] at ({.83*\comp-1.25},1.15) {\(\comp\)};
+        \node[value label,anchor=east,text=pzTeal] at ({.83*\constr-1.25},-1.15) {\(\constr\)};
+      \else
+        \node[value label,anchor=west,text=slideaccent] at ({.83*\comp+1.25},1.15) {\(\comp\)};
+        \node[value label,anchor=west,text=pzTeal] at ({.83*\constr+1.25},-1.15) {\(\constr\)};
+      \fi
+    \end{scope}}}
+\newcommand{\pzPlotGrowthP}[4]{%
+  \node at (61,-5) {\pzCircle\ \(\mathbf{#1}\)\qquad \pzSquare\ \(#2\)};
+  \node at (116,-5) {\pzCircle\ \(\mathbf{#3}\)\qquad \pzSquare\ \(#4\)};}
+\begin{frame}[noframenumbering]{Which GFC differences hold up against both PZ rules?}
+\vspace*{-1.1mm}
+{\fontsize{8.05}{9.7}\selectfont SCA minus PZ (percentage points), July 2007--June 2009\hfill
+ \pzCircle\ Composite SL\quad \pzSquare\ Constrained ML\par}
+\vspace{1.0mm}
+\noindent\begin{tikzpicture}[x=1mm,y=1mm,
+  every node/.style={inner sep=0pt,text=ink,font=\fontsize{7.55}{8.5}\selectfont},
+  value label/.style={fill=white,inner xsep=.2mm,font=\fontsize{7.25}{8.1}\selectfont}]
+  \path[use as bounding box] (0,-7) rectangle (145,45.7);
+  \foreach \origin/\benchmark in {65/PZ Lowest-Centrality,120/PZ \(\rho\)-dependent}{
+    \node[text=titleink,font=\bfseries\fontsize{8.9}{10}\selectfont] at ({\origin-4.15},44) {\benchmark};
+    \foreach \tick in {-30,-20,-10,0,10,20}{
+      \draw[hairline,line width=.29pt] ({\origin+.83*\tick},4)--({\origin+.83*\tick},40.4);
+      \node[text=subtle,font=\fontsize{6.25}{7.1}\selectfont] at ({\origin+.83*\tick},1.9)
+        {\(\ifnum\tick>0 +\fi\tick\)};}
+    \draw[subtle!80,line width=.53pt] (\origin,4)--(\origin,40.4);}
+  \pzDrawdown{\pzPlotRow{37.9}{\textbf{Maximum drawdown}}}
+  \pzVolatility{\pzPlotRow{30.5}{Annualized volatility}}
+  \pzDownside{\pzPlotRow{23.1}{Annualized downside deviation}}
+  \pzShortfall{\pzPlotRow{15.7}{Daily expected shortfall (95\%)}}
+  \pzGrowth{\pzPlotRow{7.0}{\textbf{Compound annual growth}}}
+  \node[anchor=west,text=subtle] at (0,-5) {Holm-adjusted \(p\) for growth};
+  \pzGrowthP{\pzPlotGrowthP}
+\end{tikzpicture}\par
+\vspace{.4mm}
+{\color{titleink}\bfseries\fontsize{8.15}{9.8}\selectfont
+ All 16 risk reductions meet the Holm-adjusted 5\% threshold. Only Composite SL meets it for growth.\par}
+\src{Manuscript Tables 5--6 and Online Appendix S10, S13 and S25. Tests are adjusted within their respective families.}
+\note{Each panel compares two SCA portfolios with one PZ rule. Left of zero means a smaller risk measure. Right of zero means a larger growth rate. Constrained ML shows the larger observed risk reductions. Both growth estimates are positive against each benchmark, and only Composite SL clears the adjusted five-percent threshold against both.}
 \end{frame}
 \endgroup
 
@@ -983,6 +1050,36 @@ In the GFC, Composite SL improved growth and four loss measures relative to both
 Risk-Parity ML held more effective assets and traded less than Composite ML. It gained more than covariance ERC in the COVID recovery, with higher volatility over the full sample.
 \src{Sections 5.1--5.8; Tables 3, 6, 7 and 10.\hfill\texttt{ardalankia@vt.edu}}
 \end{frame}
+
+% Slide 14 - Questions and contact information
+\begingroup
+\renewcommand{\sectiontag}{Discussion}
+% Each page of contact-qr.pdf contains one code. A white border leaves
+% at least four clear modules around even the lowest-density symbol.
+\newcommand{\contactQR}[3]{%
+  \begin{minipage}[t]{.237\textwidth}
+    \centering
+    {\setlength{\fboxsep}{4.2mm}\href{#3}{\colorbox{white}{\includegraphics[page=#1,width=25mm]{contact-qr.pdf}}}}\par
+    \vspace{.8mm}
+    \href{#3}{{\color{titleink}\bfseries\fontsize{9.3}{11}\selectfont #2}}\par
+  \end{minipage}}
+\begin{frame}[label=questions]{Questions?}
+\centering
+\vspace*{2.2mm}
+{\rmfamily\bfseries\color{titleink}\fontsize{14.2}{16.5}\selectfont\insertauthor\par}
+\vspace{.8mm}
+{\fontsize{8.6}{10.5}\selectfont Department of Economics, Virginia Tech\par}
+\vspace{1.0mm}
+{\fontsize{10.1}{12.0}\selectfont\href{mailto:ardalankia@vt.edu}{\texttt{ardalankia@vt.edu}}\par}
+\vspace{4mm}
+\noindent\hbox to \textwidth{\hfil
+  \contactQR{1}{Email}{mailto:ardalankia@vt.edu}\hfil
+  \contactQR{2}{LinkedIn}{https://www.linkedin.com/in/jamshid-ardalankia-3039581a9/}\hfil
+  \contactQR{3}{Google Scholar}{https://scholar.google.com/citations?user=0sMvul4AAAAJ}\hfil
+  \contactQR{4}{Website}{https://jamshidardalankia.github.io/}\hfil
+}\par
+\end{frame}
+\endgroup
 
 \renewcommand{\appendixname}{Appendix}
 \appendix

@@ -2,7 +2,7 @@
 
 Work with the author in Persian. Write slide text in English. This is a 15-minute conference talk. The main results start with the Global Financial Crisis immediately after the empirical design. The formation-date profile-crowding comparison belongs in the appendix. Table and chart alternatives for the same result share a slide number.
 
-Edit `main.tex` directly. Each frame starts with a numbered slide comment. Respect the author's most recent edits and work on the requested slide. The author previews the slides in Overleaf, which compiles `main.tex` with pdfLaTeX. The figures used at compilation are `network.pdf` and `covid.pdf`.
+Edit `main.tex` directly. Each frame starts with a numbered slide comment. Respect the author's most recent edits and work on the requested slide. The author previews the slides in Overleaf, which compiles `main.tex` with pdfLaTeX. The figures used at compilation are `network.pdf`, `covid.pdf` and `contact-qr.pdf`.
 
 For a change to an equation, specification or empirical claim, check `references/SCA_manuscript.pdf` or `references/SCA_online_appendix_V85.pdf`. Use the reported numbers and their comparison, period, metric and inference status.
 
