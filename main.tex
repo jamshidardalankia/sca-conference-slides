@@ -4,27 +4,29 @@
 \usefonttheme{professionalfonts}
 \hypersetup{pdftitle={Structural Crowding Allocation},pdfauthor={Jamshid Ardalankia},pdfsubject={Correlation-profile diversification under systemic stress}}
 \definecolor{blueink}{HTML}{184F86}
+\colorlet{slideaccent}{blueink}
 \definecolor{ink}{HTML}{202B34}
+\colorlet{titleink}{ink}
 \definecolor{subtle}{HTML}{4B5C68}
 \definecolor{hairline}{HTML}{CBD6DD}
 \setbeamercolor{normal text}{fg=ink,bg=white}
-\setbeamercolor{structure}{fg=blueink}
+\setbeamercolor{structure}{fg=slideaccent}
 \setbeamersize{text margin left=7.2mm,text margin right=7.0mm}
 \setbeamerfont{normal text}{size=\fontsize{8.0}{10.2}}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{background canvas}{\color{blueink}\rule{1.08mm}{\paperheight}}
+\setbeamertemplate{background canvas}{\color{slideaccent}\rule{1.08mm}{\paperheight}}
 \setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries,size=\fontsize{14.2}{16.2}}
-\setbeamercolor{frametitle}{fg=ink}
+\setbeamercolor{frametitle}{fg=titleink}
 \newcommand{\sectiontag}{Motivation}
 \setbeamertemplate{frametitle}{\nointerlineskip\vspace*{3.3mm}%
- {\color{blueink}\sffamily\bfseries\fontsize{6.0}{7.1}\selectfont\MakeUppercase{\sectiontag}\par}%
- \vspace{1.15mm}{\usebeamerfont{frametitle}\color{ink}\insertframetitle\par}\vspace{1.25mm}%
+ {\color{slideaccent}\sffamily\bfseries\fontsize{6.0}{7.1}\selectfont\MakeUppercase{\sectiontag}\par}%
+ \vspace{1.15mm}{\usebeamerfont{frametitle}\color{titleink}\insertframetitle\par}\vspace{1.25mm}%
  {\color{hairline}\hrule height .38pt}\vspace{1.25mm}}
 \newcommand{\scaFooterTextFont}{\fontsize{5.5}{6.3}\selectfont}
 \newcommand{\scaFooterPageFont}{\fontsize{6.4}{7}\selectfont}
-\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\scaFooterTextFont \insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil{\color{blueink}\scaFooterPageFont \insertframenumber}\hskip7.0mm}\vskip2.1mm}
+\setbeamertemplate{footline}{\leavevmode\hbox to\paperwidth{\hskip7.2mm{\color{subtle}\scaFooterTextFont \insertauthor\hspace{1.25mm}/\hspace{1.25mm}Structural Crowding Allocation}\hfil{\color{slideaccent}\scaFooterPageFont \insertframenumber}\hskip7.0mm}\vskip2.1mm}
 \newcommand{\src}[1]{\par\vfill\vspace{.7mm}{\raggedright\color{subtle}\fontsize{5.7}{7.0}\selectfont #1\par}}
-\newcommand{\lab}[1]{{\color{blueink}\sffamily\bfseries #1}}
+\newcommand{\lab}[1]{{\color{slideaccent}\sffamily\bfseries #1}}
 \newcommand{\headrow}[1]{\par\noindent\lab{#1}\par\vspace{.6mm}}
 \newcommand{\halfline}{\par\vspace{1.1mm}{\color{hairline}\hrule height .35pt}\vspace{1.2mm}}
 \newcommand{\smath}{\fontsize{7.8}{9.65}\selectfont\setlength{\abovedisplayskip}{1.8pt}\setlength{\belowdisplayskip}{1.8pt}\setlength{\abovedisplayshortskip}{1pt}\setlength{\belowdisplayshortskip}{1.6pt}\setlength{\jot}{1.8pt}}
@@ -45,13 +47,22 @@
 \author{Jamshid Ardalankia}
 \begin{document}
 
+% Palette for the five approved opening frames.
+\begingroup
+\definecolor{titleink}{HTML}{66253D}
+\definecolor{slideaccent}{HTML}{9E2E4C}
+\definecolor{ink}{HTML}{2C2729}
+\definecolor{subtle}{HTML}{564E50}
+\definecolor{hairline}{HTML}{DDD5D7}
+\usebeamercolor[fg]{normal text}
+
 % Slide 01 - Structural Crowding Allocation
 \begin{frame}[plain]
 \vspace*{17.5mm}
-{\rmfamily\bfseries\color{ink}\fontsize{20.8}{24}\selectfont Structural Crowding Allocation\par}
+{\rmfamily\bfseries\color{titleink}\fontsize{20.8}{24}\selectfont Structural Crowding Allocation\par}
 \vspace{2.5mm}
 {\rmfamily\color{subtle}\fontsize{12.3}{15.1}\selectfont Price and Trading Value Correlation-Profile Diversification\\under Systemic Stress\par}
-\vspace{5mm}{\color{blueink}\rule{12mm}{.8pt}}\par\vspace{4mm}
+\vspace{5mm}{\color{slideaccent}\rule{12mm}{.8pt}}\par\vspace{4mm}
 {\bfseries\fontsize{7.85}{10.25}\selectfont Jamshid Ardalankia}\par\vspace{.8mm}
 {\color{subtle}\fontsize{6.45}{8.45}\selectfont Department of Economics, Virginia Tech, USA}
 
@@ -68,7 +79,7 @@
 \setlength{\unitlength}{1mm}
 \noindent\begin{picture}(145,13)(0,-7)
   % The line enters from the page edge and ends at the open research question.
-  \color{blueink}\linethickness{1.25pt}
+  \color{slideaccent}\linethickness{1.25pt}
   \put(-7.2,0){\line(1,0){142}}
   \put(18,0){\circle*{1.8}}
   \put(61,0){\circle*{1.8}}
@@ -95,7 +106,7 @@
     Both pairs have the same direct correlation, $\rho^P_{ij}=\rho^P_{ab}$.
     The upper pair shares more neighbors.\par}
   \vspace{2.6mm}
-  {\color{blueink}\bfseries\fontsize{9.4}{11.1}\selectfont Structural Crowding Allocation (SCA)\par}
+  {\color{slideaccent}\bfseries\fontsize{9.4}{11.1}\selectfont Structural Crowding Allocation (SCA)\par}
   \vspace{1.0mm}
   {\fontsize{7.4}{9.95}\selectfont
     A portfolio is structurally crowded when much of its weight is in stocks with similar correlation profiles.
@@ -104,7 +115,7 @@
 \end{columns}
 \vfill
 {\color{hairline}\hrule height .45pt}\vspace{1.4mm}
-{\color{blueink}\rmfamily\bfseries\fontsize{8.75}{11.25}\selectfont
+{\color{slideaccent}\rmfamily\bfseries\fontsize{8.75}{11.25}\selectfont
 Can using correlation-profile similarity as an additional diversification criterion reduce portfolio drawdowns during systemic stress?\par}
 \note{Pause at the question mark, then point to the two highlighted pairs.
 These two pairs have the same direct correlation. What if one pair shares many more neighbors?}
@@ -123,29 +134,28 @@ These two pairs have the same direct correlation. What if one pair shares many m
 {\lab{\fontsize{8.25}{9.2}\selectfont Portfolio variance}}&
 \(w^\top\Sigma w\)&\(=\)&
 \(\sum\nolimits_i w_i^2\Sigma_{ii}\)&\(+\)&
-\(2\sum\nolimits_{i<j} w_i w_j\,{\color{blueink}\Sigma_{ij}}\)&\\[.5mm]
+\(2\sum\nolimits_{i<j} w_i w_j\,{\color{slideaccent}\Sigma_{ij}}\)&\\[.5mm]
 {\lab{\fontsize{8.25}{9.2}\selectfont Structural crowding}}&
 \(C(w)=w^\top S w\)&\(=\)&
 \(\underbrace{\displaystyle\sum_{i=1}^{N} w_i^{2}S_{ii}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont individual profile terms}}\)&\(+\)&
-\(\underbrace{\displaystyle 2\sum_{1\le i<j\le N} w_iw_j\,{\color{blueink}S_{ij}}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont joint profile interactions}}\)&
+\(\underbrace{\displaystyle 2\sum_{1\le i<j\le N} w_iw_j\,{\color{slideaccent}S_{ij}}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont joint profile interactions}}\)&
 \(=\displaystyle\left\lVert\sum_i w_i\boldsymbol{\phi}_i\right\rVert_2^{\,2}\)
 \end{tabular}\par
 \endgroup
 \vspace{.65mm}
 {\color{subtle}\fontsize{6.8}{8.45}\selectfont
 For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\phi}_i,\boldsymbol{\phi}_j\rangle\) and \(\sum_i w_i\boldsymbol{\phi}_i\) is the portfolio profile.\par}
-\vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{2.55mm}
+\vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{1.05mm}
+% Every input profile uses the same componentwise positive part.
+{\centering\fontsize{8.65}{10.7}\selectfont
+\(z_i^{\ell}=\bigl([\rho_{ik}^{\ell}]^{+}\bigr)_{k=1}^{N},\qquad
+  [x]^{+}=\max\{x,0\},\qquad \ell\in\{P,\tv\}.\)\par}
+\vspace{1.75mm}
 
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.455\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Single-Layer (SL)}\par}
-\vspace{.55mm}
-{\fontsize{7.15}{9}\selectfont
-Keep the positive part of stock \(i\)'s return correlation with each of the \(N\) stocks.\par}
-\vspace{.8mm}
-{\fontsize{7.85}{9.85}\selectfont
-\(z_i^P=\bigl([\rho^P_{ik}]^+\bigr)_{k=1}^{N}\)\par}
-\vspace{1.0mm}
+\vspace{2.0mm}
 {\fontsize{8.15}{10.25}\selectfont
 \(S_{ij}^{\SL}=\dfrac{\langle z_i^P,z_j^P\rangle}{N}\)
 \par}
@@ -173,7 +183,7 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 {\fontsize{8.7}{10.7}\selectfont
 \(\widetilde S^{\HY}=\tfrac12\widetilde S^{\SL}+\tfrac12\widetilde S^{\ML}\)}\hspace{2.8mm}
 {\fontsize{7.05}{9}\selectfont The baseline averages the two trace-normalized matrices.}
-\note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
+\note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. On both the price-return and trading-value layers, retain positive correlations and set negative ones to zero. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the main specification the Hybrid gives equal weight to the separately fitted and trace-normalized matrices. Once I have the structural matrix, how should it affect portfolio weights?}
 \end{frame}
 
 \renewcommand{\sectiontag}{Allocation rules}
@@ -211,7 +221,7 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 \begin{minipage}[c]{.63\textwidth}\raggedright
   {\fontsize{7.8}{10.0}\selectfont
    \(Q_\alpha=(1-\alpha)\widetilde\Sigma+\alpha S,\qquad
-     {\color{blueink}\alpha=0.50}\ \text{(baseline)}.\)\par}
+     {\color{slideaccent}\alpha=0.50}\ \text{(baseline)}.\)\par}
   \vspace{2.7mm}
   {\fontsize{7.8}{10.0}\selectfont
    \(w^{\rm comp}=\displaystyle\argmin_{w\in\mathcal W} w^\top Q_\alpha w.\)\par}
@@ -228,7 +238,7 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
 \begin{minipage}[c]{.63\textwidth}\raggedright
   {\fontsize{8.05}{10.4}\selectfont
    \(\displaystyle r_i^Q(w)=\frac{w_i(Q_\alpha w)_i}{w^\top Q_\alpha w}
-      ={\color{blueink}\frac1N},\qquad w_i>0,\quad i=1,\ldots,N.\)\par}
+      ={\color{slideaccent}\frac1N},\qquad w_i>0,\quad i=1,\ldots,N.\)\par}
 \end{minipage}
 \end{minipage}\par
 \nointerlineskip{\color{hairline}\hrule height .36pt}
@@ -240,17 +250,17 @@ Keep the positive part of stock \(i\)'s return correlation with each of the \(N\
   {\fontsize{7.3}{9.45}\selectfont Minimize crowding within a cap on estimated volatility.\par}
   \vspace{1.65mm}
   {\color{subtle}\fontsize{6.65}{8.65}\selectfont
-   10\% min. \(\xrightarrow{\kappa=2\%}\) {\bfseries\color{blueink}10.2\%} cap.\par}
+   10\% min. \(\xrightarrow{\kappa=2\%}\) {\bfseries\color{slideaccent}10.2\%} cap.\par}
 \end{minipage}\hfill
 \begin{minipage}[c]{.63\textwidth}\raggedright
   {\fontsize{7.8}{10.0}\selectfont
    \(C_\eta(w)=w^\top S_\eta w
        =\sum\nolimits_i w_i^2 S_{ii}
-        +2{\color{blueink}\eta}\sum\nolimits_{i<j}w_iw_j S_{ij}.\)\par}
+        +2{\color{slideaccent}\eta}\sum\nolimits_{i<j}w_iw_j S_{ij}.\)\par}
   \vspace{2.8mm}
   {\fontsize{7.8}{10.0}\selectfont
    \(w^{\rm C}\in\displaystyle\argmin_{w\in\mathcal W} C_\eta(w)
-       \quad\text{subject to}\quad V(w)\leq(1+{\color{blueink}\kappa})^2v_{\MV}.\)\par}
+       \quad\text{subject to}\quad V(w)\leq(1+{\color{slideaccent}\kappa})^2v_{\MV}.\)\par}
   \vspace{1.7mm}
   {\color{subtle}\fontsize{7.2}{9.25}\selectfont
    \(v_{\MV}=\min_{u\in\mathcal W} V(u)\).\par}
@@ -288,14 +298,14 @@ Out of sample, 8 Jan 2002 -- 20 Oct 2025\quad\textperiodcentered\quad
    \pgftext[at={\pgfpoint{32.8mm}{5.2mm}},base]{504-day estimation window}
    \pgftext[at={\pgfpoint{68.8mm}{5.2mm}},base]{63-day hold}}
   \pgfsetlinewidth{1.3pt}
-  \pgfsetstrokecolor{blueink!65!white}
+  \pgfsetstrokecolor{slideaccent!65!white}
   \pgfpathmoveto{\pgfpoint{.8mm}{2mm}}\pgfpathlineto{\pgfpoint{64.8mm}{2mm}}\pgfusepath{stroke}
-  \pgfsetstrokecolor{blueink}
+  \pgfsetstrokecolor{slideaccent}
   \pgfpathmoveto{\pgfpoint{64.8mm}{2mm}}\pgfpathlineto{\pgfpoint{72.8mm}{2mm}}\pgfusepath{stroke}
   \pgfsetlinewidth{.6pt}
   \pgfpathmoveto{\pgfpoint{.8mm}{.8mm}}\pgfpathlineto{\pgfpoint{.8mm}{3.2mm}}\pgfusepath{stroke}
   \pgfpathmoveto{\pgfpoint{72.8mm}{.8mm}}\pgfpathlineto{\pgfpoint{72.8mm}{3.2mm}}\pgfusepath{stroke}
-  \pgfsetfillcolor{blueink}\pgfpathcircle{\pgfpoint{64.8mm}{2mm}}{.78mm}\pgfusepath{fill}
+  \pgfsetfillcolor{slideaccent}\pgfpathcircle{\pgfpoint{64.8mm}{2mm}}{.78mm}\pgfusepath{fill}
   {\color{subtle}\fontsize{7.6}{9}\selectfont
    \pgftext[at={\pgfpoint{0mm}{-2.1mm}},left,base]{\(t-503\)}
    \pgftext[at={\pgfpoint{64.8mm}{-2.1mm}},base]{\(t\)}
@@ -313,7 +323,7 @@ Out of sample, 8 Jan 2002 -- 20 Oct 2025\quad\textperiodcentered\quad
 \setlength{\tabcolsep}{0pt}
 \noindent\begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}ll@{}}
 \lab{Benchmark family} & \lab{Portfolio rule} & \lab{Reference}\\[.38mm]
-Conventional & Equal Weight (\(1/N\)), out-of-sample benchmark & \href{https://doi.org/10.1093/rfs/hhm075}{DeMiguel, Garlappi \& Uppal (2009)}\\
+Conventional & Equal Weight (\(1/N\)), out-of-sample benchmark & \\
  & Sample MinVar & \href{https://doi.org/10.1111/j.1540-6261.1952.tb01525.x}{Markowitz (1952)}\\
  & MinVar with linear shrinkage (LW) & \href{https://doi.org/10.1016/S0047-259X(03)00096-4}{Ledoit \& Wolf (2004)}\\
  & MinVar with analytical nonlinear shrinkage (NLS) & \href{https://doi.org/10.1214/19-AOS1921}{Ledoit \& Wolf (2020)}\\[.55mm]
@@ -324,6 +334,7 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 \end{tabular*}\par}
 \note{All three allocation rules start from the same 100-stock universe. CRSP CIZ daily data and historical S\&P 500 membership determine which companies are eligible at formation. Keep one security per company. Estimate covariance and profile similarity from the trailing window through \(t\) before observing the first holding return. Evaluate simple returns and let weights drift over the next 63 trading days. The two PZ rules each select 20 stocks. Covariance ERC means equal risk contribution under the Ledoit--Wolf covariance matrix. It provides the direct comparison for Risk-Parity SCA. See manuscript Section 4, Table 2 and Online Appendix S7.}
 \end{frame}
+\endgroup
 \endgroup
 
 \renewcommand{\sectiontag}{Empirical evidence}
