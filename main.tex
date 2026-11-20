@@ -403,46 +403,51 @@ Covariance ERC    & 85.5 & 31.9\% \\
 \src{Table 10, p. 26. Effective holdings $=1/\sum_i w_i^2$ at target weights. Descriptive full-sample comparisons.}
 \end{frame}
 
-% Slide 08 - GFC performance across the three allocation rules
-\begin{frame}{GFC performance across the three allocation rules}
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.59\textwidth}
-\small Gross returns, July 2007--June 2009
-\vspace{0.24em}
-
-\footnotesize
-\setlength{\tabcolsep}{4.1pt}
-\renewcommand{\arraystretch}{1.04}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Allocation & CAGR & Vol. & MaxDD \\
-\midrule
-Composite SL       & $-10.83$ & 27.59 & 44.77 \\
-Constrained ML     & $-9.61$  & 23.98 & 34.63 \\
-Risk-Parity ML     & $-21.41$ & 37.42 & 58.03 \\
-\midrule
-LW MinVar          & $-8.41$  & 23.49 & 34.44 \\
-NLS MinVar         & $-8.82$  & 23.61 & 34.81 \\
-HRP                & $-16.05$ & 30.87 & 49.22 \\
-Covariance ERC     & $-19.37$ & 35.56 & 54.96 \\
-PZ Lowest          & $-24.14$ & 31.92 & 60.14 \\
-PZ Rho-Dependent   & $-25.88$ & 34.19 & 62.30 \\
-\bottomrule
-\end{tabular}
-\end{column}
-\begin{column}{.39\textwidth}
-\small
-\textbf{Composite SL} gained 13.30 and 15.05 percentage points in CAGR versus PZ Lowest and PZ Rho-Dependent, respectively. Four loss measures also improved against each. All ten comparisons meet Holm-adjusted 5\% within the stated families.
-
-\medskip
-\textbf{Constrained ML} had drawdown close to both MinVar benchmarks.
-
-\medskip
-\textbf{Risk-Parity ML} had deeper drawdown than Covariance ERC.
-\end{column}
-\end{columns}
-\src{Tables 3B and 6. All entries in percent. ML uses $h=1$. Composite/Risk-Parity: $\alpha=0.50$. Constrained: $\kappa=2\%$, $\eta=1$.}
+% Slide 08 - Which GFC differences hold up against both PZ rules?
+\begingroup
+\definecolor{titleink}{HTML}{66253D}
+\definecolor{slideaccent}{HTML}{9E2E4C}
+\definecolor{ink}{HTML}{2C2729}
+\definecolor{subtle}{HTML}{564E50}
+\definecolor{hairline}{HTML}{DDD5D7}
+\usebeamercolor[fg]{normal text}
+\renewcommand{\sectiontag}{Global Financial Crisis}
+\begin{frame}{Which GFC differences hold up against both PZ rules?}
+\vspace*{-1.0mm}
+{\fontsize{8.2}{10}\selectfont SCA minus the named PZ benchmark, in percentage points\hfill
+ {\color{subtle}July 2007--June 2009}\par}
+\vspace{2.5mm}
+{\fontsize{8.5}{10.4}\selectfont
+ \setlength{\tabcolsep}{0pt}
+ \renewcommand{\arraystretch}{1.15}
+ \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.29\linewidth}
+     *{2}{>{\centering\arraybackslash}p{.1675\linewidth}}@{\hspace{.04\linewidth}}
+     *{2}{>{\centering\arraybackslash}p{.1675\linewidth}}@{}}
+   & \multicolumn{2}{c}{\lab{PZ Lowest-Centrality}}
+   & \multicolumn{2}{c}{\lab{PZ Rho-Dependent}}\\
+   \cmidrule(l{.45em}r{.45em}){2-3}\cmidrule(l{.45em}r{.45em}){4-5}
+   & Composite SL & Constrained ML & Composite SL & Constrained ML\\
+   \midrule
+   \textbf{Maximum drawdown} & \(\mathbf{-15.37}\) & \(\mathbf{-25.50}\)
+                              & \(\mathbf{-17.53}\) & \(\mathbf{-27.66}\)\\
+   Annualized volatility         & \(-4.33\) & \(-7.94\) & \(-6.60\) & \(-10.21\)\\
+   Annualized downside deviation & \(-3.79\) & \(-6.46\) & \(-5.48\) & \(-8.15\)\\
+   Daily expected shortfall (95\%) & \(-0.70\) & \(-1.29\) & \(-0.87\) & \(-1.46\)\\
+   \midrule
+   Compound annual growth & \(+13.30\) & \(+14.53\) & \(+15.05\) & \(+16.27\)\\[-.2ex]
+   {\color{subtle}\fontsize{7.2}{9.2}\selectfont\hspace{1.8mm}Holm-adjusted \(p\) for growth}
+      & {\color{titleink}\(\mathbf{0.0405}\)} & {\color{subtle}\(0.1809\)}
+      & {\color{titleink}\(\mathbf{0.0315}\)} & {\color{subtle}\(0.1482\)}\\
+   \bottomrule
+ \end{tabular}\par}
+\vspace{2.4mm}
+{\color{titleink}\bfseries\fontsize{8.3}{10.1}\selectfont
+  All 16 risk reductions meet the Holm-adjusted 5\% threshold in their respective test families.\par}
+\src{Composite SL uses \(\alpha=0.50\). Constrained ML uses \(\kappa=2\%\), \(\eta=1\) and \(h=1\). Both PZ rules select 20 stocks.\\
+     Manuscript Tables 5--6 and Online Appendix Sections S10, S13 and S25, with the accompanying gross-return tests.}
+\note{Read across the maximum drawdown row. Against Lowest-Centrality, Composite SL and Constrained ML reduced maximum drawdown by 15.37 and 25.50 percentage points. Against Rho-Dependent the reductions were 17.53 and 27.66 points. Both portfolios also had lower volatility, downside deviation and daily expected shortfall than each benchmark. Each of the sixteen risk differences meets five percent after Holm adjustment across the three architectures within its declared test family. Both portfolios had higher observed compound growth against both PZ rules. The adjusted growth tests meet five percent for Composite SL and give 0.1809 and 0.1482 for Constrained ML. These are comparisons of each portfolio with a benchmark. A comparison between the two SCA portfolios requires a separate paired test. If asked whether the volatility advantage increased from calm conditions, Table 5 reports separate Constrained ML GFC-minus-calm spreads of -6.06 points against Lowest-Centrality and -4.76 points against Rho-Dependent, with adjusted p-values of 0.0003 and 0.0099.}
 \end{frame}
+\endgroup
 
 % Slide 09 - COVID crash losses and recovery participation
 \begin{frame}{COVID crash losses and recovery participation}
