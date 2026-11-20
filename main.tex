@@ -601,62 +601,68 @@ Risk budgeting & Covariance ERC (equal risk contribution) & \href{https://doi.or
 
 % Slide 08 - COVID phase returns, chart alternative
 \renewcommand{\sectiontag}{COVID-19 / Chart}
-% Crash and recovery use the same scale. Returns and bar lengths come from the same inputs.
+% Rows are sorted by recovery plus signed crash return using the two displayed values.
+% Both bars use the same scale. The last column is their arithmetic sum in percentage points.
 \newcommand{\covidBars}[7]{%
-  \pgfmathsetmacro{\crashLength}{-0.72*(#3)}%
-  \pgfmathsetmacro{\recoveryLength}{0.72*(#4)}%
-  \pgfmathsetmacro{\crashEnd}{66.5-\crashLength}%
+  \pgfmathsetmacro{\crashLength}{-0.62*(#3)}%
+  \pgfmathsetmacro{\recoveryLength}{0.62*(#4)}%
+  \pgfmathsetmacro{\crashEnd}{60.5-\crashLength}%
   \pgfmathsetmacro{\crashLabel}{\crashEnd-1.0}%
-  \pgfmathsetmacro{\recoveryLabel}{66.5+\recoveryLength+1.0}%
+  \pgfmathsetmacro{\recoveryLabel}{60.5+\recoveryLength+1.0}%
+  \pgfmathsetmacro{\phaseSum}{(#3)+(#4)}%
   \put(0,#1){\makebox(0,0)[l]{{\fontsize{6.65}{7.6}\selectfont #2}}}%
   \put(\crashEnd,#1){\makebox(0,0)[l]{{\color{#5!77!white}\rule{\crashLength mm}{1.23mm}}}}%
-  \put(66.5,#1){\makebox(0,0)[l]{{\color{#5}\rule{\recoveryLength mm}{1.23mm}}}}%
+  \put(60.5,#1){\makebox(0,0)[l]{{\color{#5}\rule{\recoveryLength mm}{1.23mm}}}}%
   \put(\crashLabel,#1){\makebox(0,0)[r]{{\fontsize{6.7}{7.7}\selectfont \(#6{#3}\)}}}%
-  \put(\recoveryLabel,#1){\makebox(0,0)[l]{{\fontsize{6.7}{7.7}\selectfont \(#7{+#4}\)}}}}
+  \put(\recoveryLabel,#1){\makebox(0,0)[l]{{\fontsize{6.7}{7.7}\selectfont \(#7{+#4}\)}}}%
+  \put(145,#1){\makebox(0,0)[r]{{\fontsize{6.7}{7.7}\selectfont
+    \(\pgfmathprintnumber[fixed,precision=2,fixed zerofill]{\phaseSum}\)}}}}
 \begin{frame}[noframenumbering]{Constrained ML gained more than LW in the recovery}
 \vspace*{-1.3mm}
-{\fontsize{8.0}{9.7}\selectfont Gross cumulative return in each phase (\%)\hfill\scaChartLegend\par}
+{\fontsize{8.0}{9.7}\selectfont Gross cumulative phase returns (\%)\quad \(\mathrm{loss}=|r_{\mathrm{crash}}|\)\hfill\scaChartLegend\par}
 \vspace{.3mm}
 \noindent\begin{picture}(145,57.8)
 \put(0,55.7){\makebox(0,0)[l]{{\fontsize{7.5}{8.7}\selectfont\bfseries Portfolio}}}
-\put(46.8,55.7){\makebox(0,0)[c]{{\fontsize{7.6}{8.8}\selectfont\lab{Crash}}}}
-\put(46.8,52.6){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.20}{7.15}\selectfont 20 Feb--23 Mar 2020}}}
-\put(101.5,55.7){\makebox(0,0)[c]{{\fontsize{7.6}{8.8}\selectfont\lab{Recovery}}}}
-\put(101.5,52.6){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.20}{7.15}\selectfont 24 Mar 2020--31 Mar 2021}}}
-\put(37.70,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
-\put(37.70,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(-40\)}}}
-\put(66.50,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
-\put(66.50,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(0\)}}}
-\put(95.30,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
-\put(95.30,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(+40\)}}}
-\put(124.10,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
-\put(124.10,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(+80\)}}}
-\put(0,25.52){\color{hairline}\linethickness{.24pt}\line(1,0){145}}
-\covidBars{49.50}{Composite SL}{-35.21}{64.73}{slideaccent}{\mathrm}{\mathrm}
-\covidBars{46.73}{Composite ML}{-35.15}{68.31}{slideaccent}{\mathbf}{\mathbf}
-\covidBars{43.96}{Composite HY}{-35.28}{67.18}{slideaccent}{\mathrm}{\mathrm}
-\covidBars{41.19}{Constrained SL}{-36.88}{57.53}{slideaccent}{\mathrm}{\mathrm}
-\covidBars{38.42}{Constrained ML}{-35.06}{56.71}{slideaccent}{\mathbf}{\mathrm}
-\covidBars{35.65}{Constrained HY}{-35.99}{57.64}{slideaccent}{\mathrm}{\mathbf}
-\covidBars{32.88}{Risk-Parity SL}{-32.51}{81.69}{slideaccent}{\mathbf}{\mathrm}
-\covidBars{30.11}{Risk-Parity ML}{-33.17}{87.17}{slideaccent}{\mathrm}{\mathbf}
-\covidBars{27.34}{Risk-Parity HY}{-32.71}{84.21}{slideaccent}{\mathrm}{\mathrm}
-\covidBars{23.72}{Equal Weight}{-33.58}{92.32}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{20.95}{Sample MinVar}{-36.52}{48.11}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{18.18}{LW MinVar}{-36.00}{48.82}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{15.41}{NLS MinVar}{-34.71}{47.58}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{12.64}{HRP}{-31.75}{75.11}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{9.87}{Covariance ERC}{-32.88}{82.91}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{7.10}{PZ Lowest-Centrality}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
-\covidBars{4.33}{PZ Rho-Dependent}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
-\put(66.5,3.55){\color{white}\linethickness{1.0pt}\line(0,1){47.2}}
-\put(66.5,3.55){\color{subtle}\linethickness{.30pt}\line(0,1){47.2}}
+\put(44.0,55.7){\makebox(0,0)[c]{{\fontsize{7.6}{8.8}\selectfont\lab{Crash}}}}
+\put(44.0,52.6){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.20}{7.15}\selectfont 20 Feb--23 Mar 2020}}}
+\put(90.2,55.7){\makebox(0,0)[c]{{\fontsize{7.6}{8.8}\selectfont\lab{Recovery}}}}
+\put(90.2,52.6){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.20}{7.15}\selectfont 24 Mar 2020--31 Mar 2021}}}
+\put(145,55.7){\makebox(0,0)[r]{{\fontsize{7.5}{8.8}\selectfont\lab{Recovery \( - \) loss}}}}
+\put(145,52.6){\makebox(0,0)[r]{{\color{subtle}\fontsize{6.20}{7.15}\selectfont pp, high to low}}}
+\put(128.3,3.55){\color{hairline}\linethickness{.30pt}\line(0,1){47.2}}
+\put(35.70,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
+\put(35.70,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(-40\)}}}
+\put(60.50,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
+\put(60.50,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(0\)}}}
+\put(85.30,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
+\put(85.30,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(+40\)}}}
+\put(110.10,3.55){\color{hairline}\linethickness{.24pt}\line(0,1){47.2}}
+\put(110.10,1.20){\makebox(0,0)[c]{{\color{subtle}\fontsize{6.15}{7.2}\selectfont \(+80\)}}}
+\covidBars{49.50}{Equal Weight}{-33.58}{92.32}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{46.68}{Risk-Parity ML}{-33.17}{87.17}{slideaccent}{\mathrm}{\mathbf}
+\covidBars{43.86}{Risk-Parity HY}{-32.71}{84.21}{slideaccent}{\mathrm}{\mathrm}
+\covidBars{41.04}{Covariance ERC}{-32.88}{82.91}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{38.22}{PZ Lowest-Centrality}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{35.40}{PZ Rho-Dependent}{-28.35}{77.90}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{32.58}{Risk-Parity SL}{-32.51}{81.69}{slideaccent}{\mathbf}{\mathrm}
+\covidBars{29.76}{HRP}{-31.75}{75.11}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{26.94}{Composite ML}{-35.15}{68.31}{slideaccent}{\mathbf}{\mathbf}
+\covidBars{24.12}{Composite HY}{-35.28}{67.18}{slideaccent}{\mathrm}{\mathrm}
+\covidBars{21.30}{Composite SL}{-35.21}{64.73}{slideaccent}{\mathrm}{\mathrm}
+\covidBars{18.48}{Constrained ML}{-35.06}{56.71}{slideaccent}{\mathbf}{\mathrm}
+\covidBars{15.66}{Constrained HY}{-35.99}{57.64}{slideaccent}{\mathrm}{\mathbf}
+\covidBars{12.84}{Constrained SL}{-36.88}{57.53}{slideaccent}{\mathrm}{\mathrm}
+\covidBars{10.02}{NLS MinVar}{-34.71}{47.58}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{7.20}{LW MinVar}{-36.00}{48.82}{benchmarkBar}{\mathrm}{\mathrm}
+\covidBars{4.38}{Sample MinVar}{-36.52}{48.11}{benchmarkBar}{\mathrm}{\mathrm}
+\put(60.5,3.55){\color{white}\linethickness{1.0pt}\line(0,1){47.2}}
+\put(60.5,3.55){\color{subtle}\linethickness{.30pt}\line(0,1){47.2}}
 \end{picture}\par
 \vspace{.2mm}
 {\color{titleink}\fontsize{7.2}{8.5}\selectfont\bfseries
  Constrained ML vs.\ LW MinVar\quad +0.94 pp in the crash\quad +7.89 pp in recovery.\hfill
  {\normalfont\color{subtle}\fontsize{5.75}{7}\selectfont Tables 7 and S133.}\par}
-\note{The left bar measures the crash return and the right bar the recovery return on the same percentage-point scale. All nine SCA specifications and eight benchmarks are shown. Risk-Parity SL had the smallest SCA crash loss, 32.51 percent. Risk-Parity ML had the largest SCA recovery return, 87.17 percent. Both PZ portfolios lost less during the crash, and Equal Weight gained more during recovery.}
+\note{The crash loss is the positive magnitude of the negative crash return. The last column subtracts that loss from the recovery return. Each percentage point of loss offsets one point of recovery in the display order. The two bars remain the observations to interpret. Equal Weight leads this ordering at 58.74 percentage points, followed by Risk-Parity ML at 54.00. Both PZ rules have the smallest crash loss. They tie at the displayed precision, as do Constrained ML and HY on the ordering value. To measure investment growth across these two phases, compound the two gross returns. This gives approximately 27.47 percent for the PZ rules and 25.09 percent for Risk-Parity ML. The full-window figure in Table 7 also includes twelve pre-crash trading observations.}
 \end{frame}
 
 \endgroup
