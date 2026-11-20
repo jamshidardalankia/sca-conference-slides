@@ -139,28 +139,35 @@ These two pairs have the same direct correlation. What if one pair shares many m
 \(C(w)=w^\top S w\)&\(=\)&
 \(\underbrace{\displaystyle\sum_{i=1}^{N} w_i^{2}S_{ii}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont individual profile terms}}\)&\(+\)&
 \(\underbrace{\displaystyle 2\sum_{1\le i<j\le N} w_iw_j\,{\color{slideaccent}S_{ij}}}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont joint profile interactions}}\)&
-\(=\displaystyle\left\lVert\sum_i w_i\boldsymbol{\phi}_i\right\rVert_2^{\,2}\)
+\(=\displaystyle\Bigl\lVert
+  \underbrace{\sum_i w_i\boldsymbol{\phi}_i}_{\text{\sffamily\color{subtle}\fontsize{5.9}{7.05}\selectfont portfolio profile}}
+  \Bigr\rVert_2^{\,2}\)
 \end{tabular}\par
 \endgroup
-\vspace{.65mm}
-{\color{subtle}\fontsize{6.8}{8.45}\selectfont
-For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\phi}_i,\boldsymbol{\phi}_j\rangle\) and \(\sum_i w_i\boldsymbol{\phi}_i\) is the portfolio profile.\par}
-\vspace{1.0mm}{\color{hairline}\hrule height .42pt}\vspace{1.05mm}
-% Layer inputs and the common profile definition at a formation date.
-{\centering\fontsize{8.15}{10.35}\selectfont
-\(x_i^P=\log(1+r_i),\quad x_i^{\tv}=\Delta\log(\tv_i),\qquad
-  \rho_{ik}^{\ell}=\widehat{\mathrm{Corr}}_{\ell}(x_i^{\ell},x_k^{\ell}),\quad
-  z_i^{\ell}=\bigl(\max\{\rho_{ik}^{\ell},0\}\bigr)_{k=1}^{N},\quad
-  \ell\in\{P,\tv\}.\)\par}
-\vspace{1.75mm}
+\vspace{1.45mm}{\color{hairline}\hrule height .42pt}\vspace{1.05mm}
+% The two correlations are estimated separately across days within their respective layers.
+{\fontsize{8.0}{10.1}\selectfont
+ \setlength{\tabcolsep}{0pt}
+ \begin{tabular}{@{}l@{\hspace{4mm}}l@{\hspace{2.8mm}}c@{\hspace{2.8mm}}l@{}}
+ & {\color{subtle}\fontsize{7.25}{8.7}\selectfont Daily log changes for stocks \(i\) and \(k\)} && {\color{subtle}\fontsize{7.25}{8.7}\selectfont Within-layer correlation}\\[.3mm]
+ \lab{Price} & \(\Delta\log P_{i,s},\quad \Delta\log P_{k,s}\) & \(\longrightarrow\) &
+ \(\rho_{ik}^{P}\)\hspace{1.7mm}{\fontsize{7.55}{9.0}\selectfont Price-return correlation}\\[.35mm]
+ \lab{Trading value} & \(\Delta\log\tv_{i,s},\quad \Delta\log\tv_{k,s}\) & \(\longrightarrow\) &
+ \(\rho_{ik}^{\tv}\)\hspace{1.7mm}{\fontsize{7.55}{9.0}\selectfont Trading-value correlation}\\[.8mm]
+ \lab{Raw stock profile} & \multicolumn{3}{@{}l@{}}{\(z_i^{\ell}=\bigl(\max\{\rho_{ik}^{\ell},0\}\bigr)_{k=1}^{N},\quad \ell\in\{P,\tv\}.\)}\\[.4mm]
+ \lab{Fitted stock profile} & \multicolumn{3}{@{}l@{}}{\(S_{ij}=\boldsymbol{\phi}_i^\top\boldsymbol{\phi}_j\)\hspace{3mm}
+ {\color{subtle}\fontsize{7.05}{8.55}\selectfont \(\boldsymbol{\phi}_i\) represents stock \(i\) after centering, shrinkage and scaling.}}
+ \end{tabular}\par}
+\vspace{1.7mm}
 
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.455\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Single-Layer (SL)}\par}
 \vspace{2.0mm}
 {\fontsize{8.15}{10.25}\selectfont
-\(S_{ij}^{\SL}=\dfrac{\langle z_i^P,z_j^P\rangle}{N}\)
-\par}
+\(S_{ij}^{\SL,\raw}=\dfrac{\langle z_i^P,z_j^P\rangle}{N}\)\par}
+\vspace{1.35mm}
+{\fontsize{7.45}{9.0}\selectfont Before fitting, \(\boldsymbol{\phi}^{\SL,\raw}_i=z_i^P/\sqrt N\).\par}
 \end{column}
 \begin{column}{.507\textwidth}
 {\lab{\fontsize{9.6}{10.8}\selectfont Multilayer (ML)}\hfill
@@ -170,9 +177,9 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 \begin{tabular}{@{}l@{\hspace{2mm}}l@{}}
 \(K_{ij}^{\tv}=\tfrac{1}{N}\langle z_i^{\tv},z_j^{\tv}\rangle\)
  & {\fontsize{6.7}{8.45}\selectfont TV overlap of \(i\) and \(j\)}\\[.75mm]
-\(\varphi_i^{P,\tv}=\tfrac{1}{N}\langle z_i^P,z_i^{\tv}\rangle\)
- & {\fontsize{6.7}{8.45}\selectfont Stock \(i\) across layers}\\[.75mm]
-\(\displaystyle S_{ij}^{\ML,\raw}=\varphi_i^{P,\tv}K_{ij}^{\tv}\varphi_j^{P,\tv}\)
+\(\mathrm{align}_i=\tfrac{1}{N}\langle z_i^P,z_i^{\tv}\rangle\)
+ & {\fontsize{6.7}{8.45}\selectfont Same-stock alignment}\\[.75mm]
+\(\displaystyle S_{ij}^{\ML,\raw}=\mathrm{align}_i\,K_{ij}^{\tv}\,\mathrm{align}_j\)
  & {\fontsize{6.7}{8.45}\selectfont ML similarity of \(i\) and \(j\)}
 \end{tabular}\par}
 \end{column}
@@ -183,7 +190,13 @@ For fitted stock profiles \(\boldsymbol{\phi}_i\), \(S_{ij}=\langle\boldsymbol{\
 {\fontsize{8.7}{10.7}\selectfont
 \(S^{\HY}=\tfrac12 S^{\SL}+\tfrac12 S^{\ML}\)}\hspace{2.8mm}
 {\fontsize{7.05}{9}\selectfont Here SL and ML are the fitted, trace-normalized matrices.}
-\note{Start with portfolio variance. What if two holdings move with the same other stocks? SCA adds their profile overlap as a diversification criterion. Point to the two underbraces and the squared norm. Price-layer correlations come from the Ledoit--Wolf covariance of daily log returns. Trading value uses sample Pearson correlations of daily log changes in trading value. On both layers retain positive correlations and set the other entries to zero. Explain stock-pair overlap on the source layer before same-stock alignment across layers. The bilateral portfolio construction builds on the interlayer similarity in Ardalankia et al. (2025). In the Hybrid equation each input has already been fitted and separately scaled to trace N. Once I have the structural matrix, how should it affect portfolio weights?}
+\note{Point to the weighted sum under the brace marked \emph{portfolio profile}.
+\par\smallskip
+We combine the stocks’ profiles using their portfolio weights. If two stocks have very similar profiles, splitting a position between them changes the portfolio’s overall exposure pattern very little.
+\par\smallskip
+For each pair of stocks, we estimate one correlation from daily log price changes and another from daily log changes in trading value. On each layer, the positive correlations form the raw stock profile. Start the multilayer explanation with trading-value profile overlap for the two stocks. Next, align each stock's trading-value profile with its own price profile.
+\par\smallskip
+In the estimation, \(\Delta\log P\) denotes the daily CRSP log return. Price correlations are implied by the Ledoit--Wolf covariance. Trading-value correlations are sample Pearson correlations of the daily log changes in dollar trading volume. See manuscript Section 3 and Online Appendix equations (S4.6) and (S4.13).}
 \end{frame}
 
 \renewcommand{\sectiontag}{Allocation rules}
